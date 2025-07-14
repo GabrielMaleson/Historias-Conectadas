@@ -12,7 +12,10 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
+        {
+            Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void AddItem(InventoryItem item)
