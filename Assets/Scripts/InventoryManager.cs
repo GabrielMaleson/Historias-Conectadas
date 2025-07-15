@@ -6,6 +6,8 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
+    [SerializeField] private GameObject InvUI;
+
     public UnityEvent<InventoryItem> OnItemAdded = new UnityEvent<InventoryItem>();
 
     private List<InventoryItem> items = new List<InventoryItem>();
@@ -18,6 +20,14 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.E)) 
+        {
+            ToggleInventory(true); 
+        }
+    }
+
     public void AddItem(InventoryItem item)
     {
         if (!items.Contains(item))
@@ -26,6 +36,10 @@ public class InventoryManager : MonoBehaviour
             OnItemAdded.Invoke(item);
             Debug.Log($"Added item: {item.itemName}");
         }
+    }
+    public void ToggleInventory(bool invtoggle)
+    {
+        InvUI.SetActive(invtoggle);
     }
 
     public bool HasItem(InventoryItem item)
