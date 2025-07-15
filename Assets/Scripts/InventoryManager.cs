@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private GameObject InvUI;
 
+    private bool invtoggle = false;
+
     public UnityEvent<InventoryItem> OnItemAdded = new UnityEvent<InventoryItem>();
 
     private List<InventoryItem> items = new List<InventoryItem>();
@@ -22,10 +24,15 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E)) 
-        {
-            ToggleInventory(true); 
-        }
+        if (Input.GetKeyUp(KeyCode.E))
+            if (invtoggle == false)
+            {
+                ToggleInventory(true);
+            }
+            else if (invtoggle == true)
+            {
+                ToggleInventory(false);
+            }
     }
 
     public void AddItem(InventoryItem item)
