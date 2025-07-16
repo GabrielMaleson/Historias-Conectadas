@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private GameObject InvUI;
 
-    private bool invtoggle = false;
+    private bool isInventoryOpen = false; // Tracks the current state
 
     public UnityEvent<InventoryItem> OnItemAdded = new UnityEvent<InventoryItem>();
 
@@ -16,23 +16,22 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        // Ensure inventory starts closed
+        InvUI.SetActive(false);
+        isInventoryOpen = false;
     }
 
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.E))
-            if (invtoggle == false)
-            {
-                ToggleInventory(true);
-            }
-            else if (invtoggle == true)
-            {
-                ToggleInventory(false);
-            }
+        {
+            // Toggle the state
+            isInventoryOpen = !isInventoryOpen;
+            InvUI.SetActive(isInventoryOpen);
+        }
     }
 
     public void AddItem(InventoryItem item)
@@ -44,9 +43,11 @@ public class InventoryManager : MonoBehaviour
             Debug.Log($"Added item: {item.itemName}");
         }
     }
-    public void ToggleInventory(bool invtoggle)
+
+    public void ToggleInventory(bool state)
     {
-        InvUI.SetActive(invtoggle);
+        isInventoryOpen = state;
+        InvUI.SetActive(state);
     }
 
     public bool HasItem(InventoryItem item)
