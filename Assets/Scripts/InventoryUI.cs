@@ -26,7 +26,6 @@ public class InventoryUI : MonoBehaviour
         slots.Add(slot);
 
         InventorySlot slotScript = slot.GetComponent<InventorySlot>();
-        if (slotScript != null)
         {
             slotScript.Setup(item);
         }
