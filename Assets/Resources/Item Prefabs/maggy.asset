@@ -15,3 +15,5 @@ MonoBehaviour:
   itemName: magolor
   icon: {fileID: 21300000, guid: 81f7f4aa70bba9e468ae7248c525be9b, type: 3}
   description: hahahaha
+  itemTags:
+  - DoorKey
