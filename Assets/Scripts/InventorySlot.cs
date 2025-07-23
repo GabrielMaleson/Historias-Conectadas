@@ -21,7 +21,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltipPanel.SetActive(false);
+        tooltipPanel.SetActive(true);
     }
 
     public void OnDrag(PointerEventData eventData)
