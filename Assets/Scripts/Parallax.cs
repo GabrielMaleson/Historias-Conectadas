@@ -1,61 +1,73 @@
 using UnityEngine;
-using UnityEngine.UI; // Required for UI components
-public class UIParallax : MonoBehaviour
+
+public class HorizontalBackgroundScroller : MonoBehaviour
 {
-    [Header("Configuration")]
-    [SerializeField, Range(0f, 1f)]
-    private float horizontalEffect = 0.5f;
+    [Header("Settings")]
+    [Tooltip("The speed at which the background scrolls")]
+    public float scrollSpeed = 0.5f;
 
-    [SerializeField, Range(0f, 1f)]
-    private float verticalEffect = 0f; // Set to 0 for purely horizontal
+    [Tooltip("How much to multiply the mouse movement (sensitivity)")]
+    public float mouseSensitivity = 1f;
 
-    [SerializeField]
-    private RectTransform canvasRect; // Drag parent Canvas here
+    [Tooltip("The minimum X position for the background")]
+    public float minXPosition = -10f;
 
-    [SerializeField]
-    private Transform targetCamera; // Drag main camera here
+    [Tooltip("The maximum X position for the background")]
+    public float maxXPosition = 10f;
 
-    private Vector2 startPosition;
-    private Vector2 imageSize;
+    private Vector3 initialPosition;
+    private float lastMouseX;
+    private Renderer backgroundRenderer;
 
-    private void Awake()
+    void Start()
     {
-        // Auto-assign camera if null
-        if (targetCamera == null)
+        // Store the initial position
+        initialPosition = transform.position;
+
+        // Get the renderer component
+        backgroundRenderer = GetComponent<Renderer>();
+
+        if (backgroundRenderer == null)
         {
-            targetCamera = Camera.main?.transform;
-            if (targetCamera == null)
-                Debug.LogError("No camera assigned!", this);
+            Debug.LogError("No Renderer component found on this GameObject. This script requires a Renderer.");
         }
 
-        // Get reference to RectTransform
-        RectTransform rt = GetComponent<RectTransform>();
-        startPosition = rt.anchoredPosition;
-        imageSize = rt.sizeDelta;
+        // Initialize last mouse position
+        lastMouseX = Input.mousePosition.x;
     }
 
-    private void LateUpdate()
+    void Update()
     {
-        if (targetCamera == null || canvasRect == null) return;
+        if (backgroundRenderer == null) return;
 
-        // Calculate normalized camera position (0-1 range)
-        Vector2 viewportPos = targetCamera.GetComponent<Camera>().WorldToViewportPoint(targetCamera.position);
+        // Get current mouse position
+        float currentMouseX = Input.mousePosition.x;
 
-        // Adjust for canvas scaling
-        Vector2 canvasSize = canvasRect.sizeDelta;
-        Vector2 parallaxOffset = new Vector2(
-            (viewportPos.x - 0.5f) * canvasSize.x * horizontalEffect,
-            (viewportPos.y - 0.5f) * canvasSize.y * verticalEffect
-        );
+        // Calculate mouse movement delta
+        float mouseDeltaX = (currentMouseX - lastMouseX) * mouseSensitivity;
 
-        // Apply movement
-        GetComponent<RectTransform>().anchoredPosition = startPosition + parallaxOffset;
+        // Update the last mouse position
+        lastMouseX = currentMouseX;
 
-        // Optional: Infinite scrolling logic
-        if (Mathf.Abs(parallaxOffset.x) > imageSize.x)
-        {
-            float offsetDirection = Mathf.Sign(parallaxOffset.x);
-            startPosition.x += offsetDirection * imageSize.x;
-        }
+        // Calculate the new offset
+        float newXOffset = transform.position.x + mouseDeltaX * scrollSpeed * Time.deltaTime;
+
+        // Clamp the position between min and max values
+        newXOffset = Mathf.Clamp(newXOffset, minXPosition, maxXPosition);
+
+        // Apply the new position
+        transform.position = new Vector3(newXOffset, transform.position.y, transform.position.z);
+
+        // Alternative approach using material offset (uncomment if you prefer this method)
+        /*
+        float offsetX = backgroundRenderer.material.mainTextureOffset.x + mouseDeltaX * scrollSpeed * Time.deltaTime;
+        backgroundRenderer.material.mainTextureOffset = new Vector2(offsetX, 0);
+        */
+    }
+
+    // Reset to initial position (optional)
+    public void ResetPosition()
+    {
+        transform.position = initialPosition;
     }
 }
