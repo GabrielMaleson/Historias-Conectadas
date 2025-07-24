@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HorizontalBackgroundScroller : MonoBehaviour
 {
@@ -10,27 +11,30 @@ public class HorizontalBackgroundScroller : MonoBehaviour
     public float mouseSensitivity = 1f;
 
     [Tooltip("The minimum X position for the background")]
-    public float minXPosition = -10f;
+    public float minXPosition = -1000f;
 
     [Tooltip("The maximum X position for the background")]
-    public float maxXPosition = 10f;
+    public float maxXPosition = 1000f;
 
-    private Vector3 initialPosition;
+    private Vector2 initialPosition;
     private float lastMouseX;
-    private Renderer backgroundRenderer;
+    private RectTransform rectTransform;
+    private RawImage backgroundImage;
 
     void Start()
     {
-        // Store the initial position
-        initialPosition = transform.position;
+        // Get the RectTransform and Image components
+        rectTransform = GetComponent<RectTransform>();
+        backgroundImage = GetComponent<RawImage>();
 
-        // Get the renderer component
-        backgroundRenderer = GetComponent<Renderer>();
-
-        if (backgroundRenderer == null)
+        if (rectTransform == null || backgroundImage == null)
         {
-            Debug.LogError("No Renderer component found on this GameObject. This script requires a Renderer.");
+            Debug.LogError("This script requires both RectTransform and Image components on a UI element.");
+            return;
         }
+
+        // Store the initial position
+        initialPosition = rectTransform.anchoredPosition;
 
         // Initialize last mouse position
         lastMouseX = Input.mousePosition.x;
@@ -38,7 +42,7 @@ public class HorizontalBackgroundScroller : MonoBehaviour
 
     void Update()
     {
-        if (backgroundRenderer == null) return;
+        if (rectTransform == null || backgroundImage == null) return;
 
         // Get current mouse position
         float currentMouseX = Input.mousePosition.x;
@@ -49,25 +53,26 @@ public class HorizontalBackgroundScroller : MonoBehaviour
         // Update the last mouse position
         lastMouseX = currentMouseX;
 
-        // Calculate the new offset
-        float newXOffset = transform.position.x + mouseDeltaX * scrollSpeed * Time.deltaTime;
+        // Calculate the new X position
+        float newXPos = rectTransform.anchoredPosition.x + mouseDeltaX * scrollSpeed * Time.deltaTime;
 
         // Clamp the position between min and max values
-        newXOffset = Mathf.Clamp(newXOffset, minXPosition, maxXPosition);
+        newXPos = Mathf.Clamp(newXPos, minXPosition, maxXPosition);
 
         // Apply the new position
-        transform.position = new Vector3(newXOffset, transform.position.y, transform.position.z);
+        rectTransform.anchoredPosition = new Vector2(newXPos, rectTransform.anchoredPosition.y);
 
-        // Alternative approach using material offset (uncomment if you prefer this method)
-        /*
-        float offsetX = backgroundRenderer.material.mainTextureOffset.x + mouseDeltaX * scrollSpeed * Time.deltaTime;
-        backgroundRenderer.material.mainTextureOffset = new Vector2(offsetX, 0);
-        */
+        Rect uvRect = backgroundImage.uvRect;
+        uvRect.x += mouseDeltaX * scrollSpeed * Time.deltaTime * 0.01f;
+        backgroundImage.uvRect = uvRect;
     }
 
     // Reset to initial position (optional)
     public void ResetPosition()
     {
-        transform.position = initialPosition;
+        if (rectTransform != null)
+        {
+            rectTransform.anchoredPosition = initialPosition;
+        }
     }
 }
