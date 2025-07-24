@@ -20,7 +20,7 @@ public class DoorScript : MonoBehaviour
         
     }
 
-    private void EnterDoor()
+    public void EnterDoor()
     {
         if (DoorOpened)
             SceneManager.LoadScene("TestRoom");

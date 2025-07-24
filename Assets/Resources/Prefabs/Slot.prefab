@@ -128,7 +128,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 12.67804, y: 3.9009209, z: 11.70285, w: 5.851383}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -163,7 +163,7 @@ RectTransform:
   m_GameObject: {fileID: 6368802804398271836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1563472, y: 1.1563472, z: 1.1563472}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4511157039810091489}
@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -794.72754, y: 33}
+  m_AnchoredPosition: {x: -279.62, y: 14.623}
   m_SizeDelta: {x: 180.5449, y: 161.3675}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1465816608936771307
@@ -227,6 +227,7 @@ MonoBehaviour:
   iconImage: {fileID: 5247237447300391311}
   tooltipPanel: {fileID: 8990828692741651137}
   tooltipText: {fileID: 8496826865749999324}
+  dragColliderPrefab: {fileID: 6255362283217432706, guid: bd4982aa8c0c8bf4a85859685ecf28a1, type: 3}
 --- !u!114 &4701226846379673646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4511157039810091489}
   - component: {fileID: 7047514657704256695}
-  - component: {fileID: 138443158213490076}
+  - component: {fileID: 1662853937800381492}
   m_Layer: 5
   m_Name: Tooltip
   m_TagString: Untagged
@@ -275,7 +276,7 @@ RectTransform:
   m_GameObject: {fileID: 8990828692741651137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5126, y: 1.5126, z: 1.5126}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 738437380204865836}
@@ -283,7 +284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 41.3829, y: -31.6842}
+  m_AnchoredPosition: {x: 41.383, y: -31.6842}
   m_SizeDelta: {x: 82.7656, y: -63.3682}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7047514657704256695
@@ -294,7 +295,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990828692741651137}
   m_CullTransparentMesh: 1
---- !u!114 &138443158213490076
+--- !u!114 &1662853937800381492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,15 +308,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.05406728, g: 0.4481384, b: 0.764151, a: 0.7372549}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
