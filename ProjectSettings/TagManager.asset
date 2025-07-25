@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Door Key
+  - DraggedItem
   layers:
   - Default
   - TransparentFX

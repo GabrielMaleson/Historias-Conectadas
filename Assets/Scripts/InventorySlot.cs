@@ -8,16 +8,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private Image iconImage;
     [SerializeField] private GameObject tooltipPanel;
     [SerializeField] private TMP_Text tooltipText;
-    [SerializeField] private GameObject dragColliderPrefab; // Prefab with collider for the dragged item
+    [SerializeField] private DraggedItem draggedItemPrefab;
 
-    private InventoryItem item;
-    private RectTransform dragObject;
-    private CanvasGroup canvasGroup;
+    public InventoryItem item;
+    private DraggedItem currentDraggedItem;
     private Vector2 originalPosition;
     private bool wasUsed;
-    private Transform originalParent;
-    private GameObject dragCollider; // The collider object
-    private Vector3 dragOffset; // Offset to make cursor appear at the drag point
+    private Vector2 dragOffset;
+    private Canvas topmostCanvas;
 
     public InventoryItem Item => item;
     public bool IsEmpty => item == null;
@@ -58,121 +56,67 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         tooltipPanel.SetActive(false);
         originalPosition = iconImage.rectTransform.anchoredPosition;
-        originalParent = transform;
 
-        // Create drag object
-        dragObject = Instantiate(iconImage.gameObject, GetTopmostCanvas().transform).GetComponent<RectTransform>();
-        dragObject.name = "Dragged Item";
-        dragObject.SetAsLastSibling();
+        // Create dragged item from prefab
+        currentDraggedItem = Instantiate(draggedItemPrefab, topmostCanvas.transform);
+        currentDraggedItem.Setup(item);
+        currentDraggedItem.RectTransform.SetAsLastSibling();
 
-        // Calculate offset to make cursor appear at the drag point
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(
-            dragObject.parent as RectTransform,
+        // Match the size of the original icon
+        currentDraggedItem.RectTransform.sizeDelta = iconImage.rectTransform.rect.size;
+
+        // Set initial position to match mouse position
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            topmostCanvas.GetComponent<RectTransform>(),
             eventData.position,
             eventData.pressEventCamera ?? Camera.main,
-            out Vector3 worldPoint);
-        dragOffset = dragObject.position - worldPoint;
+            out Vector2 localPoint);
 
-        // Set up drag image
-        Image dragImage = dragObject.GetComponent<Image>();
-        dragImage.sprite = iconImage.sprite;
-        dragImage.raycastTarget = false;
+        currentDraggedItem.RectTransform.localPosition = localPoint;
 
-        canvasGroup = dragObject.gameObject.AddComponent<CanvasGroup>();
-        canvasGroup.blocksRaycasts = false;
+        // Calculate offset based on where we clicked on the original icon
+        Vector2 iconScreenPoint = RectTransformUtility.WorldToScreenPoint(
+            eventData.pressEventCamera ?? Camera.main,
+            iconImage.rectTransform.position);
 
-        // Create collision object
-        if (dragColliderPrefab != null)
-        {
-            dragCollider = Instantiate(dragColliderPrefab, worldPoint, Quaternion.identity);
-            dragCollider.GetComponent<Collider2D>().isTrigger = true;
-            dragCollider.tag = "DraggedItem";
+        dragOffset = (Vector2)currentDraggedItem.RectTransform.position - eventData.position;
 
-            // Match the sprite if needed
-            SpriteRenderer sr = dragCollider.GetComponent<SpriteRenderer>();
-            if (sr != null) sr.sprite = iconImage.sprite;
-        }
-
+        // Hide original icon
         iconImage.enabled = false;
         wasUsed = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (dragObject == null) return;
+        if (currentDraggedItem == null) return;
 
-        // Update UI drag object position
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(
-            dragObject.parent as RectTransform,
+        // Convert screen position to local position within canvas
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            topmostCanvas.GetComponent<RectTransform>(),
             eventData.position,
             eventData.pressEventCamera ?? Camera.main,
-            out Vector3 worldPoint);
+            out Vector2 localPoint);
 
-        dragObject.position = worldPoint + dragOffset;
-
-        // Update collider position if it exists
-        if (dragCollider != null)
-        {
-            dragCollider.transform.position = worldPoint;
-        }
+        // Apply the offset to maintain cursor position relative to the dragged object
+        currentDraggedItem.RectTransform.localPosition = localPoint + dragOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (dragObject == null) return;
+        if (currentDraggedItem == null) return;
 
-        Destroy(dragObject.gameObject);
-
-        // Handle collider
-        if (dragCollider != null)
-        {
-            // Check if we dropped on a valid target
-            Collider2D[] hits = Physics2D.OverlapPointAll(dragCollider.transform.position);
-            bool usedOnTarget = false;
-
-            foreach (var hit in hits)
-            {
-                if (hit != null && hit.gameObject != dragCollider)
-                {
-                    // Check if the hit object can receive this item
-                    var receiver = hit.GetComponent<IItemReceiver>();
-                    if (receiver != null && receiver.CanReceiveItem(item))
-                    {
-                        receiver.ReceiveItem(item);
-                        usedOnTarget = true;
-                        break;
-                    }
-                }
-            }
-
-            Destroy(dragCollider);
-
-            if (usedOnTarget)
-            {
-                wasUsed = true;
-            }
-        }
+        // Destroy the dragged item
+        Destroy(currentDraggedItem.gameObject);
 
         if (!wasUsed)
         {
+            // Show original icon again if item wasn't used
             iconImage.enabled = true;
         }
         else
         {
+            // Clear slot if item was used (dropped somewhere valid)
             ClearSlot();
         }
     }
-
-    private Canvas GetTopmostCanvas()
-    {
-        Canvas[] parentCanvases = GetComponentsInParent<Canvas>();
-        return parentCanvases[parentCanvases.Length - 1];
-    }
-}
-
-// Interface for objects that can receive items
-public interface IItemReceiver
-{
-    bool CanReceiveItem(InventoryItem item);
-    void ReceiveItem(InventoryItem item);
 }
