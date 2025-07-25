@@ -64,7 +64,7 @@ public class InventoryUI : MonoBehaviour
         // Find the slot containing this item and clear it
         foreach (var slot in slots)
         {
-            if (slot.item == item)
+            if (slot.Item == item)
             {
                 slot.ClearSlot();
                 slot.gameObject.SetActive(false); // Deactivate when item is removed
