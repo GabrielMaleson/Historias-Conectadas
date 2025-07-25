@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 5247237447300391311}
   - component: {fileID: 7713220929813662333}
   - component: {fileID: 4701226846379673646}
-  - component: {fileID: 8067971059692767196}
+  - component: {fileID: 4392460295124474186}
   m_Layer: 5
   m_Name: Slot
   m_TagString: DraggedItem
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -228,8 +228,7 @@ MonoBehaviour:
   iconImage: {fileID: 5247237447300391311}
   tooltipPanel: {fileID: 8990828692741651137}
   tooltipText: {fileID: 8496826865749999324}
-  draggedItemPrefab: {fileID: 3562270052802809314, guid: bd4982aa8c0c8bf4a85859685ecf28a1, type: 3}
-  item: {fileID: 0}
+  IsDragging: 1
 --- !u!114 &4701226846379673646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +250,11 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
---- !u!61 &8067971059692767196
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!61 &4392460295124474186
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +283,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

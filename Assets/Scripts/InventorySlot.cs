@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Collections;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,6 +16,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public InventoryItem Item => item;
     public bool IsEmpty => item == null;
 
+    public bool IsDragging = true;
+
     public void Setup(InventoryItem newItem)
     {
         item = newItem;
@@ -23,7 +26,26 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         tooltipText.text = $"<b>{item.itemName}</b>\n{item.description}";
         tooltipPanel.SetActive(false);
     }
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+            MakeItDrag();
+    }
 
+    private void MakeItDrag()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Pressed left-click.");
+            IsDragging = true;
+            gameObject.AddComponent<DraggableItem>();
+        }
+        else
+        {
+            if (!IsDragging)
+                Destroy(GetComponent<DraggableItem>());
+        }
+    }
     public void ClearSlot()
     {
         item = null;
