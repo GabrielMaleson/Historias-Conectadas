@@ -1,25 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] private Transform slotsParent; // Parent containing slot position GameObjects
-    [SerializeField] private GameObject inventorySlotPrefab;
+    [SerializeField] private Transform slotsParent; // Parent containing the slot GameObjects
 
-    private List<InventorySlot> slots = new List<InventorySlot>();
-    private List<Transform> slotPositions = new List<Transform>();
+    private InventorySlot[] slots; // Now an array for better performance
 
     private void Start()
     {
-        // Get all slot position transforms
-        foreach (Transform child in slotsParent)
-        {
-            slotPositions.Add(child);
-        }
+        // Get all existing slot components at start
+        slots = slotsParent.GetComponentsInChildren<InventorySlot>(true);
 
-        // Initialize slots at each position
-        InitializeSlots();
+        // Initialize all slots as empty
+        foreach (var slot in slots)
+        {
+            slot.ClearSlot();
+            slot.gameObject.SetActive(false);
+        }
 
         InventoryManager.Instance.OnItemAdded.AddListener(AddItemToUI);
         InventoryManager.Instance.OnItemRemoved.AddListener(RemoveItemFromUI);
@@ -31,18 +29,6 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void InitializeSlots()
-    {
-        // Create a slot at each predefined position
-        foreach (var pos in slotPositions)
-        {
-            GameObject slotObj = Instantiate(inventorySlotPrefab, pos.position, Quaternion.identity, pos);
-            InventorySlot slot = slotObj.GetComponent<InventorySlot>();
-            slotObj.SetActive(false); // Start inactive
-            slots.Add(slot);
-        }
-    }
-
     private void AddItemToUI(InventoryItem item)
     {
         // Find the first empty slot
@@ -51,7 +37,7 @@ public class InventoryUI : MonoBehaviour
             if (slot.IsEmpty)
             {
                 slot.Setup(item);
-                slot.gameObject.SetActive(true); // Activate when item is added
+                slot.gameObject.SetActive(true);
                 return;
             }
         }
@@ -64,10 +50,10 @@ public class InventoryUI : MonoBehaviour
         // Find the slot containing this item and clear it
         foreach (var slot in slots)
         {
-            if (slot.Item == item)
+            if (!slot.IsEmpty && slot.Item == item)
             {
                 slot.ClearSlot();
-                slot.gameObject.SetActive(false); // Deactivate when item is removed
+                slot.gameObject.SetActive(false);
                 return;
             }
         }
