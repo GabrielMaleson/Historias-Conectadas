@@ -3,59 +3,31 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Security.Cryptography;
 
-public class DraggableItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DraggableItem : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private Image iconImage;
-
-    private RectTransform rectTransform;
     
     InventorySlot slot;
 
-    public bool CanDrag = false;
-
     Transform parentAfterDrag;
-    public RectTransform RectTransform => rectTransform ??= GetComponent<RectTransform>();
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        if (CanDrag)
-            Debug.Log("Begin drag");
-            parentAfterDrag = transform.parent;
-            transform.SetParent(transform.root);
-            transform.SetAsLastSibling();
-    }
-    public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log("draggin");
-        transform.position = Input.mousePosition;
-    }
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        Debug.Log("draggin over");
-    }
     public void OnDrop(PointerEventData eventData)
     {
         if (transform.childCount == 0)
         {
             GameObject dropped = eventData.pointerDrag;
-            DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+            InventorySlot draggableItem = dropped.GetComponent<InventorySlot>();
             draggableItem.parentAfterDrag = transform;
         }
         else
         {
             GameObject dropped = eventData.pointerDrag;
-            DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+            InventorySlot draggableItem = dropped.GetComponent<InventorySlot>();
 
             GameObject current = transform.GetChild(0).gameObject;
-            DraggableItem currentDraggable = current.GetComponent<DraggableItem>();
+            InventorySlot currentDraggable = current.GetComponent<InventorySlot>();
 
             currentDraggable.transform.SetParent(draggableItem.parentAfterDrag);
             draggableItem.parentAfterDrag = transform;
         }
-    }
-    public void Setup(InventoryItem item)
-    {
-        iconImage.sprite = item.icon;
-        iconImage.raycastTarget = false; // Important to prevent raycast blocking
     }
 }

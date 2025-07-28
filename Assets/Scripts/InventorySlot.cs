@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 using TMPro;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [Header("UI References")]
     [SerializeField] private Image iconImage;
@@ -12,12 +13,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [Header("Drag Settings")]
     [SerializeField] private Canvas parentCanvas;
-    [SerializeField] private GameObject dragVisualPrefab;
 
+    public Transform parentAfterDrag;
     private InventoryItem item;
-    private GameObject currentDragVisual;
-    private RectTransform dragTransform;
+    private RectTransform rectTransform;
     private bool isDragging;
+    public List<string> slotTags = new List<string>();
+    private Vector3 originalPosition;
+    private Transform originalParent;
 
     public InventoryItem Item => item;
     public bool IsEmpty => item == null;
@@ -28,6 +31,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             parentCanvas = GetComponentInParent<Canvas>();
         }
+
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void Setup(InventoryItem newItem)
@@ -38,7 +43,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (item != null)
         {
+            // Clear existing tags and copy all item tags to slot tags
+            slotTags.Clear();
+            slotTags.AddRange(newItem.itemTags);
+
             tooltipText.text = $"<b>{item.itemName}</b>\n{item.description}";
+        }
+        else
+        {
+            slotTags.Clear();
         }
     }
 
@@ -48,6 +61,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         iconImage.sprite = null;
         iconImage.enabled = false;
         tooltipPanel.SetActive(false);
+        slotTags.Clear();
     }
 
     #region Pointer Events
@@ -69,15 +83,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (IsEmpty || isDragging) return;
 
         isDragging = true;
+        originalPosition = rectTransform.localPosition;
+        originalParent = transform.parent;
 
-        // Create drag visual
-        if (dragVisualPrefab != null && parentCanvas != null)
-        {
-            currentDragVisual = Instantiate(dragVisualPrefab, parentCanvas.transform);
-            currentDragVisual.GetComponent<Image>().sprite = iconImage.sprite;
-            dragTransform = currentDragVisual.GetComponent<RectTransform>();
-            dragTransform.SetAsLastSibling();
-        }
+        // Set as last sibling to appear on top of other UI elements
+        transform.SetParent(parentCanvas.transform);
+        transform.SetAsLastSibling();
 
         // Hide tooltip during drag
         tooltipPanel.SetActive(false);
@@ -85,47 +96,34 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!isDragging || currentDragVisual == null) return;
+        if (!isDragging) return;
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             parentCanvas.GetComponent<RectTransform>(),
-            Input.mousePosition,
+            eventData.position,
             parentCanvas.worldCamera,
             out Vector2 localPoint);
 
-        dragTransform.localPosition = localPoint;
+        rectTransform.localPosition = localPoint;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!isDragging) return;
 
-        // Clean up drag visual
-        if (currentDragVisual != null)
-        {
-            Destroy(currentDragVisual);
-            currentDragVisual = null;
-        }
-
         isDragging = false;
-    }
 
-    public void OnDrop(PointerEventData eventData)
-    {
-        if (!eventData.pointerDrag.TryGetComponent<InventorySlot>(out var draggedSlot) || draggedSlot.IsEmpty)
-            return;
-
-        // If this slot is empty, take the item
-        if (IsEmpty)
+        // If we didn't drop on a valid slot, return to original position
+        if (parentAfterDrag == null)
         {
-            Setup(draggedSlot.Item);
-            draggedSlot.ClearSlot();
+            transform.SetParent(originalParent);
+            rectTransform.localPosition = originalPosition;
         }
-        else // Otherwise swap items
+        else
         {
-            var tempItem = Item;
-            Setup(draggedSlot.Item);
-            draggedSlot.Setup(tempItem);
+            transform.SetParent(parentAfterDrag);
+            rectTransform.localPosition = Vector3.zero;
+            parentAfterDrag = null;
         }
     }
     #endregion

@@ -7,30 +7,18 @@ using UnityEngine.SceneManagement;
 public class DoorScript : MonoBehaviour
 {
     public bool DoorOpened = false; 
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void EnterDoor()
     {
+        Debug.Log("Door entered");
         if (DoorOpened)
             SceneManager.LoadScene("TestRoom");
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        InventoryItem item = collision.GetComponent<InventoryItem>();
+        InventorySlot item = collision.GetComponent<InventorySlot>();
 
-        if (item != null && item.itemTags.Contains("Door Key"))
+        if (item != null && item.slotTags.Contains("Door Key"))
         {
             if (!DoorOpened)
             {
