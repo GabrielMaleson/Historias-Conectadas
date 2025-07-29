@@ -9,8 +9,8 @@ public class DoorScript : MonoBehaviour
     public bool DoorOpened = false; 
     public void EnterDoor()
     {
-        Debug.Log("Door entered");
         if (DoorOpened)
+            Debug.Log("Door entered");
             SceneManager.LoadScene("TestRoom");
     }
 
