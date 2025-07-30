@@ -10,8 +10,15 @@ public class DoorScript : MonoBehaviour
     public void EnterDoor()
     {
         if (DoorOpened)
+        {
             Debug.Log("Door entered");
             SceneManager.LoadScene("TestRoom");
+        }
+
+        else
+        {
+            return;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
