@@ -3212,12 +3212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eed2c5de74e9d46ab711d3daf7432b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  images:
-  - {fileID: 440089593}
-  - {fileID: 943828982}
-  imageTags:
-  - magolor.idle
-  - magolor.mad
+  sprites:
+  - {fileID: 21300000, guid: 149d7a46b1e4ed94e9fafbe876693a2f, type: 3}
+  - {fileID: 21300000, guid: 0dce916b4afd3c34c9365323ed905407, type: 3}
+  spriteTags:
+  - lucy.sad
+  - lucy.happy
+  imagePrefab: {fileID: 109241831391635419, guid: ef2d9b0a991691e498047b1bbbd57239, type: 3}
 --- !u!224 &1698315253 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1734968543689278842, guid: dcdf95438009c1946980fa301c7eec80, type: 3}

@@ -5,14 +5,17 @@ using Yarn.Unity;
 
 public class StaticImageTagManager : MonoBehaviour
 {
-    [Tooltip("List of UI Images")]
-    public List<Image> images = new List<Image>();
+    [Tooltip("List of Sprites to use for images")]
+    public List<Sprite> sprites = new List<Sprite>();
 
-    [Tooltip("List of tags corresponding to each image")]
-    public List<string> imageTags = new List<string>();
+    [Tooltip("List of tags corresponding to each sprite")]
+    public List<string> spriteTags = new List<string>();
+
+    [Tooltip("Prefab for the UI Image to instantiate")]
+    public Image imagePrefab;
 
     private static StaticImageTagManager instance;
-    private static Dictionary<string, Image> activeSprites = new Dictionary<string, Image>();
+    private static Dictionary<string, Image> activeImages = new Dictionary<string, Image>();
 
     private void Awake()
     {
@@ -28,19 +31,19 @@ public class StaticImageTagManager : MonoBehaviour
 
     private void OnValidate()
     {
-        while (images.Count > imageTags.Count)
+        while (sprites.Count > spriteTags.Count)
         {
-            imageTags.Add("");
+            spriteTags.Add("");
         }
 
-        while (imageTags.Count > images.Count)
+        while (spriteTags.Count > sprites.Count)
         {
-            imageTags.RemoveAt(imageTags.Count - 1);
+            spriteTags.RemoveAt(spriteTags.Count - 1);
         }
     }
 
     [YarnCommand("sprite")]
-    public static void PlaceSprite(string spriteTag, string positionName)
+    public static void ShowImage(string spriteTag, string positionName)
     {
         if (instance == null)
         {
@@ -48,23 +51,23 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
 
-        // First remove any existing sprite at this position
-        RemoveSprite(positionName);
+        // First remove any existing image at this position
+        RemoveImage(positionName);
 
-        // Find the image by tag
-        Image foundImage = null;
-        for (int i = 0; i < instance.imageTags.Count; i++)
+        // Find the sprite by tag
+        Sprite foundSprite = null;
+        for (int i = 0; i < instance.spriteTags.Count; i++)
         {
-            if (instance.imageTags[i] == spriteTag)
+            if (instance.spriteTags[i] == spriteTag)
             {
-                foundImage = instance.images[i];
+                foundSprite = instance.sprites[i];
                 break;
             }
         }
 
-        if (foundImage == null)
+        if (foundSprite == null)
         {
-            Debug.LogError($"No image found with tag: {spriteTag}");
+            Debug.LogError($"No sprite found with tag: {spriteTag}");
             return;
         }
 
@@ -76,22 +79,23 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
 
-        // Create a new instance of the image at the target position
-        Image newImage = Instantiate(foundImage, positionObj.transform);
+        // Create a new UI Image at the target position
+        Image newImage = Instantiate(instance.imagePrefab, positionObj.transform);
+        newImage.sprite = foundSprite;
         newImage.transform.localPosition = Vector3.zero;
         newImage.gameObject.SetActive(true);
 
-        // Track this active sprite
-        activeSprites[positionName] = newImage;
+        // Track this active image
+        activeImages[positionName] = newImage;
     }
 
-    [YarnCommand("removeSprite")]
-    public static void RemoveSprite(string positionName)
+    [YarnCommand("removesprite")]
+    public static void RemoveImage(string positionName)
     {
-        if (activeSprites.TryGetValue(positionName, out Image existingImage))
+        if (activeImages.TryGetValue(positionName, out Image existingImage))
         {
             Destroy(existingImage.gameObject);
-            activeSprites.Remove(positionName);
+            activeImages.Remove(positionName);
         }
     }
 }

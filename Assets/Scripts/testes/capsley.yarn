@@ -5,11 +5,11 @@
 /// The player's name. The player chooses this. It starts empty.
 <<declare $player_name = "" as string>>
 
-<<sprite magolor.idle gings>>
-Magolor: I'm so angry about this!
-<<removeSprite gings>>
-<<sprite magolor.mad gings>>
-Capsley: But now I'm Capsley!
+<<sprite lucy.sad gings>>
+Luci: Nossa... como que estou triste...
+<<removesprite gings>>
+<<sprite lucy.happy gings>>
+Lucy: Mas agora tô feliz! Oba!
 
 Capsley: Hello, I am Mr Capsley. #line:0a6cd75 
 Capsley: Who are you then? #line:0a15539 
