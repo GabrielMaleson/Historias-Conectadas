@@ -5,6 +5,13 @@ using Yarn.Unity;
 
 public class StaticImageTagManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class PositionData
+    {
+        public string positionName;
+        public Transform positionTransform;
+    }
+
     [Tooltip("List of Sprites to use for images")]
     public List<Sprite> sprites = new List<Sprite>();
 
@@ -13,6 +20,9 @@ public class StaticImageTagManager : MonoBehaviour
 
     [Tooltip("Prefab for the UI Image to instantiate")]
     public Image imagePrefab;
+
+    [Tooltip("List of positions where images can be placed")]
+    public List<PositionData> positions = new List<PositionData>();
 
     private static StaticImageTagManager instance;
     private static Dictionary<string, Image> activeImages = new Dictionary<string, Image>();
@@ -31,6 +41,7 @@ public class StaticImageTagManager : MonoBehaviour
 
     private void OnValidate()
     {
+        // Keep sprite tags and sprites lists synchronized
         while (sprites.Count > spriteTags.Count)
         {
             spriteTags.Add("");
@@ -51,9 +62,6 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
 
-        // First remove any existing image at this position
-        RemoveImage(positionName);
-
         // Find the sprite by tag
         Sprite foundSprite = null;
         for (int i = 0; i < instance.spriteTags.Count; i++)
@@ -71,16 +79,25 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
 
-        // Find the position GameObject
-        GameObject positionObj = GameObject.Find(positionName);
-        if (positionObj == null)
+        // Find the position in our list
+        Transform positionTransform = null;
+        foreach (var positionData in instance.positions)
         {
-            Debug.LogError($"No GameObject found with name: {positionName}");
+            if (positionData.positionName == positionName)
+            {
+                positionTransform = positionData.positionTransform;
+                break;
+            }
+        }
+
+        if (positionTransform == null)
+        {
+            Debug.LogError($"No position found with name: {positionName}");
             return;
         }
 
         // Create a new UI Image at the target position
-        Image newImage = Instantiate(instance.imagePrefab, positionObj.transform);
+        Image newImage = Instantiate(instance.imagePrefab, positionTransform);
         newImage.sprite = foundSprite;
         newImage.transform.localPosition = Vector3.zero;
         newImage.gameObject.SetActive(true);

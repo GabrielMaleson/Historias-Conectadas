@@ -10,6 +10,7 @@ Luci: Nossa... como que estou triste...
 <<removesprite gings>>
 <<sprite lucy.happy gings>>
 Lucy: Mas agora tô feliz! Oba!
+<<removesprite gings>>
 
 Capsley: Hello, I am Mr Capsley. #line:0a6cd75 
 Capsley: Who are you then? #line:0a15539 
