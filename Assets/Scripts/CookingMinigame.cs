@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameTimer : MonoBehaviour
 {
     // Timer settings
     public float timeRemaining = 300f; // 5 minutes in seconds
-    public Text timerText;
+    public TMP_Text timerText;
     public string initialScene = "Kitchen";
 
     // Player objectives

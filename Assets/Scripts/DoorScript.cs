@@ -12,7 +12,7 @@ public class DoorScript : MonoBehaviour
         if (DoorOpened)
         {
             Debug.Log("Door entered");
-            SceneManager.LoadScene("TestRoom");
+            SceneManager.LoadScene("Kitchen");
         }
 
         else
