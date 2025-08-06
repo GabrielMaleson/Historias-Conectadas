@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Yarn.Unity;
+using TMPro; // Add this namespace for TextMeshPro
 
 public class StaticImageTagManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class StaticImageTagManager : MonoBehaviour
         public string positionName;
         public Transform positionTransform;
     }
+
+    [Tooltip("TextMeshProUGUI component for objectives")]
+    public TMPro.TextMeshProUGUI ObjectiveObj;
 
     [Tooltip("List of Sprites to use for images")]
     public List<Sprite> sprites = new List<Sprite>();
@@ -114,5 +118,16 @@ public class StaticImageTagManager : MonoBehaviour
             Destroy(existingImage.gameObject);
             activeImages.Remove(positionName);
         }
+    }
+
+    [YarnCommand("objective")]
+    public static void ObjectiveUpdate(string objectivetext)
+    {
+        if (instance.ObjectiveObj == null)
+        {
+            Debug.LogError("StaticImageTagManager instance or ObjectiveObj not found!");
+            return;
+        }
+        instance.ObjectiveObj.text = objectivetext;
     }
 }

@@ -886,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1834834330199350979, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1125
+      value: 425
       objectReference: {fileID: 0}
     - target: {fileID: 1834834330199350979, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -938,7 +938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2290101490469213627, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 75
+      value: 1475
       objectReference: {fileID: 0}
     - target: {fileID: 2290101490469213627, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -974,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2566668592844843665, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1125
+      value: 425
       objectReference: {fileID: 0}
     - target: {fileID: 2566668592844843665, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1102,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3627108312407291827, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 75
+      value: 1475
       objectReference: {fileID: 0}
     - target: {fileID: 3627108312407291827, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1198,7 +1198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864767934527094635, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1475
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5864767934527094635, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1342,7 +1342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8075660657443688890, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 425
+      value: 1125
       objectReference: {fileID: 0}
     - target: {fileID: 8075660657443688890, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1366,7 +1366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8679443833804905372, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1475
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 8679443833804905372, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1390,7 +1390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8830187607423399085, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 425
+      value: 1125
       objectReference: {fileID: 0}
     - target: {fileID: 8830187607423399085, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1425,6 +1425,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
+--- !u!114 &616875947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2880901036859678618, guid: 86700d9872a590e449bc903d1cad6a57, type: 3}
+  m_PrefabInstance: {fileID: 616875946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,6 +2664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43eed2c5de74e9d46ab711d3daf7432b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectiveObj: {fileID: 616875947}
   sprites:
   - {fileID: 21300000, guid: 149d7a46b1e4ed94e9fafbe876693a2f, type: 3}
   - {fileID: 21300000, guid: 0dce916b4afd3c34c9365323ed905407, type: 3}

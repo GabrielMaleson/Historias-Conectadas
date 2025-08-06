@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameTimer : MonoBehaviour
+public class CookingMinigame : MonoBehaviour
 {
     // Timer settings
     public float timeRemaining = 300f; // 5 minutes in seconds
@@ -18,14 +18,14 @@ public class GameTimer : MonoBehaviour
     public bool GotBacon = false;
 
     // Singleton pattern to persist across scenes
-    private static GameTimer _instance;
+    private static CookingMinigame instance;
 
     private void Awake()
     {
         // Ensure only one instance exists and persist across scenes
-        if (_instance == null)
+        if (instance == null)
         {
-            _instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
 
         }
