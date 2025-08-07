@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -19,9 +20,25 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         InvUI.SetActive(false);
+        Canvas canvas = GetComponentInChildren<Canvas>();
         isInventoryOpen = false;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (canvas != null)
+        {
+            canvas.worldCamera = Camera.main;
+        }
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        UpdateCanvas();
+    }
+
+    private void UpdateCanvas()
+    {
+        Canvas canvas = GetComponentInChildren<Canvas>();
+        canvas.worldCamera = Camera.main;
+    }
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.E))

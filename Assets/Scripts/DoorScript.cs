@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
-    public bool DoorOpened = false; 
+    public bool DoorOpened = false;
+
     public void EnterDoor()
     {
         if (DoorOpened)
@@ -24,6 +25,7 @@ public class DoorScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         InventorySlot item = collision.GetComponent<InventorySlot>();
+        GameObject inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
 
         if (item != null && item.slotTags.Contains("Door Key"))
         {

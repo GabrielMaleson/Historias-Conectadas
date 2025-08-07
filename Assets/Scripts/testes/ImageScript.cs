@@ -66,6 +66,8 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
 
+        RemoveImage(positionName);
+
         // Find the sprite by tag
         Sprite foundSprite = null;
         for (int i = 0; i < instance.spriteTags.Count; i++)

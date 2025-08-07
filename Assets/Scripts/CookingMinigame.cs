@@ -12,7 +12,7 @@ public class CookingMinigame : MonoBehaviour
     public string initialScene = "Kitchen";
 
     // Minigame state
-    private bool isMinigameActive = false;
+    public bool isMinigameActive = false;
 
     // Player objectives
     public bool GotOnions = false;

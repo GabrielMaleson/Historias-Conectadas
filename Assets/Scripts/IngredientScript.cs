@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class IngredientScript : MonoBehaviour
 {
-    private CookingMinigame cook;
+    [SerializeField] private CookingMinigame cook;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,7 +44,7 @@ public class IngredientScript : MonoBehaviour
                 Debug.Log("Got the bacon!");
             }
 
-        if (item.slotTags.Contains("Onion"))
+        if (item !=null && item.slotTags.Contains("Onion"))
             {
                 if (!cook.GotOnions)
                 {
