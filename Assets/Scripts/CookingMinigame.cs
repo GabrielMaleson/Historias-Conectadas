@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Yarn.Unity;
 
 public class CookingMinigame : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class CookingMinigame : MonoBehaviour
     public float timeRemaining = 300f; // 5 minutes in seconds
     public TMP_Text timerText;
     public string initialScene = "Kitchen";
+
+    // Minigame state
+    private bool isMinigameActive = false;
 
     // Player objectives
     public bool GotOnions = false;
@@ -27,7 +31,6 @@ public class CookingMinigame : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
         }
         else
         {
@@ -35,8 +38,22 @@ public class CookingMinigame : MonoBehaviour
         }
     }
 
+    [YarnCommand("startcooking")]
+    public void StartMinigame()
+    {
+        isMinigameActive = true;
+        // Reset all objectives when starting a new minigame
+        GotOnions = false;
+        GotSausages = false;
+        GotPeppers = false;
+        GotGarlic = false;
+        GotBacon = false;
+    }
+
     private void Update()
     {
+        if (!isMinigameActive) return;
+
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
@@ -63,6 +80,9 @@ public class CookingMinigame : MonoBehaviour
                 SceneManager.LoadScene(initialScene);
             }
 
+            // Reset minigame state
+            isMinigameActive = false;
+
             // Optionally destroy the timer after returning to kitchen
             Destroy(gameObject);
         }
@@ -84,5 +104,4 @@ public class CookingMinigame : MonoBehaviour
     public void SetPeppers(bool value) { GotPeppers = value; }
     public void SetGarlic(bool value) { GotGarlic = value; }
     public void SetBacon(bool value) { GotBacon = value; }
-
 }
