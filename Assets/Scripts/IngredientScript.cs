@@ -32,7 +32,7 @@ public class IngredientScript : MonoBehaviour
         {
             if (!cook.GotSausages)
             {
-                cook.SetSausages(true);
+                cook.SetGarlic(true);
                 Debug.Log("Got the Garlic!");
             }
         }
@@ -43,14 +43,13 @@ public class IngredientScript : MonoBehaviour
                 cook.SetBacon(true);
                 Debug.Log("Got the bacon!");
             }
-
-        if (item !=null && item.slotTags.Contains("Onion"))
+        }
+        if (item != null && item.slotTags.Contains("Onion"))
+        {
+            if (!cook.GotOnions)
             {
-                if (!cook.GotOnions)
-                {
-                    cook.SetOnions(true);
-                    Debug.Log("Got the onions!");
-                }
+                cook.SetOnions(true);
+                Debug.Log("Got the onion!");
             }
         }
     }

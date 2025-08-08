@@ -10,7 +10,7 @@ public class CookingMinigame : MonoBehaviour
     public float timeRemaining = 300f; // 5 minutes in seconds
     public TMP_Text timerText;
     public string initialScene = "Kitchen";
-
+    private DialogueRunner dialogueRunner;
     // Minigame state
     public bool isMinigameActive = false;
 
@@ -64,6 +64,7 @@ public class CookingMinigame : MonoBehaviour
             {
                 Debug.Log("They win");
                 timeRemaining = 0; // Stop the timer
+                dialogueRunner.StartDialogue("wincooking");
             }
         }
         else
