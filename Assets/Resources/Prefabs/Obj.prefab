@@ -85,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &9120960467361258797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +270,46 @@ PrefabInstance:
     - target: {fileID: 3519292710547050800, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_text
+      value: Sem Objetivos
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c47d02ac10c64430e99863972ef71ed1, type: 2}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6227085000561553266, guid: c47d02ac10c64430e99863972ef71ed1, type: 2}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878215429151638631, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571757182840129805, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571757182840129805, guid: 1b5d265cb40a5da4d92a65bc667f3bf4, type: 3}
+      propertyPath: m_TagString
+      value: Objective Panel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

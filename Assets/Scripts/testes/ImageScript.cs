@@ -18,6 +18,8 @@ public class StaticImageTagManager : MonoBehaviour
 
     public GameObject objective;
 
+    public GameObject objectivePanel;
+
     [Tooltip("List of Sprites to use for images")]
     public List<Sprite> sprites = new List<Sprite>();
 
@@ -35,8 +37,7 @@ public class StaticImageTagManager : MonoBehaviour
 
     private void Awake()
     {
-        objective = GameObject.FindGameObjectWithTag("Objective");
-        ObjectiveObj = objective.GetComponent<TextMeshProUGUI>();
+        ObjectiveStart();
         if (instance == null)
         {
             instance = this;
@@ -47,6 +48,13 @@ public class StaticImageTagManager : MonoBehaviour
         }
     }
 
+    private void ObjectiveStart()
+    {
+        objectivePanel = GameObject.FindGameObjectWithTag("Objective Panel");
+        objective = GameObject.FindGameObjectWithTag("Objective");
+        ObjectiveObj = objective.GetComponent<TextMeshProUGUI>();
+        objectivePanel.SetActive(false);
+    }
     private void OnValidate()
     {
         // Keep sprite tags and sprites lists synchronized
