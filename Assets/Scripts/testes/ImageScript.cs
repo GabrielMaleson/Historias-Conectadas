@@ -14,7 +14,9 @@ public class StaticImageTagManager : MonoBehaviour
     }
 
     [Tooltip("TextMeshProUGUI component for objectives")]
-    public TMPro.TextMeshProUGUI ObjectiveObj;
+    private TextMeshProUGUI ObjectiveObj;
+
+    public GameObject objective;
 
     [Tooltip("List of Sprites to use for images")]
     public List<Sprite> sprites = new List<Sprite>();
@@ -33,6 +35,8 @@ public class StaticImageTagManager : MonoBehaviour
 
     private void Awake()
     {
+        objective = GameObject.FindGameObjectWithTag("Objective");
+        ObjectiveObj = objective.GetComponent<TextMeshProUGUI>();
         if (instance == null)
         {
             instance = this;

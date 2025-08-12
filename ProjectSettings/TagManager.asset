@@ -8,6 +8,7 @@ TagManager:
   - DraggedItem
   - Inventory Manager
   - Inventory
+  - Objective
   layers:
   - Default
   - TransparentFX
