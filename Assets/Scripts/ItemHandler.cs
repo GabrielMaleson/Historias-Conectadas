@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryButtonHandler : MonoBehaviour
 {
@@ -30,4 +31,12 @@ public class InventoryButtonHandler : MonoBehaviour
             Debug.LogError("InventoryManager instance not found!");
         }
     }
+    public void LoadASceneItem(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
 }
+
+  
+
