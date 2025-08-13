@@ -16,8 +16,9 @@ Infnetina: Hã? A-Ah!
     ?????: Mas você não tá segurando nada...?
     Infnetina: ... Hehe, é que eu estava gravando mensageme e já guardei!
 ?????: ... Ok...?
-Narração: O homem do seu lado levantou e sentou no banco da frente.
 <<removesprite seat>>
+Narração: O homem do seu lado levantou e sentou no banco da frente.
 Infnetina: ... (Que belo jeito pra começar meu novo emprego.)
+<<sceneload "Intro House">>
 
 ===

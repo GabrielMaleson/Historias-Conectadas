@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Yarn.Unity;
-using TMPro; // Add this namespace for TextMeshPro
+using TMPro;
+using UnityEngine.SceneManagement; // Add this namespace for TextMeshPro
 
 public class StaticImageTagManager : MonoBehaviour
 {
@@ -16,9 +17,9 @@ public class StaticImageTagManager : MonoBehaviour
     [Tooltip("TextMeshProUGUI component for objectives")]
     private TextMeshProUGUI ObjectiveObj;
 
-    public GameObject objective;
+    private GameObject objective;
 
-    public GameObject objectivePanel;
+    private GameObject objectivePanel;
 
     [Tooltip("List of Sprites to use for images")]
     public List<Sprite> sprites = new List<Sprite>();
@@ -143,5 +144,11 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
         instance.ObjectiveObj.text = objectivetext;
+    }
+
+    [YarnCommand("sceneload")]
+    public static void DialogueScene(string scenetext)
+    {
+        SceneManager.LoadScene(scenetext);
     }
 }
