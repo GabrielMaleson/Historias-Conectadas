@@ -2,21 +2,19 @@
 ---
 <<declare $start_cooking = true as bool>>
 
-
+<<darken>>
 <<sprite lucy.sad gings>>
 Luci: Ah, oi Infnetinha... como vai?
-Infnetinha: Feliz por te ver, Luci! O que você está fazendo?
+Infnetina: Feliz por te ver, Luci! O que você está fazendo?
 Luci: Eu estava fazendo uma sopa pro meu amigo Amerício, mas...
 Luci: Preciso de um pouquiiinho de ajuda. Não alcanço os ingredientes...
-Luci: Infnetinha, você consegue me ajudar? Só preciso de algumas coisinhas...
-<<removesprite gings>>
+Luci: Infnetina, você consegue me ajudar? Só preciso de algumas coisinhas...
 -> Claro que sim, Luci! O que preciso fazer?
-    Infnetinha: Claro que sim, Luci! O que preciso fazer pra te ajudar?
+    Infnetina: Claro que sim, Luci! O que preciso fazer pra te ajudar?
     <<set $start_cooking to true>>
 -> Agora não... tô ocupada.
-    Infnetinha: Tenho que fazer algumas coisinhas, Luci. Dá pra ser depois?
+    Infnetina: Tenho que fazer algumas coisinhas, Luci. Dá pra ser depois?
     Luci: Ah... tudo bem.
-    <<set $start_cooking to false>>
 
 <<if $start_cooking>>
     <<sprite lucy.happy gings>>
@@ -43,5 +41,7 @@ Luci: Infnetinha, você consegue me ajudar? Só preciso de algumas coisinhas...
     <<objective "Achar Bacon, Pimenta, Cebola, Alho e Salsicha na cozinha">>
 <<else>>
     Luci: Vou estar esperando aqui. Só vou precisar de algumas coisas se quiser me ajudar depois!
+    <<removesprite gings>>
 <<endif>>
+<<brighten>>
 ===

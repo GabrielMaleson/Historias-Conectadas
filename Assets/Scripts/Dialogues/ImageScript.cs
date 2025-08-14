@@ -19,6 +19,8 @@ public class StaticImageTagManager : MonoBehaviour
 
     private GameObject objective;
 
+    public GameObject blackScreen;
+
     private GameObject objectivePanel;
 
     [Tooltip("List of Sprites to use for images")]
@@ -144,6 +146,18 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
         instance.ObjectiveObj.text = objectivetext;
+    }
+
+    [YarnCommand("darken")]
+    public static void DialogueDarken()
+    {
+        instance.blackScreen.SetActive(true);
+    }
+
+    [YarnCommand("brighten")]
+    public static void DialogueBrighten()
+    {
+        instance.blackScreen.SetActive(false);
     }
 
     [YarnCommand("sceneload")]
