@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 using Yarn.Unity;
 using TMPro;
 using UnityEngine.SceneManagement; // Add this namespace for TextMeshPro
@@ -56,7 +57,7 @@ public class StaticImageTagManager : MonoBehaviour
         objectivePanel = GameObject.FindGameObjectWithTag("Objective Panel");
         objective = GameObject.FindGameObjectWithTag("Objective");
         ObjectiveObj = objective.GetComponent<TextMeshProUGUI>();
-        objectivePanel.SetActive(false);
+        objectivePanel.GetComponent<CanvasGroup>().alpha = 0f;
     }
     private void OnValidate()
     {
@@ -152,11 +153,52 @@ public class StaticImageTagManager : MonoBehaviour
     public static void DialogueDarken()
     {
         instance.blackScreen.SetActive(true);
+        instance.StartCoroutine(instance.FadeToBlack());
     }
 
+    private IEnumerator FadeToBlack()
+    {
+        Image blackScreenImage = blackScreen.GetComponent<Image>();
+        Color currentColor = blackScreenImage.color;
+
+        Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, 170f / 255);
+
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            // Lerp from current color to semi-transparent black
+            blackScreenImage.color = Color.Lerp(currentColor, targetColor, t);
+            yield return null;
+        }
+    }
     [YarnCommand("brighten")]
     public static void DialogueBrighten()
     {
+        instance.StartCoroutine(instance.FadeToWhite());
+    }
+
+    // Add this coroutine to your class
+    private IEnumerator FadeToWhite()
+    {
+        Image blackScreenImage = blackScreen.GetComponent<Image>();
+        Color currentColor = blackScreenImage.color;
+        Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0f); 
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            blackScreenImage.color = Color.Lerp(currentColor, targetColor, t);
+            yield return null;
+        }
         instance.blackScreen.SetActive(false);
     }
 

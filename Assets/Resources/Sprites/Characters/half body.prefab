@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1374324159042000399}
   - component: {fileID: 109241831391635419}
   m_Layer: 5
-  m_Name: sad luci
+  m_Name: half body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -331.0192, y: -55.532}
-  m_SizeDelta: {x: 323.877, y: 968.94}
+  m_AnchoredPosition: {x: -11.6019, y: 103.6079}
+  m_SizeDelta: {x: 292.6732, y: 650.6603}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1374324159042000399
 CanvasRenderer:

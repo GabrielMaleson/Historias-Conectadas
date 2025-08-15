@@ -1,0 +1,23 @@
+﻿title: receptionintro
+---
+<<declare $first_intro = true as bool>>
+
+<<if $first_intro>>
+	<<darken>>
+	Infnetina: Oi oiii! Tudo bem? Vim aqui sobre o emprego de cuidadora!
+	<<sprite clara.happy gings>>
+	?????: Ah, Infnetina, né? Estava esperando por você! Como foi a viagem?
+	Infnetina: Pouquiiinho longa, mas foi bem legal! A paisagem foi bem relexante, sabe?
+	?????: Aham, aham. Pena que não temos metrô perto, ou a gente já poderia ter feito tudo isso uma hora mais cedo, haha!
+	Clara: Meu nome é Clara, e todos nós da Casa Serena queremos te desejar um belo bem-vindo a família!
+	Clara: Nem se preocupe sobre contratos, já que você mesmo tinha assinado tudo online. 
+	Infnetina: Opa, que bom! Mal posso esperar pra ajudar todo mundo!
+	Clara: Nossa...! Quem me dera todo mundo daqui tivesse essa felicidade toda, haha! 
+	Clara: Se quiser começar com alguma tarefa, é só falar comigo! Temos um [b]paciente que precisamos de um novato para ajudar...[/b] 
+	<<removesprite gings>>
+	Tutorial: (Quando estiver pronto para começar sua primeira missão, clique na Clara.)
+	<<objective "Falar com a Clara sobre o que fazer">>
+	<<set $first_intro to false>>
+	<<brighten>>
+<<endif>>
+===	
