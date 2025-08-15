@@ -140,11 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61503eb6a998a4af68e0dcbec4aad8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runner: {fileID: 0}
+  runner: {fileID: 7455658921245003448}
   presenter: {fileID: 1485264246253290805}
   multiAdvanceIsCancel: 0
   advanceRequestsBeforeCancellingLine: 2
-  inputMode: 0
+  inputMode: 1
   hurryUpLineAction: {fileID: -6966891696229643446, guid: 5b991f93b283a4285bc1a7ca5f4a8919, type: 3}
   nextLineAction: {fileID: 0}
   cancelDialogueAction: {fileID: 0}
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   continueButton: {fileID: 8094364509310331981}
-  dialogueRunner: {fileID: 0}
+  dialogueRunner: {fileID: 7455658921245003448}
 --- !u!114 &5987128139237518144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,15 +1434,15 @@ PrefabInstance:
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: dialoguePresenters.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5331595261574444744}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: dialoguePresenters.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1485264246253290805}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: dialoguePresenters.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2637559163143362207}
     - target: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
       propertyPath: onNodeStart.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -1513,6 +1513,17 @@ PrefabInstance:
       addedObject: {fileID: 1670488409024163668}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52571f68872914e24837210513edea1d, type: 3}
+--- !u!114 &7455658921245003448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8309902628685535410, guid: 52571f68872914e24837210513edea1d, type: 3}
+  m_PrefabInstance: {fileID: 1451678745804215818}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8860686451375649979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7985477256237130417, guid: 52571f68872914e24837210513edea1d, type: 3}
