@@ -11,6 +11,7 @@ TagManager:
   - Objective
   - Objective Panel
   - InventoryTooltip
+  - ToggleInventory
   layers:
   - Default
   - TransparentFX

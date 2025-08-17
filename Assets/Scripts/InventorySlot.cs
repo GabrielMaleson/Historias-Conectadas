@@ -18,6 +18,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private InventoryItem item;
     private RectTransform rectTransform;
     private GameObject inventory;
+    private GameObject toggle;
     private bool isDragging;
     public List<string> slotTags = new List<string>();
     private Vector3 originalPosition;
@@ -29,6 +30,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void Awake()
     {
         inventory = GameObject.FindGameObjectWithTag("Inventory");
+        toggle = GameObject.FindGameObjectWithTag("ToggleInventory");
         if (parentCanvas == null)
         {
             parentCanvas = GetComponentInParent<Canvas>();
@@ -102,6 +104,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             inventory.SetActive(false);
         }
+        toggle.SetActive(true);
         isDragging = true;
         originalPosition = rectTransform.localPosition;
         originalParent = transform.parent;

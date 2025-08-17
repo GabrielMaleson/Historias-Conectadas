@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Collections;
 using Yarn.Unity;
 using TMPro;
-using UnityEngine.SceneManagement; // Add this namespace for TextMeshPro
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class StaticImageTagManager : MonoBehaviour
 {
@@ -13,6 +14,15 @@ public class StaticImageTagManager : MonoBehaviour
     {
         public string positionName;
         public Transform positionTransform;
+    }
+
+    [System.Serializable]
+    public class SoundData
+    {
+        public string soundName;
+        public AudioClip soundClip;
+        [Range(0f, 1f)] public float volume = 1f;
+        public bool loop = false;
     }
 
     [Tooltip("TextMeshProUGUI component for objectives")]
@@ -35,6 +45,12 @@ public class StaticImageTagManager : MonoBehaviour
 
     [Tooltip("List of positions where images can be placed")]
     public List<PositionData> positions = new List<PositionData>();
+
+    [Tooltip("List of sounds that can be played")]
+    public List<SoundData> sounds = new List<SoundData>();
+
+    [Tooltip("AudioSource to play sounds")]
+    public AudioSource audioSource;
 
     private static StaticImageTagManager instance;
     private static Dictionary<string, Image> activeImages = new Dictionary<string, Image>();
@@ -234,5 +250,60 @@ public class StaticImageTagManager : MonoBehaviour
     public static void DialogueScene(string scenetext)
     {
         SceneManager.LoadScene(scenetext);
+    }
+
+    [YarnCommand("fadein")]
+    public static void FadeInImage(string positionName, float fadeDuration = 1.0f)
+    {
+        if (activeImages.TryGetValue(positionName, out Image image))
+        {
+            instance.StartCoroutine(instance.FadeImage(image, 0f, 1f, fadeDuration));
+        }
+    }
+
+    private IEnumerator FadeImage(Image image, float startAlpha, float targetAlpha, float duration)
+    {
+        // Store original color
+        Color originalColor = image.color;
+
+        // Set starting alpha
+        originalColor.a = startAlpha;
+        image.color = originalColor;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            // Lerp the alpha value
+            Color newColor = image.color;
+            newColor.a = Mathf.Lerp(startAlpha, targetAlpha, t);
+            image.color = newColor;
+
+            yield return null;
+        }
+
+        // Ensure final alpha is set exactly
+        Color finalColor = image.color;
+        finalColor.a = targetAlpha;
+        image.color = finalColor;
+    }
+    [YarnCommand("playsound")]
+    public static void PlaySound(string soundName)
+    {
+        SoundData foundSound = null;
+        foreach (var sound in instance.sounds)
+        {
+            if (sound.soundName == soundName)
+            {
+                foundSound = sound;
+                break;
+            }
+        }
+        instance.audioSource.volume = foundSound.volume;
+        instance.audioSource.loop = foundSound.loop;
+        instance.audioSource.PlayOneShot(foundSound.soundClip);
     }
 }

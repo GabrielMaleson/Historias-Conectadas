@@ -11,45 +11,47 @@ public class IngredientScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         InventorySlot item = collision.GetComponent<InventorySlot>();
-
-        if (item != null && item.slotTags.Contains("Sausage"))
-        {
-            if (!cook.GotSausages)
+        if (cook.isMinigameActive) 
+         {
+            if (item != null && item.slotTags.Contains("Sausage"))
             {
-                cook.SetSausages(true);
-                Debug.Log("Got the sausages!");
+                if (!cook.GotSausages)
+                {
+                    cook.SetSausages(true);
+                    Debug.Log("Got the sausages!");
+                }
             }
-        }
-        if (item != null && item.slotTags.Contains("Pepper"))
-        {
-            if (!cook.GotPeppers)
+            if (item != null && item.slotTags.Contains("Pepper"))
             {
-                cook.SetPeppers(true);
-                Debug.Log("Got the peppers!");
+                if (!cook.GotPeppers)
+                {
+                    cook.SetPeppers(true);
+                    Debug.Log("Got the peppers!");
+                }
             }
-        }
-        if (item != null && item.slotTags.Contains("Garlic"))
-        {
-            if (!cook.GotSausages)
+            if (item != null && item.slotTags.Contains("Garlic"))
             {
-                cook.SetGarlic(true);
-                Debug.Log("Got the Garlic!");
+                if (!cook.GotSausages)
+                {
+                    cook.SetGarlic(true);
+                    Debug.Log("Got the Garlic!");
+                }
             }
-        }
-        if (item != null && item.slotTags.Contains("Bacon"))
-        {
-            if (!cook.GotBacon)
+            if (item != null && item.slotTags.Contains("Bacon"))
             {
-                cook.SetBacon(true);
-                Debug.Log("Got the bacon!");
+                if (!cook.GotBacon)
+                {
+                    cook.SetBacon(true);
+                    Debug.Log("Got the bacon!");
+                }
             }
-        }
-        if (item != null && item.slotTags.Contains("Onion"))
-        {
-            if (!cook.GotOnions)
+            if (item != null && item.slotTags.Contains("Onion"))
             {
-                cook.SetOnions(true);
-                Debug.Log("Got the onion!");
+                if (!cook.GotOnions)
+                {
+                    cook.SetOnions(true);
+                    Debug.Log("Got the onion!");
+                }
             }
         }
     }

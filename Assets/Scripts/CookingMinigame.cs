@@ -12,7 +12,9 @@ public class CookingMinigame : MonoBehaviour
     public Image timerImage; // Reference to the Image component with Fill Type set to Filled
     public string initialScene = "Kitchen";
     public GameObject Timer;
-    private DialogueRunner dialogueRunner;
+    public DialogueRunner dialogueRunner;
+    public InventoryItem sopaQueimada;
+    public InventoryItem sopaBoa;
     // Minigame state
     public bool isMinigameActive = false;
 
@@ -68,6 +70,7 @@ public class CookingMinigame : MonoBehaviour
             if (GotOnions && GotSausages && GotPeppers && GotGarlic && GotBacon)
             {
                 Debug.Log("They win");
+                InventoryManager.Instance.AddItem(sopaBoa);
                 timeRemaining = 0; // Stop the timer
                 UpdateTimerDisplay(); // Update display one last time
                 dialogueRunner.StartDialogue("wincooking");
@@ -79,6 +82,8 @@ public class CookingMinigame : MonoBehaviour
             if (!GotOnions || !GotSausages || !GotPeppers || !GotGarlic || !GotBacon)
             {
                 Debug.Log("They lose");
+                InventoryManager.Instance.AddItem(sopaQueimada);
+                dialogueRunner.StartDialogue("losecooking");
             }
 
             // Return to initial scene
