@@ -1,11 +1,13 @@
 ﻿title: houseintro
 ---
-
+<<introdarken>>
 Infnetina: (Nossa, que casa bonitinha! Não é a toa que demorou tanto tempo pra chegar aqui... é tão remota.) 
 Infnetina: (Bem, melhor entrar e ver o que tem!)
 Tutorial: Use o seu Mouse para interagir com o cenário.
-Tutorial: Para usar itens do seu inventário, aperte o [b]botão de inventário[/b], e [b]arraste[/b] o item para fora.
-Tutorial: O botão de Objetivos te fala o que você deve fazer.
+Tutorial: Aperte o botão da [b]mochila[/b] para abrir seu Inventário.
+Tutorial: Para usar itens do seu inventário, abra seu Inventário, e [b]arraste[/b] o item para fora.
+Tutorial: O botão de Objetivos (representado pelo alvo) mostra seu objetivo atual.
 <<objective "Se introduzir na Casa Serena">>
+<<brighten>>
 
 ===	

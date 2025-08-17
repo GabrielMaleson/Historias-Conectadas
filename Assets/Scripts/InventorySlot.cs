@@ -8,8 +8,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [Header("UI References")]
     [SerializeField] private Image iconImage;
-    [SerializeField] private GameObject tooltipPanel;
-    [SerializeField] private TMP_Text tooltipText;
+    private static GameObject tooltipPanel;
+    private static TMP_Text tooltipText;
 
     [Header("Drag Settings")]
     [SerializeField] private Canvas parentCanvas;
@@ -35,6 +35,17 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
 
         rectTransform = GetComponent<RectTransform>();
+
+        // Initialize static tooltip references if not set
+        if (tooltipPanel == null)
+        {
+            tooltipPanel = GameObject.FindGameObjectWithTag("InventoryTooltip");
+            if (tooltipPanel != null)
+            {
+                tooltipText = tooltipPanel.GetComponentInChildren<TMP_Text>();
+                tooltipPanel.SetActive(false);
+            }
+        }
     }
 
     public void Setup(InventoryItem newItem)
@@ -48,8 +59,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             // Clear existing tags and copy all item tags to slot tags
             slotTags.Clear();
             slotTags.AddRange(newItem.itemTags);
-
-            tooltipText.text = $"<b>{item.itemName}</b>\n{item.description}";
         }
         else
         {
@@ -62,20 +71,25 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         item = null;
         iconImage.sprite = null;
         iconImage.enabled = false;
-        tooltipPanel.SetActive(false);
         slotTags.Clear();
     }
 
     #region Pointer Events
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!IsEmpty)
+        if (!IsEmpty && tooltipPanel != null)
+        {
+            tooltipText.text = $"<b>{item.itemName}</b>\n{item.description}";
             tooltipPanel.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltipPanel.SetActive(false);
+        if (tooltipPanel != null)
+        {
+            tooltipPanel.SetActive(false);
+        }
     }
     #endregion
 
@@ -97,7 +111,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         transform.SetAsLastSibling();
 
         // Hide tooltip during drag
-        tooltipPanel.SetActive(false);
+        if (tooltipPanel != null)
+        {
+            tooltipPanel.SetActive(false);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

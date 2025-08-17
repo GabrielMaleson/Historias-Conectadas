@@ -176,6 +176,34 @@ public class StaticImageTagManager : MonoBehaviour
             yield return null;
         }
     }
+
+    [YarnCommand("introdarken")]
+    public static void DialogueSuperDarken()
+    {
+        instance.blackScreen.SetActive(true);
+        instance.StartCoroutine(instance.FadeToUltraBlack());
+    }
+    private IEnumerator FadeToUltraBlack()
+    {
+        Image blackScreenImage = blackScreen.GetComponent<Image>();
+        Color currentColor = blackScreenImage.color;
+
+        Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, 170f / 255);
+
+        float duration = 1.0f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            // Lerp from current color to semi-transparent black
+            blackScreenImage.color = Color.Lerp(currentColor, targetColor, t);
+            yield return null;
+        }
+    }
+
     [YarnCommand("brighten")]
     public static void DialogueBrighten()
     {

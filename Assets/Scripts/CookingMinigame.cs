@@ -8,8 +8,10 @@ public class CookingMinigame : MonoBehaviour
 {
     // Timer settings
     public float timeRemaining = 300f; // 5 minutes in seconds
-    public TMP_Text timerText;
+    public float maxTime = 300f; // Store the initial time
+    public Image timerImage; // Reference to the Image component with Fill Type set to Filled
     public string initialScene = "Kitchen";
+    public GameObject Timer;
     private DialogueRunner dialogueRunner;
     // Minigame state
     public bool isMinigameActive = false;
@@ -31,6 +33,7 @@ public class CookingMinigame : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            maxTime = timeRemaining; // Store the initial time as max time
         }
         else
         {
@@ -41,7 +44,9 @@ public class CookingMinigame : MonoBehaviour
     [YarnCommand("startcooking")]
     public void StartMinigame()
     {
+        Timer.SetActive(true);
         isMinigameActive = true;
+        timeRemaining = maxTime; // Reset timer to max time
         // Reset all objectives when starting a new minigame
         GotOnions = false;
         GotSausages = false;
@@ -64,6 +69,7 @@ public class CookingMinigame : MonoBehaviour
             {
                 Debug.Log("They win");
                 timeRemaining = 0; // Stop the timer
+                UpdateTimerDisplay(); // Update display one last time
                 dialogueRunner.StartDialogue("wincooking");
             }
         }
@@ -91,11 +97,10 @@ public class CookingMinigame : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
-        if (timerText != null)
+        if (timerImage != null)
         {
-            int minutes = Mathf.FloorToInt(timeRemaining / 60);
-            int seconds = Mathf.FloorToInt(timeRemaining % 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            // Calculate fill amount (1 = full time remaining, 0 = no time remaining)
+            timerImage.fillAmount = timeRemaining / maxTime;
         }
     }
 
