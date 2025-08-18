@@ -18,6 +18,7 @@ public class GamePause : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this);
         // Initialize volume slider if assigned
         if (volumeSlider != null)
         {
