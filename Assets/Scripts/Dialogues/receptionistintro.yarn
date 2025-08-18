@@ -92,3 +92,18 @@ Infnetina: Melhor não sair daqui... tenho que falar com a recepcionista ainda. 
 <<brighten>>
 
 ===	
+
+title: receptionmission
+---
+<<darken>>
+Infnetina: Então, o que eu deveria fazer para começar?
+<<sprite clara.think gings>>
+<<fadein gings 0.5>>
+Clara: Normalmente, eu iria falar para você visitar o Senhor Euclides, que não se dá muito com a nossa equipe...
+Clara: Mas já que isso é um [b]Playtest[/b], quero que você visite a Luciana! A Lucinha está na cozinha, e precisa da sua ajuda.
+Infnetina: Ok! Vou ir lá, então.
+Narração: Objetivo atualizado.
+<<objective "Ir para a Cozinha para continuar o Playtest">>
+<<brighten>>
+
+===	

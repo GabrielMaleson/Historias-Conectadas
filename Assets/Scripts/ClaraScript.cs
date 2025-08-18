@@ -4,10 +4,12 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 public class ClaraScript : MonoBehaviour
 {
+    public Button button;
     public DialogueRunner dialoguelol;
     public InventoryItem document;
 
@@ -20,6 +22,7 @@ public class ClaraScript : MonoBehaviour
         {
             Debug.Log("Door opened with key!");
             DoThing(document);
+            button.enabled = true;
         }
     }
 

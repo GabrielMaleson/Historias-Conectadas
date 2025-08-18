@@ -34,6 +34,8 @@ public class StaticImageTagManager : MonoBehaviour
 
     private GameObject objectivePanel;
 
+    public GraphicRaycaster graphicRaycaster;
+
     [Tooltip("List of Sprites to use for images")]
     public List<Sprite> sprites = new List<Sprite>();
 
@@ -168,6 +170,7 @@ public class StaticImageTagManager : MonoBehaviour
     [YarnCommand("darken")]
     public static void DialogueDarken()
     {
+        instance.EnableRaycaster();
         instance.blackScreen.SetActive(true);
         instance.StartCoroutine(instance.FadeToBlack());
     }
@@ -196,6 +199,7 @@ public class StaticImageTagManager : MonoBehaviour
     [YarnCommand("introdarken")]
     public static void DialogueSuperDarken()
     {
+        instance.EnableRaycaster();
         instance.blackScreen.SetActive(true);
         instance.StartCoroutine(instance.FadeToUltraBlack());
     }
@@ -224,6 +228,7 @@ public class StaticImageTagManager : MonoBehaviour
     public static void DialogueBrighten()
     {
         instance.StartCoroutine(instance.FadeToWhite());
+        instance.DisableRaycaster();
     }
 
     // Add this coroutine to your class
@@ -306,4 +311,15 @@ public class StaticImageTagManager : MonoBehaviour
         instance.audioSource.loop = foundSound.loop;
         instance.audioSource.PlayOneShot(foundSound.soundClip);
     }
+
+    public void EnableRaycaster()
+    {
+     graphicRaycaster.enabled = true;
+    }
+
+    public void DisableRaycaster()
+    {
+      graphicRaycaster.enabled = false;
+    }
+
 }
