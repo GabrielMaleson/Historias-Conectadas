@@ -4,10 +4,10 @@
 
 <<darken>>
 <<sprite lucy.sad gings>>
-Luci: Ah, oi Infnetinha... como vai?
+Luci: Ah, oi Infnetina... como vai?
 Infnetina: Feliz por te ver, Luci! O que você está fazendo?
 Luci: Eu estava fazendo uma sopa pro meu amigo Amerício, mas...
-Luci: Preciso de um pouquiiinho de ajuda. Não alcanço os ingredientes...
+Luci: Preciso de um pouco de ajuda. Não estou conseguindo achar os ingredientes...
 Luci: Infnetina, você consegue me ajudar? Só preciso de algumas coisinhas...
 -> Claro que sim, Luci! O que preciso fazer?
     Infnetina: Claro que sim, Luci! O que preciso fazer pra te ajudar?
@@ -19,8 +19,8 @@ Luci: Infnetina, você consegue me ajudar? Só preciso de algumas coisinhas...
 <<if $start_cooking>>
     <<sprite lucy.happy gings>>
     Luci: Oba! Obrigada, obrigada, obrigada! Você não sabe o quão bom é ouvir isso!
-    Luci: Bem, pra começar, preciso de cinco ingredientes... mas não consigo alcançar ou achar eles.
-    Infnetinha: Quais são? Posso te ajudar nisso!
+    Luci: Bem, pra começar, preciso de cinco ingredientes... mas não sei onde começar.
+    Infnetina: Quais são? Posso te ajudar nisso!
     Luci: Pra começar, vou precisar de [b]Bacon, Pimenta, Cebola, Alho[/b] e... hã...
     <<sprite lucy.forgot gings>>
     Luci: Nossa, tô tão esquecida...
@@ -34,7 +34,7 @@ Luci: Infnetina, você consegue me ajudar? Só preciso de algumas coisinhas...
     Luci: Hã? AH! Não, não, não! Não se preocupa, queridinha! Só estava pensando sobre besteira... relaxa!
     Infnetinha: Hum... Ok, então.
     <<sprite lucy.happy gings>>
-    Luci: Bem, vamos começar então? Acho que a sopa vai ter [b]cinco minutos até estar pronta[/b], então temos que ser velozes!
+    Luci: Bem, vamos começar? Acho que a sopa vai ter [b]um minuto até estar pronta[/b], então temos que ser velozes!
     Infnetinha: Beleza! Vamos lá, Lucinha!
     <<removesprite gings>>
     <<startcooking Timer>>
@@ -43,5 +43,34 @@ Luci: Infnetina, você consegue me ajudar? Só preciso de algumas coisinhas...
     Luci: Vou estar esperando aqui. Só vou precisar de algumas coisas se quiser me ajudar depois!
     <<removesprite gings>>
 <<endif>>
+<<brighten>>
+===
+
+title: wincooking
+---
+
+<<darken>>
+<<sprite lucy.happy gings>>
+Luci: Eba! Obrigada mais uma vez, Infnetina! A sopa não queimou!
+Infnetina: Sempre feliz em lhe ajudar, Luci! De nada!
+<<removesprite gings>>
+Narração: Objetivo atualizado.
+<<objective "Entregar a sopa para a Clara">>
+<<brighten>>
+===
+
+title: losecooking
+---
+
+<<darken>>
+<<sprite lucy.sad gings>>
+Luci: Ah, que pena... a sopa queimou. 
+Infnetina: Desculpa, Lucinha, não consegui achar...
+<<removesprite gings>>
+<<sprite lucy.happy>>
+Luci: Tem problema não, Infnetinha! Fica pra próxima. O Amerício deve gostar mesmo assim.
+<<removesprite gings>>
+Narração: Objetivo atualizado.
+<<objective "Entregar a sopa para a Clara">>
 <<brighten>>
 ===

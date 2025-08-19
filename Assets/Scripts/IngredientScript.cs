@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class IngredientScript : MonoBehaviour
 {
     [SerializeField] private CookingMinigame cook;
+    public InventoryItem sausage;
+    public InventoryItem garlic;
+    public InventoryItem pepper;
+    public InventoryItem onion;
+    public InventoryItem bacon;
+    public Button button;
 
+    public void Update()
+    {
+        if (cook.isMinigameActive)
+        {
+            button.enabled = false;
+        }
+
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         InventorySlot item = collision.GetComponent<InventorySlot>();
@@ -19,6 +34,7 @@ public class IngredientScript : MonoBehaviour
                 {
                     cook.SetSausages(true);
                     Debug.Log("Got the sausages!");
+                    DoThing(sausage);
                 }
             }
             if (item != null && item.slotTags.Contains("Pepper"))
@@ -27,6 +43,7 @@ public class IngredientScript : MonoBehaviour
                 {
                     cook.SetPeppers(true);
                     Debug.Log("Got the peppers!");
+                    DoThing(pepper);   
                 }
             }
             if (item != null && item.slotTags.Contains("Garlic"))
@@ -35,6 +52,7 @@ public class IngredientScript : MonoBehaviour
                 {
                     cook.SetGarlic(true);
                     Debug.Log("Got the Garlic!");
+                    DoThing(garlic);
                 }
             }
             if (item != null && item.slotTags.Contains("Bacon"))
@@ -43,6 +61,7 @@ public class IngredientScript : MonoBehaviour
                 {
                     cook.SetBacon(true);
                     Debug.Log("Got the bacon!");
+                    DoThing(bacon);
                 }
             }
             if (item != null && item.slotTags.Contains("Onion"))
@@ -51,8 +70,13 @@ public class IngredientScript : MonoBehaviour
                 {
                     cook.SetOnions(true);
                     Debug.Log("Got the onion!");
+                    DoThing(onion);
                 }
             }
         }
+    }
+    private void DoThing(InventoryItem item)
+    {
+        InventoryManager.Instance.RemoveItem(item);
     }
 }

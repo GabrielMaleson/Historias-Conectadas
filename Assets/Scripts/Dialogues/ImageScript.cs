@@ -34,6 +34,8 @@ public class StaticImageTagManager : MonoBehaviour
 
     private GameObject objectivePanel;
 
+    public Button continueButton;
+
     public GraphicRaycaster graphicRaycaster;
 
     [Tooltip("List of Sprites to use for images")]
@@ -60,14 +62,8 @@ public class StaticImageTagManager : MonoBehaviour
     private void Awake()
     {
         ObjectiveStart();
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Debug.LogWarning("Multiple StaticImageTagManager instances found. Only one should exist.");
-        }
+        instance = this;
+        continueButton = instance.GetComponentInChildren<Button>();
     }
 
     private void ObjectiveStart()
@@ -89,6 +85,12 @@ public class StaticImageTagManager : MonoBehaviour
         {
             spriteTags.RemoveAt(spriteTags.Count - 1);
         }
+    }
+
+    private void FixDialogueRunner()
+    {
+        continueButton.interactable = true;
+        continueButton.enabled = true;
     }
 
     [YarnCommand("sprite")]
@@ -170,9 +172,9 @@ public class StaticImageTagManager : MonoBehaviour
     [YarnCommand("darken")]
     public static void DialogueDarken()
     {
-        instance.EnableRaycaster();
         instance.blackScreen.SetActive(true);
         instance.StartCoroutine(instance.FadeToBlack());
+        instance.FixDialogueRunner();
     }
 
     private IEnumerator FadeToBlack()
@@ -194,14 +196,15 @@ public class StaticImageTagManager : MonoBehaviour
             blackScreenImage.color = Color.Lerp(currentColor, targetColor, t);
             yield return null;
         }
+        instance.EnableRaycaster();
     }
 
     [YarnCommand("introdarken")]
     public static void DialogueSuperDarken()
     {
-        instance.EnableRaycaster();
         instance.blackScreen.SetActive(true);
         instance.StartCoroutine(instance.FadeToUltraBlack());
+        instance.FixDialogueRunner();
     }
     private IEnumerator FadeToUltraBlack()
     {
@@ -222,6 +225,7 @@ public class StaticImageTagManager : MonoBehaviour
             blackScreenImage.color = Color.Lerp(currentColor, targetColor, t);
             yield return null;
         }
+        instance.EnableRaycaster();
     }
 
     [YarnCommand("brighten")]

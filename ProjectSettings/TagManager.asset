@@ -12,6 +12,7 @@ TagManager:
   - Objective Panel
   - InventoryTooltip
   - ToggleInventory
+  - continue button
   layers:
   - Default
   - TransparentFX

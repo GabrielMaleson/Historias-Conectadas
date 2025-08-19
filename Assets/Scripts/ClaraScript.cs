@@ -12,6 +12,8 @@ public class ClaraScript : MonoBehaviour
     public Button button;
     public DialogueRunner dialoguelol;
     public InventoryItem document;
+    public InventoryItem goodsoup;
+    public InventoryItem badsoup;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,11 +26,35 @@ public class ClaraScript : MonoBehaviour
             DoThing(document);
             button.enabled = true;
         }
+
+        else if (item != null && item.slotTags.Contains("Sopa Queimada"))
+        {
+            Debug.Log("Door opened with key!");
+            DoBadThing(badsoup);
+            button.enabled = true;
+        }
+
+        else if (item != null && item.slotTags.Contains("Sopa Boa"))
+        {
+            Debug.Log("Door opened with key!");
+            DoGoodThing(goodsoup);
+            button.enabled = true;
+        }
     }
 
     private void DoThing(InventoryItem item)
     {
         dialoguelol.StartDialogue("receptionsuccess");
+        InventoryManager.Instance.RemoveItem(item);
+    }
+    private void DoGoodThing(InventoryItem item)
+    {
+        dialoguelol.StartDialogue("receptionplaytestwin");
+        InventoryManager.Instance.RemoveItem(item);
+    }
+    private void DoBadThing(InventoryItem item)
+    {
+        dialoguelol.StartDialogue("receptionplaytestlose");
         InventoryManager.Instance.RemoveItem(item);
     }
 }
