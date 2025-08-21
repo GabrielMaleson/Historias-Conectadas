@@ -19,6 +19,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private RectTransform rectTransform;
     private GameObject inventory;
     private GameObject toggle;
+    private BoxCollider2D thecollider;
     private bool isDragging;
     public List<string> slotTags = new List<string>();
     private Vector3 originalPosition;
@@ -105,6 +106,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             inventory.SetActive(false);
         }
         toggle.SetActive(true);
+        thecollider = GetComponent<BoxCollider2D>();   
+        thecollider.enabled = true;
         isDragging = true;
         originalPosition = rectTransform.localPosition;
         originalParent = transform.parent;
@@ -138,6 +141,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (!isDragging) return;
 
         isDragging = false;
+        thecollider.enabled = false;
 
         // If we didn't drop on a valid slot, return to original position
         if (parentAfterDrag == null)
