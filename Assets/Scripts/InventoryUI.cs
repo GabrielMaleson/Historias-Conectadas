@@ -37,7 +37,12 @@ public class InventoryUI : MonoBehaviour
             if (slot.IsEmpty)
             {
                 slot.Setup(item);
-                slot.gameObject.SetActive(true);
+
+                // Only activate the slot if the inventory UI is currently active
+                if (gameObject.activeInHierarchy)
+                {
+                    slot.gameObject.SetActive(true);
+                }
                 return;
             }
         }
