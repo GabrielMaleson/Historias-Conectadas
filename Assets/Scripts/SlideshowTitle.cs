@@ -1,6 +1,8 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SlideshowController : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class SlideshowController : MonoBehaviour
     private int currentSlideIndex = 0;
     private bool isTransitioning = false;
 
-    void Start()
+    void Awake()
     {
         // Set initial slide
         if (slides.Length > 0)
@@ -20,6 +22,9 @@ public class SlideshowController : MonoBehaviour
             slideImage.sprite = slides[0];
             slideImage.color = new Color(1, 1, 1, 1); // Ensure it's fully visible
         }
+
+        ResetGame();
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         // Start automatic slideshow
         StartCoroutine(AutoSlideshow());
@@ -37,6 +42,12 @@ public class SlideshowController : MonoBehaviour
             }
         }
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResetGame();
+    }
+
 
     private IEnumerator TransitionToNextSlide()
     {
@@ -153,4 +164,68 @@ public class SlideshowController : MonoBehaviour
         Destroy(tempImageObj);
         isTransitioning = false;
     }
+
+    public void ResetGame()
+    {
+        // 2. Destroy all Don'tDestroyOnLoad objects
+        DestroyAllDontDestroyOnLoadObjects();
+
+        // 3. Reset any other game state if needed
+        ResetGameState();
+
+        Debug.Log("Game completely reset - Yarn variables cleared and DontDestroyOnLoad objects removed");
+    }
+
+    private void DestroyAllDontDestroyOnLoadObjects()
+    {
+        // Create a temporary GameObject that will be destroyed immediately
+        GameObject tempObject = new GameObject("TempDestroyer");
+        DontDestroyOnLoad(tempObject);
+
+        // Get the root of the DontDestroyOnLoad scene
+        Scene dontDestroyOnLoadScene = tempObject.scene;
+
+        // Get all root objects in the DontDestroyOnLoad scene
+        List<GameObject> rootObjects = new List<GameObject>();
+        dontDestroyOnLoadScene.GetRootGameObjects(rootObjects);
+
+        // Destroy all objects except our temporary one and the ones we want to keep
+        foreach (GameObject obj in rootObjects)
+        {
+            if (obj != tempObject && obj != gameObject && ShouldDestroyObject(obj))
+            {
+                Destroy(obj);
+                Debug.Log("Destroyed DontDestroyOnLoad object: " + obj.name);
+            }
+        }
+
+        // Destroy the temporary object
+        Destroy(tempObject);
+    }
+
+    private bool ShouldDestroyObject(GameObject obj)
+    {
+        // Add any objects you want to preserve here
+        // For example, if you want to keep audio managers or other essential systems:
+        // return !obj.CompareTag("EssentialSystem");
+
+        return true; // Destroy all by default
+    }
+
+    private void ResetGameState()
+    {
+        // Add any additional game state reset logic here
+        // For example:
+        // - Reset player preferences
+        // - Clear inventory
+        // - Reset quest system
+        // - etc.
+
+        // Example: Reset time scale
+        Time.timeScale = 1f;
+
+        // Example: Clear all player prefs (use with caution!)
+        // PlayerPrefs.DeleteAll();
+    }
+
 }
