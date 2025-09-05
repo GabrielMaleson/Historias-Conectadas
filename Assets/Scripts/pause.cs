@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio; // Required for AudioMixer
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;    // Required for Slider
 
 public class GamePause : MonoBehaviour
@@ -80,6 +81,11 @@ public class GamePause : MonoBehaviour
         {
             PauseGame();
         }
+    }
+
+    public void LoadASceneItem(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void SetVolume(float volume)

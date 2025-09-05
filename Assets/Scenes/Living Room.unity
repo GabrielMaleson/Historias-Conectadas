@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 785124186}
   - component: {fileID: 785124185}
   m_Layer: 5
-  m_Name: doorinteract (1)
+  m_Name: kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1165,7 +1165,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: EuclidesRoom
+          m_StringArgument: Kitchen
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &785124186
@@ -1857,7 +1857,7 @@ GameObject:
   - component: {fileID: 1297934335}
   - component: {fileID: 1297934334}
   m_Layer: 5
-  m_Name: doorinteract (2)
+  m_Name: hallway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1935,7 +1935,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: EuclidesRoom
+          m_StringArgument: Hallway
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1297934335
@@ -2114,7 +2114,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1461804844}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:

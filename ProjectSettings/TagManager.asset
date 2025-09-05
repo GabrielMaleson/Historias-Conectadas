@@ -13,6 +13,7 @@ TagManager:
   - InventoryTooltip
   - ToggleInventory
   - continue button
+  - TitleScreen
   layers:
   - Default
   - TransparentFX
