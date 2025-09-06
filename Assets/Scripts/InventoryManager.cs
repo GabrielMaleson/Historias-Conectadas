@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private GameObject InvUI;
 
-    private bool isInventoryOpen = false;
+    public bool isInventoryOpen = false;
     public UnityEvent<InventoryItem> OnItemAdded = new UnityEvent<InventoryItem>();
     public UnityEvent<InventoryItem> OnItemRemoved = new UnityEvent<InventoryItem>();
 
@@ -39,15 +39,11 @@ public class InventoryManager : MonoBehaviour
         Canvas canvas = GetComponentInChildren<Canvas>();
         canvas.worldCamera = Camera.main;
     }
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            isInventoryOpen = !isInventoryOpen;
-            InvUI.SetActive(isInventoryOpen);
-        }
-    }
 
+    private void StopCanvas() 
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     public void AddItem(InventoryItem item)
     {
         if (!items.Contains(item))
