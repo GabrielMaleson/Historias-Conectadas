@@ -23,7 +23,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private bool isDragging;
     public List<string> slotTags = new List<string>();
     private Vector3 originalPosition;
-    private Transform originalParent;
 
     public InventoryItem Item => item;
     public bool IsEmpty => item == null;
@@ -110,7 +109,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         thecollider.enabled = true;
         isDragging = true;
         originalPosition = rectTransform.localPosition;
-        originalParent = transform.parent;
 
         // Set as last sibling to appear on top of other UI elements
         transform.SetParent(parentCanvas.transform);
@@ -136,25 +134,26 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         rectTransform.localPosition = localPoint;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void ForceEndDrag()
     {
         if (!isDragging) return;
 
         isDragging = false;
         thecollider.enabled = false;
+        transform.SetParent(parentAfterDrag);
+        rectTransform.localPosition = originalPosition;
+    }
+    private void OnDisable()
+    {
+        if (isDragging)
+        {
+            ForceEndDrag();
+        }
+    }
 
-        // If we didn't drop on a valid slot, return to original position
-        if (parentAfterDrag == null)
-        {
-            transform.SetParent(originalParent);
-            rectTransform.localPosition = originalPosition;
-        }
-        else
-        {
-            transform.SetParent(parentAfterDrag);
-            rectTransform.localPosition = Vector3.zero;
-            parentAfterDrag = null;
-        }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        ForceEndDrag();
     }
     #endregion
 }

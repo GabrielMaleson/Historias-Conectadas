@@ -6,7 +6,6 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Transform slotsParent; // Parent containing the slot GameObjects
 
     private InventorySlot[] slots; // Now an array for better performance
-    private bool wasInventoryActive = false;
 
     private void Start()
     {
@@ -30,27 +29,6 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        // Check if inventory active state changed
-        bool isInventoryActive = InventoryManager.Instance.isInventoryOpen;
-
-        if (isInventoryActive != wasInventoryActive)
-        {
-            UpdateSlotVisibility(isInventoryActive);
-            wasInventoryActive = isInventoryActive;
-        }
-    }
-
-    private void UpdateSlotVisibility(bool isVisible)
-    {
-        foreach (var slot in slots)
-        {
-            // Only show slots that have items when inventory is active
-            slot.gameObject.SetActive(isVisible && !slot.IsEmpty);
-        }
-    }
-
     private void AddItemToUI(InventoryItem item)
     {
         // Find the first empty slot
@@ -59,8 +37,12 @@ public class InventoryUI : MonoBehaviour
             if (slot.IsEmpty)
             {
                 slot.Setup(item);
-                // Only show the slot if inventory is currently active
+
+
+
+
                 slot.gameObject.SetActive(true);
+
                 return;
             }
         }

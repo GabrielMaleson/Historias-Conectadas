@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1842968563350747079}
   m_Layer: 5
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: SlotParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1835,6 +1835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6579238958206896289, guid: caf4904d6bf7d5c46980edebbdb9ce0b, type: 3}
+      propertyPath: parentAfterDrag
+      value: 
+      objectReference: {fileID: 6870824818557943093}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2549,6 +2553,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot
       objectReference: {fileID: 0}
+    - target: {fileID: 6579238958206896289, guid: caf4904d6bf7d5c46980edebbdb9ce0b, type: 3}
+      propertyPath: parentCanvas
+      value: 
+      objectReference: {fileID: 1384532072084286415}
+    - target: {fileID: 6579238958206896289, guid: caf4904d6bf7d5c46980edebbdb9ce0b, type: 3}
+      propertyPath: parentAfterDrag
+      value: 
+      objectReference: {fileID: 7571878845579480702}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

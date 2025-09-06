@@ -53,7 +53,7 @@ title: receptiontable
 title: receptionsuccess
 ---
 	<<darken>>
-	<<sprite clara.clap ging>>
+	<<sprite clara.clap gings>>
 	Clara: Ahhhh, Infnetina! Sabia que ouvi esse nome antes - estava esperando por você! Como foi a viagem?
 	-> Foi longa, mas foi boa!
 		Infnetina: Pouquiiinho longa, mas foi bem legal! A paisagem foi bem relexante, sabe?

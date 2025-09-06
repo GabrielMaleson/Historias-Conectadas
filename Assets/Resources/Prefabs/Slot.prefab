@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6579238958206896289}
   - component: {fileID: 7529088213024160621}
   - component: {fileID: 7615925645896284625}
-  - component: {fileID: 6835517066905037419}
   - component: {fileID: 6047567641899304482}
   m_Layer: 5
   m_Name: Slot
@@ -94,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconImage: {fileID: 3018740156394963590}
   parentCanvas: {fileID: 0}
-  parentAfterDrag: {fileID: 0}
+  parentAfterDrag: {fileID: 1245837009650078423}
   slotTags: []
 --- !u!114 &7529088213024160621
 MonoBehaviour:
@@ -162,18 +161,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6835517066905037419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5724411752058576228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d79971596cf270944a7cd50046efbc67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &6047567641899304482
 Rigidbody2D:
   serializedVersion: 4
