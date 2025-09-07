@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     public UnityEvent<InventoryItem> OnItemRemoved = new UnityEvent<InventoryItem>();
 
     private List<InventoryItem> items = new List<InventoryItem>();
+    public List<string> gameProgress = new List<string>();
 
     private void Awake()
     {
@@ -38,6 +39,14 @@ public class InventoryManager : MonoBehaviour
     {
         Canvas canvas = GetComponentInChildren<Canvas>();
         canvas.worldCamera = Camera.main;
+    }
+    public void AddProgress(string thing)
+    {
+        gameProgress.Add(thing);
+    }
+    public void RemoveProgress(string thing)
+    {
+        gameProgress.Remove(thing);
     }
 
     public void AddItem(InventoryItem item)
@@ -71,8 +80,34 @@ public class InventoryManager : MonoBehaviour
         return items.Contains(item);
     }
 
+    private void OnDestroy()
+    {
+        // Clean up event subscription
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     public List<InventoryItem> GetAllItems()
     {
         return new List<InventoryItem>(items);
     }
+
+    public List<string> GetGameProgress()
+    {
+        return new List<string>(gameProgress);
+    }
+
+    public void ClearProgress()
+    {
+        gameProgress.Clear();
+    }
+    public void ClearItems()
+    {
+        // Remove items safely by creating a copy of the list
+        List<InventoryItem> itemsToRemove = new List<InventoryItem>(items);
+        foreach (InventoryItem item in itemsToRemove)
+        {
+            RemoveItem(item);
+        }
+    }
+
 }

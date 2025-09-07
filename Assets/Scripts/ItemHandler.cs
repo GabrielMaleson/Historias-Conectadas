@@ -42,6 +42,16 @@ public class InventoryButtonHandler : MonoBehaviour
         StartCoroutine(FadeInCoroutine(fadein));
     }
 
+    public void AddProgressToInventory(string thing)
+    {
+        InventoryManager.Instance.AddProgress(thing);
+    }
+    public void RemoveProgressToInventory(string thing)
+    {
+        InventoryManager.Instance.RemoveProgress(thing);
+    }
+
+
     private IEnumerator FadeInCoroutine(GameObject fadein)
     {
         Image image = fadein.GetComponent<Image>();

@@ -85,6 +85,7 @@ public class GamePause : MonoBehaviour
 
     public void LoadASceneItem(string scene)
     {
+        SaveLoadManager.Instance.SaveGame();
         SceneManager.LoadScene(scene);
     }
 

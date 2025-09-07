@@ -14,6 +14,7 @@ TagManager:
   - ToggleInventory
   - continue button
   - TitleScreen
+  - SlotParent
   layers:
   - Default
   - TransparentFX

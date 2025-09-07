@@ -3,39 +3,49 @@
 <<declare $start_cooking = true as bool>>
 
 <<darken>>
+<<sprite lucy.happy gings>>
+Lucinha: Ahh! Bom dia Clar-! 
+<<sprite lucy.forgot gings>>
+Lucinha: Quem é você?! O que você tá fazendo aqui de uniforme?! 
 <<sprite lucy.sad gings>>
-Luci: Ah, oi Infnetina... como vai?
-Infnetina: Feliz por te ver, Luci! O que você está fazendo?
-Luci: Eu estava fazendo uma sopa pro meu amigo Amerício, mas...
-Luci: Preciso de um pouco de ajuda. Não estou conseguindo achar os ingredientes...
-Luci: Infnetina, você consegue me ajudar? Só preciso de algumas coisinhas...
--> Claro que sim, Luci! O que preciso fazer?
-    Infnetina: Claro que sim, Luci! O que preciso fazer pra te ajudar?
+Lucinha: Oh meu deus… Agora que eu me lembrei… A Clara me avisou hoje mais cedo que chegaria uma funcionária nova… Mil desculpas, meu anjo… 
+Infnetina: Sem problemas senhora! Meu nome é Infnetina, muito prazer!
+<<sprite lucy.happy gings>>
+Lucinha: O prazer é todo meu, querida. Meu nome é Lucinha, sou uma das residentes mais antigas daqui.
+-> Você disse que precisa de ajuda?
+    Infnetina: Então... Você disse que precisava de ajuda?
     <<set $start_cooking to true>>
--> Agora não... tô ocupada.
-    Infnetina: Tenho que fazer algumas coisinhas, Luci. Dá pra ser depois?
+-> Depois falo com você.
+    Infnetina: Tenho que fazer algumas coisinhas agora, Luci. Dá pra ser depois?
     Luci: Ah... tudo bem.
+    <<set $start_cooking to false>>
+
+
+Lucinha: Sim! Adoraria um pouco de ajuda a terminar minha sopa pro meu amigo ingrato, Amerício…
+<<sprite lucy.forgot gings>>
+Lucinha: Surpreendentemente, ele parece estar de pior humor do que o normal.
+<<sprite lucy.sad gings>>
+Lucinha: Também se sobrar, acho que seria bom o Euclides comer alguma coisa… 
+Lucinha: Aquele doce era tão carinhoso… Não sei o que deu na cabeça dele nos últimos tempos pra ele ficar tão fechado assim…
+Narração: *A sopa começa a queimar*
+Infnetina: Lucinha… Que cheiro é esse…?
+<<sprite lucy.forgot gings>>
+Lucinha: Jesus Maria e José!! A sopa está queimando!! 
+Lucinha: Rápido querida, junte esses ingredientes pra mim enquanto eu mexo a sopa!
 
 <<if $start_cooking>>
-    <<sprite lucy.happy gings>>
-    Luci: Oba! Obrigada, obrigada, obrigada! Você não sabe o quão bom é ouvir isso!
-    Luci: Bem, pra começar, preciso de cinco ingredientes... mas não sei onde começar.
-    Infnetina: Quais são? Posso te ajudar nisso!
-    Luci: Pra começar, vou precisar de [b]Bacon, Pimenta, Cebola, Alho[/b] e... hã...
+    Lucinha: Sim! Adoraria um pouco de ajuda a terminar minha sopa pro meu amigo ingrato, Amerício…
     <<sprite lucy.forgot gings>>
-    Luci: Nossa, tô tão esquecida...
-    <<sprite lucy.happy gings>>
-    Luci: Ah, lembrei! O último ingrediente é [b]salsicha[/b]. Deve estar tudo [b]espalhado pela cozinha[/b], mas você deve saber onde estão, né?
-    Infnetinha: Claro, Luci! Sempre ajudava meus pais a cozinhar, então qualquer cozinha pra mim é de letra!
+    Lucinha: Surpreendentemente, ele parece estar de pior humor do que o normal.
     <<sprite lucy.sad gings>>
-    Luci: Hehe, bom ouvir...
-    Infnetinha: ...? Falei algo errado?
+    Lucinha: Também se sobrar, acho que seria bom o Euclides comer alguma coisa… 
+    Lucinha: Aquele doce era tão carinhoso… Não sei o que deu na cabeça dele nos últimos tempos pra ele ficar tão fechado assim…
+    Narração: *A sopa começa a queimar*
+    Infnetina: Lucinha… Que cheiro é esse…?
     <<sprite lucy.forgot gings>>
-    Luci: Hã? AH! Não, não, não! Não se preocupa, queridinha! Só estava pensando sobre besteira... relaxa!
-    Infnetinha: Hum... Ok, então.
-    <<sprite lucy.happy gings>>
-    Luci: Bem, vamos começar? Acho que a sopa vai ter [b]um minuto até estar pronta[/b], então temos que ser velozes!
-    Infnetinha: Beleza! Vamos lá, Lucinha!
+    Lucinha: Jesus Maria e José!! A sopa está queimando!! 
+    Lucinha: Rápido querida, junte esses ingredientes pra mim enquanto eu mexo a sopa!
+    Infnetina: Pode deixar, Luci! Vou apressar!
     <<removesprite gings>>
     <<startcooking Timer>>
     <<objective "Achar Bacon, Pimenta, Cebola, Alho e Salsicha na cozinha">>

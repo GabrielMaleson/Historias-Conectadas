@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 116641701}
   - component: {fileID: 116641700}
   - component: {fileID: 116641699}
+  - component: {fileID: 116641702}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -254,6 +255,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116641697}
   m_CullTransparentMesh: 1
+--- !u!114 &116641702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116641697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a92e1aea6f933b4ba93fc8b2d07f67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 116641699}
+  dialoguelol: {fileID: 0}
+  document: {fileID: 11400000, guid: dce22b328e7f707409cdd22632f370b8, type: 2}
+  goodsoup: {fileID: 11400000, guid: 8c8f55898bff2344fa6e5202baff34ce, type: 2}
+  badsoup: {fileID: 11400000, guid: fc0a171fd052a5444a6aa516284c54b9, type: 2}
 --- !u!1 &332710088
 GameObject:
   m_ObjectHideFlags: 0

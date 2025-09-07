@@ -49,12 +49,14 @@ public class ClaraScript : MonoBehaviour
     }
     private void DoGoodThing(InventoryItem item)
     {
-        dialoguelol.StartDialogue("receptionplaytestwin");
+        dialoguelol.StartDialogue("americioroomwin");
         InventoryManager.Instance.RemoveItem(item);
+        InventoryManager.Instance.AddProgress("Good soup");
     }
     private void DoBadThing(InventoryItem item)
     {
-        dialoguelol.StartDialogue("receptionplaytestlose");
+        dialoguelol.StartDialogue("americioroomlose");
         InventoryManager.Instance.RemoveItem(item);
+        InventoryManager.Instance.AddProgress("Bad soup");
     }
 }

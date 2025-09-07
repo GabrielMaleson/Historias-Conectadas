@@ -46,6 +46,7 @@ public class CookingMinigame : MonoBehaviour
     [YarnCommand("startcooking")]
     public void StartMinigame()
     {
+        InventoryManager.Instance.AddProgress("Did soup");
         Timer.SetActive(true);
         isMinigameActive = true;
         timeRemaining = maxTime; // Reset timer to max time
