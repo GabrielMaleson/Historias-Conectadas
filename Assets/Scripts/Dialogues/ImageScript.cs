@@ -151,9 +151,12 @@ public class StaticImageTagManager : MonoBehaviour
     [YarnCommand("removesprite")]
     public static void RemoveImage(string positionName)
     {
-        if (activeImages.TryGetValue(positionName, out Image existingImage))
+        if (activeImages != null && activeImages.TryGetValue(positionName, out Image existingImage))
         {
-            Destroy(existingImage.gameObject);
+            if (existingImage != null && existingImage.gameObject != null)
+            {
+                Destroy(existingImage.gameObject);
+            }
             activeImages.Remove(positionName);
         }
     }

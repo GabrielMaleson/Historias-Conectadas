@@ -12,6 +12,7 @@ public class TitleScreenCleanup : MonoBehaviour
 
     public void CleanupNonTitleScreenObjects()
     {
+        Time.timeScale = 1f;
         // Get all active GameObjects in the scene
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         List<GameObject> objectsToDestroy = new List<GameObject>();
