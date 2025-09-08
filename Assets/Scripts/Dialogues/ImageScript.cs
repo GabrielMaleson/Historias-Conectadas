@@ -158,6 +158,13 @@ public class StaticImageTagManager : MonoBehaviour
         }
     }
 
+    [YarnCommand("progress")]
+    public static void ProgressUpdate(string text)
+    {
+        InventoryManager.Instance.AddProgress(text);
+    }
+
+
     [YarnCommand("objective")]
     public static void ObjectiveUpdate(string objectivetext)
     {
@@ -240,7 +247,7 @@ public class StaticImageTagManager : MonoBehaviour
     {
         Image blackScreenImage = blackScreen.GetComponent<Image>();
         Color currentColor = blackScreenImage.color;
-        Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0f); 
+        Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0f);
         float duration = 0.5f;
         float elapsedTime = 0f;
 
@@ -259,6 +266,54 @@ public class StaticImageTagManager : MonoBehaviour
     public static void DialogueScene(string scenetext)
     {
         SceneManager.LoadScene(scenetext);
+    }
+
+    [YarnCommand("blackout")]
+    public static void Blackout(float duration = 1.0f)
+    {
+        instance.blackScreen.SetActive(true);
+        instance.StartCoroutine(instance.BlackoutEffect(duration));
+        instance.FixDialogueRunner();
+    }
+
+    private IEnumerator BlackoutEffect(float duration)
+    {
+        Image blackScreenImage = blackScreen.GetComponent<Image>();
+        Color startColor = new Color(0f, 0f, 0f, 0f); // Start completely transparent
+        Color targetColor = new Color(0f, 0f, 0f, 1f); // End completely opaque black
+
+        // Fade to black (first half of duration)
+        float elapsedTime = 0f;
+        float halfDuration = duration / 2f;
+
+        while (elapsedTime < halfDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / halfDuration);
+            blackScreenImage.color = Color.Lerp(startColor, targetColor, t);
+            yield return null;
+        }
+
+        // Ensure we reach full black
+        blackScreenImage.color = targetColor;
+
+        // Wait at full black for a moment (optional, you can remove this if you want immediate brightening)
+        yield return new WaitForSeconds(0.1f);
+
+        // Fade back to transparent (second half of duration)
+        elapsedTime = 0f;
+        while (elapsedTime < halfDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / halfDuration);
+            blackScreenImage.color = Color.Lerp(targetColor, startColor, t);
+            yield return null;
+        }
+
+        // Ensure we reach full transparency
+        blackScreenImage.color = startColor;
+        blackScreen.SetActive(false);
+        instance.EnableRaycaster();
     }
 
     [YarnCommand("fadein")]
@@ -318,12 +373,12 @@ public class StaticImageTagManager : MonoBehaviour
 
     public void EnableRaycaster()
     {
-     graphicRaycaster.enabled = true;
+        graphicRaycaster.enabled = true;
     }
 
     public void DisableRaycaster()
     {
-      graphicRaycaster.enabled = false;
+        graphicRaycaster.enabled = false;
     }
 
 }

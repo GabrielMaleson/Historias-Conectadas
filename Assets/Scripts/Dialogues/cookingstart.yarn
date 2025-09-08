@@ -84,3 +84,15 @@ Narração: Objetivo atualizado.
 <<objective "Entregar a sopa para a Clara">>
 <<brighten>>
 ===
+
+title: luciintro
+---
+
+<<darken>>
+?????: Cunhantã! Vem me ajudar aqui rapidinho!
+Infnetina: ...? (Não sei quem é, mas parece importante...)
+Narração: Objetivo atualizado.
+<<progress "Luci Intro">>
+<<objective "Ir para a Cozinha">>
+<<brighten>>
+===

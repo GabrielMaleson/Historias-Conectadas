@@ -98,63 +98,13 @@ title: receptionmission
 Infnetina: Então, o que eu deveria fazer para começar?
 <<sprite clara.think gings>>
 <<fadein gings 0.5>>
-Clara: Normalmente, eu iria falar para você visitar o Senhor Euclides, que não se dá muito com a nossa equipe...
-Clara: Mas já que isso é um [b]Playtest[/b], quero que você visite a Luciana! A Lucinha está na cozinha, e precisa da sua ajuda.
+Clara: Hum... Acho que você deveria ir em um dos quartos e visitar um dos nossos idosos!
+<<sprite clara.clap gings>>
+Clara: Eles adoram conhecer novos funcionários!
 Infnetina: Ok! Vou ir lá, então.
 <<removesprite gings>>
 Narração: Objetivo atualizado.
-<<objective "Ir para a Cozinha para continuar o Playtest">>
-<<brighten>>
-
-===	
-
-title: receptionplaytest
----
-<<darken>>
-Infnetina: Oi de novo! Encontrei a Lucinha. Ela é bem legal! 
-<<sprite clara.think gings>>
-<<fadein gings 0.5>>
-Clara: Bom saber, mas já que isso é um Playtest, não vou saber disso nesse momento na história...
-Clara: Mas para testar o resultado, me mostre o item que você conseguiu!
-Infnetina: Ok! Vou te dar a sopa quando estiver pronta, então.
-<<removesprite gings>>
-Narração: Objetivo atualizado.
-<<objective "Entregar a sopa para a Clara">>
-<<brighten>>
-
-===	
-title: receptionplaytestwin
----
-<<darken>>
-<<sprite clara.clap gings>>
-<<fadein gings 0.5>>
-Clara: Oba! Você conseguiu! Parabéns!
-Clara: Se isso fosse o jogo, o Amerício estaria BEM feliz... e ia até pedir pra você falar com ele!
-<<removesprite gings>>
-<<sprite clara.think gings>>
-Clara: Mas ele não tem nem um design ainda, então...
-Infnetina: Ih... que estranho.
-Clara: Nem se preocupa! Ele já tem toda a história dele. Só esperar, se você gostou do que você viu!
-<<removesprite gings>>
-Narração: Para encerrar o Playtest, clique na Clara.
-<<brighten>>
-
-===	
-
-title: receptionplaytestlose
----
-<<darken>>
-<<sprite clara.think gings>>
-<<fadein gings 0.5>>
-Clara: Ah, que pena... você não completou o minigame direito.
-Clara: Se isso fosse o jogo, o Amerício estaria BEM irritado... e ia até pedir pra você falar com ele!
-<<removesprite gings>>
-<<sprite clara.think gings>>
-Clara: Mas ele não tem nem um design ainda, então...
-Infnetina: Ih... que estranho.
-Clara: Nem se preocupa! Ele já tem toda a história dele. Só esperar, se você gostou do que você viu!
-<<removesprite gings>>
-Narração: Para encerrar o Playtest, clique na Clara.
+<<objective "Conhecer algum idoso">>
 <<brighten>>
 
 ===	
