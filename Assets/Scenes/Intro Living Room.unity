@@ -1958,14 +1958,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3825127896109650416, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1291237610}
+      addedObject: {fileID: 1291237614}
   m_SourcePrefab: {fileID: 100100000, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
 --- !u!1 &1291237609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3825127896109650416, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
   m_PrefabInstance: {fileID: 1291237608}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1291237610
+--- !u!114 &1291237614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1978,10 +1978,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions:
-  - condition: Clara Intro
+  - condition: Euclides Intro
     conditionMeansItDoesNotLoad: 0
-  dialogueToLoad: 
-  dialogueRunner: {fileID: 0}
+  dialogueToLoad: claraclarify
+  dialogueRunner: {fileID: 1530739968}
 --- !u!1 &1370465077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,6 +2190,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1530739968 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7455658921245003448, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
+  m_PrefabInstance: {fileID: 1014171534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905060366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1983724764
 GameObject:
   m_ObjectHideFlags: 0

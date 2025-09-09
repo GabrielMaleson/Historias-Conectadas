@@ -7,7 +7,22 @@ Tutorial: Use o seu Mouse para interagir com o cenário.
 Tutorial: Aperte o botão da [b]mochila[/b] para abrir seu Inventário.
 Tutorial: Para usar itens do seu inventário, abra seu Inventário, e [b]arraste[/b] o item para fora.
 Tutorial: O botão de Objetivos (representado pelo alvo) mostra seu objetivo atual.
-<<objective "Se introduzir na Casa Serena">>
+<<objective "Entrar na Casa Serena">>
 <<brighten>>
 
 ===	
+
+title: euclidesintro
+---
+<<introdarken>>
+Infnetina: Bom dia! Meu nome é Infnetina e sou a nova cuidadora da casa. Qual o seu nome, senhor...?
+??????: ......
+Infnetina: H-Hm… Eu notei que o seu quarto é separado dos outros…  
+Infnetina: Você poderia me dizer o porquê?
+??????: ......
+Infnetina: Ok… Desculpe o incomodo…
+Infnetina: (Que estranho... o que houve com ele?)
+<<progress "Euclides Intro">>
+<<sceneload "Intro Living Room">>
+
+===

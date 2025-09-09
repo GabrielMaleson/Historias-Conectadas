@@ -21,9 +21,10 @@ title: receptiontable
 	<<darken>>
 	Infnetina: (Isso é a mesa da recepção... mas não tem ninguém aqui.)
 	Narração: De repente, alguém sai correndo em sua direção!
+	<<playsound run>>
 	?????: NOSSA! NEM TE VI! DESCULPA!
+	<<blackout 0.5>>
 	<<sprite clara.think gings>>
-	<<fadein gings 1.0>>
 	?????: Haha, credo, quase te deixei esperando por muito tempo...
 	-> É, demorou só um pouco...
 		Infnetina: Demorou só um pouquinho, mas ninguém vai perder a cabeça por isso!
@@ -47,12 +48,14 @@ title: receptiontable
 	Narração: Objetivo atualizado.
 	<<removesprite gings>>
 	<<objective "Mostrar para Clara seus documentos assinados">>
+	<<reappear>>
 	<<brighten>>
 ===
 
 title: receptionsuccess
 ---
 	<<darken>>
+	<<disappear>>
 	<<sprite clara.clap gings>>
 	Clara: Ahhhh, Infnetina! Sabia que ouvi esse nome antes - estava esperando por você! Como foi a viagem?
 	-> Foi longa, mas foi boa!
@@ -82,6 +85,7 @@ title: receptionsuccess
 	Tutorial: (Quando estiver pronto para começar sua primeira missão, clique na Clara.)
 	<<objective "Falar com a Clara sobre o que fazer">>
 	<<brighten>>
+	<<reappear>>
 ===	
 
 title: receptiondoor
@@ -95,6 +99,7 @@ Infnetina: Melhor não sair daqui... tenho que falar com a recepcionista ainda. 
 title: receptionmission
 ---
 <<darken>>
+<<disappear>>
 Infnetina: Então, o que eu deveria fazer para começar?
 <<sprite clara.think gings>>
 <<fadein gings 0.5>>
@@ -106,5 +111,6 @@ Infnetina: Ok! Vou ir lá, então.
 Narração: Objetivo atualizado.
 <<objective "Conhecer algum idoso">>
 <<brighten>>
+<<reappear>>
 
 ===	

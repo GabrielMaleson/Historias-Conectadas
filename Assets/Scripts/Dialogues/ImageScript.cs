@@ -34,6 +34,8 @@ public class StaticImageTagManager : MonoBehaviour
 
     private GameObject objectivePanel;
 
+    public Image disappearCharacter; // Reference to the character image that will disappear/reappear
+
     public Button continueButton;
 
     public GraphicRaycaster graphicRaycaster;
@@ -73,6 +75,7 @@ public class StaticImageTagManager : MonoBehaviour
         ObjectiveObj = objective.GetComponent<TextMeshProUGUI>();
         objectivePanel.GetComponent<CanvasGroup>().alpha = 0f;
     }
+
     private void OnValidate()
     {
         // Keep sprite tags and sprites lists synchronized
@@ -91,6 +94,82 @@ public class StaticImageTagManager : MonoBehaviour
     {
         continueButton.interactable = true;
         continueButton.enabled = true;
+    }
+
+    [YarnCommand("disappear")]
+    public static void DisappearCharacter(string targetName = "")
+    {
+        GameObject targetObject;
+
+        if (string.IsNullOrEmpty(targetName))
+        {
+            if (instance.disappearCharacter == null)
+            {
+                Debug.LogError("No target specified and no default disappearCharacter set!");
+                return;
+            }
+            targetObject = instance.disappearCharacter.gameObject;
+        }
+        else
+        {
+            // Try to find the target by name
+            targetObject = GameObject.Find(targetName);
+            if (targetObject == null)
+            {
+                Debug.LogError($"No GameObject found with name: {targetName}");
+                return;
+            }
+        }
+
+        Image image = targetObject.GetComponent<Image>();
+        if (image != null)
+        {
+            Color color = image.color;
+            color.a = 0f;
+            image.color = color;
+        }
+        else
+        {
+            Debug.LogError($"No Image component found on target: {targetObject.name}");
+        }
+    }
+
+    [YarnCommand("reappear")]
+    public static void ReappearCharacter(string targetName = "")
+    {
+        GameObject targetObject;
+
+        if (string.IsNullOrEmpty(targetName))
+        {
+            if (instance.disappearCharacter == null)
+            {
+                Debug.LogError("No target specified and no default disappearCharacter set!");
+                return;
+            }
+            targetObject = instance.disappearCharacter.gameObject;
+        }
+        else
+        {
+            // Try to find the target by name
+            targetObject = GameObject.Find(targetName);
+            if (targetObject == null)
+            {
+                Debug.LogError($"No GameObject found with name: {targetName}");
+                return;
+            }
+        }
+
+        Image image = targetObject.GetComponent<Image>();
+        if (image != null)
+        {
+            Color color = image.color;
+            color.a = 1f; // Use 1f instead of 255f (alpha is 0-1, not 0-255)
+            image.color = color;
+        }
+        else
+        {
+            Debug.LogError($"No Image component found on target: {targetObject.name}");
+        }
     }
 
     [YarnCommand("sprite")]
@@ -167,7 +246,6 @@ public class StaticImageTagManager : MonoBehaviour
         InventoryManager.Instance.AddProgress(text);
     }
 
-
     [YarnCommand("objective")]
     public static void ObjectiveUpdate(string objectivetext)
     {
@@ -216,6 +294,7 @@ public class StaticImageTagManager : MonoBehaviour
         instance.StartCoroutine(instance.FadeToUltraBlack());
         instance.FixDialogueRunner();
     }
+
     private IEnumerator FadeToUltraBlack()
     {
         Image blackScreenImage = blackScreen.GetComponent<Image>();
@@ -245,7 +324,6 @@ public class StaticImageTagManager : MonoBehaviour
         instance.DisableRaycaster();
     }
 
-    // Add this coroutine to your class
     private IEnumerator FadeToWhite()
     {
         Image blackScreenImage = blackScreen.GetComponent<Image>();
@@ -357,6 +435,7 @@ public class StaticImageTagManager : MonoBehaviour
         finalColor.a = targetAlpha;
         image.color = finalColor;
     }
+
     [YarnCommand("playsound")]
     public static void PlaySound(string soundName)
     {
@@ -369,9 +448,17 @@ public class StaticImageTagManager : MonoBehaviour
                 break;
             }
         }
-        instance.audioSource.volume = foundSound.volume;
-        instance.audioSource.loop = foundSound.loop;
-        instance.audioSource.PlayOneShot(foundSound.soundClip);
+
+        if (foundSound != null)
+        {
+            instance.audioSource.volume = foundSound.volume;
+            instance.audioSource.loop = foundSound.loop;
+            instance.audioSource.PlayOneShot(foundSound.soundClip);
+        }
+        else
+        {
+            Debug.LogError($"Sound not found: {soundName}");
+        }
     }
 
     public void EnableRaycaster()
@@ -383,5 +470,4 @@ public class StaticImageTagManager : MonoBehaviour
     {
         graphicRaycaster.enabled = false;
     }
-
 }
