@@ -46,8 +46,11 @@ public class StaticImageTagManager : MonoBehaviour
     [Tooltip("List of tags corresponding to each sprite")]
     public List<string> spriteTags = new List<string>();
 
-    [Tooltip("Prefab for the UI Image to instantiate")]
-    public Image imagePrefab;
+    [Tooltip("List of Image Prefabs to use for different image types")]
+    public List<Image> imagePrefabs = new List<Image>();
+
+    [Tooltip("Default Image Prefab to use if no specific prefab is specified")]
+    public Image defaultImagePrefab;
 
     [Tooltip("List of positions where images can be placed")]
     public List<PositionData> positions = new List<PositionData>();
@@ -173,7 +176,7 @@ public class StaticImageTagManager : MonoBehaviour
     }
 
     [YarnCommand("sprite")]
-    public static void ShowImage(string spriteTag, string positionName)
+    public static void ShowImage(string spriteTag, string positionName, string prefabName = "")
     {
         if (instance == null)
         {
@@ -217,8 +220,23 @@ public class StaticImageTagManager : MonoBehaviour
             return;
         }
 
+        // Find the appropriate image prefab
+        Image imagePrefabToUse = instance.defaultImagePrefab;
+
+        if (!string.IsNullOrEmpty(prefabName))
+        {
+            foreach (var prefab in instance.imagePrefabs)
+            {
+                if (prefab.name == prefabName)
+                {
+                    imagePrefabToUse = prefab;
+                    break;
+                }
+            }
+        }
+
         // Create a new UI Image at the target position
-        Image newImage = Instantiate(instance.imagePrefab, positionTransform);
+        Image newImage = Instantiate(imagePrefabToUse, positionTransform);
         newImage.sprite = foundSprite;
         newImage.transform.localPosition = Vector3.zero;
         newImage.gameObject.SetActive(true);

@@ -1649,8 +1649,6 @@ MonoBehaviour:
   button: {fileID: 1067717647}
   dialoguelol: {fileID: 1530739965}
   document: {fileID: 11400000, guid: dce22b328e7f707409cdd22632f370b8, type: 2}
-  goodsoup: {fileID: 0}
-  badsoup: {fileID: 0}
 --- !u!114 &1067717647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2684,7 +2682,8 @@ MonoBehaviour:
   - clara.happy
   - clara.clap
   - clara.think
-  imagePrefab: {fileID: 109241831391635419, guid: b0b4838da07a1f14eb3ebdf825e4d894, type: 3}
+  imagePrefabs: []
+  defaultImagePrefab: {fileID: 0}
   positions:
   - positionName: gings
     positionTransform: {fileID: 207196865}

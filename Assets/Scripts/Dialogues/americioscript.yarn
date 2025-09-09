@@ -1,0 +1,73 @@
+﻿title: americiono
+---
+<<darken>>
+Amerício: AHHH, que barulheira!! Não tem um pingo de sã consciência pra deixar um velho em paz!! Vai encher o saco de idosos na--
+Narração: Você tampou seus ouvidos e se afastou da porta.
+<<brighten>>
+
+===	
+
+title: americioroomwin
+---
+<<darken>>
+Amerício: MAS EU JÁ NÃO FALEI QUE- 
+Amerício: *sniff sniff*
+Amerício: Hmmm... que cheiro bom...
+Amerício: Isso não seria um pote quentinho com a sopa maravilhosa da Lucinha, seria..?
+Infnetina: S-Sim… Prazer meu nome é-
+Amerício: SIM SIM, prazer te conhecer, dá essa sopa aqui…
+Narração: A porta fecha na sua cara, mas não está trancada.
+Infnetina: (... ok???)
+<<brighten>>
+
+===	
+
+title: americiotalk
+---
+<<darken>>
+Infnetina: Você deve ser o Amerício…
+<<disappear>>
+<<sprite americio.idle gings>>
+Amerício: Hmhm…
+Infnetina: [i]Charmoso como esperado…[/i]
+<<sprite americio.mad gings>>
+Amerício: O que você disse, jovem?!
+Infnetina: Nada nada! Eu quis dizer…
+Infnetina: ...O forro da sua cama é listrado!
+<<sprite americio.idle gings>>
+Amerício: .....
+Infnetina: Erm… Você por acaso viu o residente Joaquim por ai? A Lucinha pediu pra eu avisar ele que a sopa está pronta…
+<<sprite americio.confused gings>>
+Amerício: HAHA! É claro que ela pediu… Essa velha esquecida…
+<<sprite americio.mad gings>>
+Amerício: Como você parece ser nova aqui, vou te explicar.
+Amerício: O querido Joaquim está… 
+<<sprite americio.sad gings>>
+Amerício: Morto…
+Amerício: Ele faleceu a alguns meses. Eu, a Lucinha e Euclides éramos muito próximos. 
+<<sprite americio.mad gings>>
+Amerício: Mas desde então… A memória da Lucy tem piorado, o Euclides não troca uma palavra com ninguém, eu prefiro mais é que me deixem em paz!
+<<sprite americio.sad gings>>
+Amerício: Nunca vou encontrar um amigo tão bom como aquele velho afobado…
+Infnetina: Nossa… Mil desculpas!
+Infnetina: Eu não fazia ideia…
+<<sprite americio.idle gings>>
+Amerício: Tudo bem… Muitos dos funcionários aqui não ligam pra esse tipo de coisa.
+<<sprite americio.mad gings>>
+Amerício: Eles cuidam da casa e nos mantem ‘saudáveis’, mas nunca conversam ou questionam como nos estamos… Igual muita das nossas famílias…
+<<sprite americio.idle gings>>
+Amerício: Falando em família… Você pode me ajudar com algo…
+Infnetina: Claro, Amerício. O que você precisar!
+<<sprite americio.confused gings>>
+Amerício: Eu quero… Minto, eu PRECISO ligar para minha família… Meu filho.
+<<sprite americio.sad gings>>
+Amerício: Não falo com ele a algumas semanas, e essa situação toda com o Joaquim e Euclides me fez sentir…
+Amerício: Enfim…
+<<sprite americio.mad gings>>
+Amerício: Eu quero ligar pra ele, mas eu não consigo usar o celular que ele me deu!
+Infnetina: Sem problemas, é muito simples! Me dá seu celular que eu te mostro.
+<<removesprite gings>>
+<<progress "Joaquim Reveal">>
+<<brighten>>
+
+===	

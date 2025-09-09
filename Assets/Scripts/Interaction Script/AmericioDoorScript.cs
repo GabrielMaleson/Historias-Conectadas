@@ -5,13 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Yarn;
 using Yarn.Unity;
 
-public class ClaraScript : MonoBehaviour
+public class AmericioDoorScript : MonoBehaviour
 {
     public Button button;
-    public DialogueRunner dialoguelol;
-    public InventoryItem document;
+    public DialogueRunner dialogue;
     public InventoryItem goodsoup;
     public InventoryItem badsoup;
 
@@ -20,43 +20,45 @@ public class ClaraScript : MonoBehaviour
         InventorySlot item = collision.GetComponent<InventorySlot>();
         GameObject inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
 
-        if (item != null && item.slotTags.Contains("Document"))
+        if (item != null && item.slotTags.Contains("Sopa Queimada"))
         {
-            Debug.Log("Door opened with key!");
-            DoThing(document);
-            button.enabled = true;
-        }
-
-        else if (item != null && item.slotTags.Contains("Sopa Queimada"))
-        {
-            Debug.Log("Door opened with key!");
             DoBadThing(badsoup);
             button.enabled = true;
         }
 
         else if (item != null && item.slotTags.Contains("Sopa Boa"))
         {
-            Debug.Log("Door opened with key!");
             DoGoodThing(goodsoup);
             button.enabled = true;
         }
     }
-
-    private void DoThing(InventoryItem item)
-    {
-        dialoguelol.StartDialogue("receptionsuccess");
-        InventoryManager.Instance.RemoveItem(item);
-    }
     private void DoGoodThing(InventoryItem item)
     {
-        dialoguelol.StartDialogue("americioroomwin");
+        dialogue.StartDialogue("americioroomwin");
         InventoryManager.Instance.RemoveItem(item);
         InventoryManager.Instance.AddProgress("Good soup");
+        InventoryManager.Instance.AddProgress("Gave soup");
     }
     private void DoBadThing(InventoryItem item)
     {
-        dialoguelol.StartDialogue("americioroomlose");
+        dialogue.StartDialogue("americioroomlose");
         InventoryManager.Instance.RemoveItem(item);
         InventoryManager.Instance.AddProgress("Bad soup");
+        InventoryManager.Instance.AddProgress("Gave soup");
     }
+    public void EnterDoor()
+    {
+        // Get the InventoryManager instance
+        InventoryManager inventoryManager = InventoryManager.Instance;
+
+        if (inventoryManager != null && inventoryManager.gameProgress.Contains("Gave soup"))
+        {
+            SceneManager.LoadScene("AmericioRoom");
+        }
+        else
+        {
+            dialogue.StartDialogue("americiono");
+        }
+    }
+
 }
