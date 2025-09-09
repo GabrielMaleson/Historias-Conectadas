@@ -1066,16 +1066,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 510768577}
-        m_TargetAssemblyTypeName: InventoryButtonHandler, Assembly-CSharp
-        m_MethodName: LoadASceneItem
+      - m_Target: {fileID: 1530739968}
+        m_TargetAssemblyTypeName: Yarn.Unity.DialogueRunner, YarnSpinner.Unity
+        m_MethodName: StartDialogue
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Kitchen
+          m_StringArgument: livingroomnah
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &619394800
@@ -1848,16 +1848,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 510768577}
-        m_TargetAssemblyTypeName: InventoryButtonHandler, Assembly-CSharp
-        m_MethodName: LoadASceneItem
+      - m_Target: {fileID: 1530739968}
+        m_TargetAssemblyTypeName: Yarn.Unity.DialogueRunner, YarnSpinner.Unity
+        m_MethodName: StartDialogue
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Reception
+          m_StringArgument: livingroomnah
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1001 &1291237608
@@ -1959,6 +1959,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3825127896109650416, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1291237614}
+    - targetCorrespondingSourceObject: {fileID: 3825127896109650416, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1291237615}
   m_SourcePrefab: {fileID: 100100000, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
 --- !u!1 &1291237609 stripped
 GameObject:
@@ -1980,8 +1983,23 @@ MonoBehaviour:
   conditions:
   - condition: Euclides Intro
     conditionMeansItDoesNotLoad: 0
-  dialogueToLoad: claraclarify
+  - condition: clarification
+    conditionMeansItDoesNotLoad: 1
+  dialogueToLoad: clarification
   dialogueRunner: {fileID: 1530739968}
+--- !u!114 &1291237615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291237609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43006db7ba92db74e90ff6a99bd16dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 1530739968}
 --- !u!1 &1370465077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,6 +2092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 348870734}
+  disappearCharacter: {fileID: 0}
   continueButton: {fileID: 0}
   graphicRaycaster: {fileID: 1014171535}
   sprites:
@@ -2325,16 +2344,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 510768577}
-        m_TargetAssemblyTypeName: InventoryButtonHandler, Assembly-CSharp
-        m_MethodName: LoadASceneItem
-        m_Mode: 5
+      - m_Target: {fileID: 1291237615}
+        m_TargetAssemblyTypeName: DoorScript, Assembly-CSharp
+        m_MethodName: EnterDoor
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Hallway
+          m_StringArgument: introlivinghall
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1001 &2066292508
@@ -2533,7 +2552,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Euclides Room
+          m_StringArgument: Intro Euclides Room
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1660057539 &9223372036854775807

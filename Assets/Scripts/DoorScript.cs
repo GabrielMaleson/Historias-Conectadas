@@ -3,37 +3,23 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class DoorScript : MonoBehaviour
 {
-    public bool DoorOpened = false;
-
+    public DialogueRunner dialogue;
     public void EnterDoor()
     {
-        if (DoorOpened)
-        {
-            Debug.Log("Door entered");
-            SceneManager.LoadScene("Kitchen");
-        }
+        // Get the InventoryManager instance
+        InventoryManager inventoryManager = InventoryManager.Instance;
 
+        if (inventoryManager != null && inventoryManager.gameProgress.Contains("clarification"))
+        {
+            SceneManager.LoadScene("Hallway");
+        }
         else
         {
-            return;
-        }
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        InventorySlot item = collision.GetComponent<InventorySlot>();
-        GameObject inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
-
-        if (item != null && item.slotTags.Contains("Door Key"))
-        {
-            if (!DoorOpened)
-            {
-                DoorOpened = true;
-                Debug.Log("Door opened with key!");
-            }
+            dialogue.StartDialogue("livingroomnah");
         }
     }
 }

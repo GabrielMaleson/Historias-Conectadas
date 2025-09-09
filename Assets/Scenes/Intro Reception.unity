@@ -326,13 +326,17 @@ PrefabInstance:
       value: -88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7908600587621870110, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3050286830750778303, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1405371057}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
 --- !u!224 &207196865 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4273535946358340213, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3050286830750778303, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
   m_PrefabInstance: {fileID: 207196864}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &332710088
@@ -1791,6 +1795,41 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!1 &1405371056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1405371057}
+  m_Layer: 5
+  m_Name: gings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1405371057
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405371056}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.59017193, y: 0.59017193, z: 0.59017193}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 207196865}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.890686, y: 282.5399}
+  m_SizeDelta: {x: 257.8765, y: 379.3199}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1437735015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2169,7 @@ MonoBehaviour:
   imagePrefab: {fileID: 109241831391635419, guid: b0b4838da07a1f14eb3ebdf825e4d894, type: 3}
   positions:
   - positionName: gings
-    positionTransform: {fileID: 207196865}
+    positionTransform: {fileID: 1405371057}
   sounds:
   - soundName: run
     soundClip: {fileID: 8300000, guid: a398aed4603f0494cbccbab23d192e77, type: 3}

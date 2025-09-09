@@ -32,4 +32,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Reception.unity
     guid: f5d0bc7d1cdc27541b9c615eb5af7e26
+  - enabled: 1
+    path: Assets/Scenes/Euclides Room.unity
+    guid: 182dc7224bead344da78be67157bae62
+  - enabled: 1
+    path: Assets/Scenes/Intro Euclides Room.unity
+    guid: cb002afe988c5e6428f85961a8e0e59d
+  - enabled: 1
+    path: Assets/Scenes/Intro Living Room.unity
+    guid: 32320683f65f1fc47999e72d8b9c4a13
+  - enabled: 1
+    path: Assets/Scenes/Reception Test.unity
+    guid: 4cf384c78e6b2b34fb478ffb9702f529
   m_configObjects: {}
