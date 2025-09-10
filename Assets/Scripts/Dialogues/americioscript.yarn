@@ -66,6 +66,7 @@ Amerício: Enfim…
 <<sprite americio.mad gings>>
 Amerício: Eu quero ligar pra ele, mas eu não consigo usar o celular que ele me deu!
 Infnetina: Sem problemas, é muito simples! Me dá seu celular que eu te mostro.
+Amerício: Vou deixar na mesa. Melhor você estar certa...
 <<removesprite gings>>
 Narração: Objetivo atualizado.
 <<progress "Joaquim Reveal">>
