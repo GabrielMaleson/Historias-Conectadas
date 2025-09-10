@@ -73,3 +73,21 @@ Narração: Objetivo atualizado.
 <<brighten>>
 
 ===	
+
+title: americiosuccess
+--- 
+<<darken>>
+Infnetina: Nossa! Seu celular estava *repleto* de vírus! Acho que consegui remover todos.
+Infnetina: Eu também criei um atalho pro senhor, só precisa apertar esse botão aqui, e pronto!
+<<sprite americio.confused gings>>
+Amerício: Que facilidade! Muito obrigado minha filha!
+<<sprite americio.idle gings>>
+Amerício: ...
+<<sprite americio.sad gings>>
+Amerício: Eu credito que você consiga falar com o Euclides…
+<<sprite americio.confused gings>>
+Amerício: Você tem um coração doce e uma personalidade amigável… Talvez tudo que o Euclides precise para se abrir… 
+Amerício: Uma pessoa nova na vida dele que realmente deseja ouvir, e ajudar ele…
+Infnetina: Obrigado Amerício… Vou tentar o meu melhor!
+<<removesprite gings>>
+<<brighten>>
