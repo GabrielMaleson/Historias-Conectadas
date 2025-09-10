@@ -2563,14 +2563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba43ed80e9463e3478e33742ee65be14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 100
-  maxTime: 0
-  timerImage: {fileID: 220191312}
   initialScene: Kitchen
-  Timer: {fileID: 1579501196}
   dialogueRunner: {fileID: 1350797924}
-  sopaQueimada: {fileID: 11400000, guid: fc0a171fd052a5444a6aa516284c54b9, type: 2}
-  sopaBoa: {fileID: 11400000, guid: 8c8f55898bff2344fa6e5202baff34ce, type: 2}
+  soupItem: {fileID: 11400000, guid: 8c8f55898bff2344fa6e5202baff34ce, type: 2}
   isMinigameActive: 0
   GotOnions: 0
   GotSausages: 0
@@ -2991,6 +2986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 35577527}
+  disappearCharacter: {fileID: 0}
   continueButton: {fileID: 0}
   graphicRaycaster: {fileID: 1621438170}
   sprites:
@@ -3001,7 +2997,8 @@ MonoBehaviour:
   - lucy.sad
   - lucy.happy
   - lucy.forgot
-  imagePrefab: {fileID: 109241831391635419, guid: 2c7ca962f97ee7844ad38fd3a1cceedd, type: 3}
+  imagePrefabs: []
+  defaultImagePrefab: {fileID: 0}
   positions:
   - positionName: gings
     positionTransform: {fileID: 436593005}
