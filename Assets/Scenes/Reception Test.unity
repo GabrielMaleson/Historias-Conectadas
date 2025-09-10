@@ -2683,7 +2683,7 @@ MonoBehaviour:
   - clara.clap
   - clara.think
   imagePrefabs: []
-  defaultImagePrefab: {fileID: 0}
+  defaultImagePrefab: {fileID: 109241831391635419, guid: b0b4838da07a1f14eb3ebdf825e4d894, type: 3}
   positions:
   - positionName: gings
     positionTransform: {fileID: 207196865}

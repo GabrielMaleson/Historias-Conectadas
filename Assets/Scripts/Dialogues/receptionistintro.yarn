@@ -114,3 +114,22 @@ Narração: Objetivo atualizado.
 <<reappear>>
 
 ===	
+title: claradump
+---
+<<darken>>
+<<disappear>>
+Infnetina: Clara, você pode me falar um pouco mais sobre os idosos?
+<<sprite clara.clap gings>>
+<<fadein gings 0.5>>
+Clara: Claro, Infnetina! De quem você quer saber?
+-> Lucinha.
+-> Amerício.
+-> Euclides.
+-> Mudei de ideia, desculpa!
+<<sprite clara.clap gings>>
+Clara: Eles adoram conhecer novos funcionários!
+Infnetina: Ok! Vou ir lá, então.
+<<removesprite gings>>
+<<brighten>>
+<<reappear>>
+===
