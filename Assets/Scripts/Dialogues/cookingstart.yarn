@@ -20,19 +20,6 @@ Lucinha: O prazer é todo meu, querida. Meu nome é Lucinha, sou uma das residen
     Luci: Ah... tudo bem.
     <<set $start_cooking to false>>
 
-
-Lucinha: Sim! Adoraria um pouco de ajuda a terminar minha sopa pro meu amigo ingrato, Amerício…
-<<sprite lucy.forgot gings>>
-Lucinha: Surpreendentemente, ele parece estar de pior humor do que o normal.
-<<sprite lucy.sad gings>>
-Lucinha: Também se sobrar, acho que seria bom o Euclides comer alguma coisa… 
-Lucinha: Aquele doce era tão carinhoso… Não sei o que deu na cabeça dele nos últimos tempos pra ele ficar tão fechado assim…
-Narração: *A sopa começa a queimar*
-Infnetina: Lucinha… Que cheiro é esse…?
-<<sprite lucy.forgot gings>>
-Lucinha: Jesus Maria e José!! A sopa está queimando!! 
-Lucinha: Rápido querida, junte esses ingredientes pra mim enquanto eu mexo a sopa!
-
 <<if $start_cooking>>
     Lucinha: Sim! Adoraria um pouco de ajuda a terminar minha sopa pro meu amigo ingrato, Amerício…
     <<sprite lucy.forgot gings>>
@@ -40,15 +27,13 @@ Lucinha: Rápido querida, junte esses ingredientes pra mim enquanto eu mexo a so
     <<sprite lucy.sad gings>>
     Lucinha: Também se sobrar, acho que seria bom o Euclides comer alguma coisa… 
     Lucinha: Aquele doce era tão carinhoso… Não sei o que deu na cabeça dele nos últimos tempos pra ele ficar tão fechado assim…
-    Narração: *A sopa começa a queimar*
-    Infnetina: Lucinha… Que cheiro é esse…?
-    <<sprite lucy.forgot gings>>
-    Lucinha: Jesus Maria e José!! A sopa está queimando!! 
-    Lucinha: Rápido querida, junte esses ingredientes pra mim enquanto eu mexo a sopa!
-    Infnetina: Pode deixar, Luci! Vou apressar!
+    <<sprite lucy.happy gings>>
+    Lucinha: Estou usando meu livro de receitas que herdei da minha família, mas eu sei a receita de cor!
+    Lucinha: Querida, encontra o bacon na cozinha pra mim enquanto eu mexo a sopa, por favor?
+    Infnetina: Pode deixar, Luci! Vou ir lá!
     <<removesprite gings>>
     <<startcooking Timer>>
-    <<objective "Achar Bacon, Pimenta, Cebola, Alho e Salsicha na cozinha">>
+    <<objective "Achar Bacon na cozinha">>
 <<else>>
     Luci: Vou estar esperando aqui. Só vou precisar de algumas coisas se quiser me ajudar depois!
     <<removesprite gings>>
@@ -56,32 +41,74 @@ Lucinha: Rápido querida, junte esses ingredientes pra mim enquanto eu mexo a so
 <<brighten>>
 ===
 
+title: lucibacon
+---
+<<sprite lucy.forgot gings lucyforgot>>
+Lucinha: Não, espera... não está certo, bacon não combina... será que precisa da [b]pimenta[/b]...?
+Lucinha: Infnetina, vai procurar lá por favor?
+Infnetina: Ok, Luci! Vou pegar.
+Narração: Objetivo atualizado.
+<<removesprite gings>>
+<<objective "Encontrar a Pimenta">>
+===
+
+title: lucipepper
+---
+<<sprite lucy.forgot gings lucyforgot>>
+Lucinha: Espera, nem me dá isso! Pimenta vai queimar a língua do coitado! Mas qual que era o ingrediente que eu estava faltando...?
+Lucinha: Ah, lembrei! É a salsicha!
+Lucinha: Infnetina, você pode ir lá pegar?
+Infnetina: Tudo bem, Luci!
+Narração: Objetivo atualizado.
+<<removesprite gings>>
+<<objective "Encontrar a Salsicha">>
+===
+
+title: lucisausage
+---
+<<sprite lucy.forgot gings lucyforgot>>
+Lucinha: Não, não, não! Está tudo errado! Não é a salsicha... nem pimenta... credo, qual era esse último ingrediente...?
+Lucinha: Clara, eu preciso da sua ajuda. Por favor...
+Infnetina: Luci, eu sou a Infnetina...
+<<sprite lucy.sad gings lucysad>>
+Lucinha: Ah... é mesmo... 
+Lucinha: Nossa... como que eu queria lembrar esse último ingrediente... mas eu nem lembro onde deixo minhas receitas...
+Lucinha: Ermm… Infnetina... pode olhar a receita, por favor?
+Infnetina: Não se preocupa, Luci! Vou achar!
+Infnetina: (Se ela tem receitas, será que ela deixou no quarto?)
+Narração: Objetivo atualizado...?
+<<removesprite gings>>
+<<objective "Encontrar o último ingrediente">>
+===
+
+title: luciwrong
+---
+<<sprite lucy.forgot gings lucyforgot>>
+Lucinha: Não, esse ingrediente não é parte da sopa! Não quero!
+<<removesprite gings>>
+===
+
 title: wincooking
 ---
 
 <<darken>>
 <<sprite lucy.happy gings>>
-Luci: Eba! Obrigada mais uma vez, Infnetina! A sopa não queimou!
+Lucinha: Não, esse ingrediente não é parte da sopa! Não quero!
+Infnetina: Mas Luci, a receita do seu livro está dizendo que é...
+<<sprite lucy.forgot gings lucyforgot>>
+Lucinha: Espera... deixa eu ver, por favor?
+Lucinha: Hum...
+<<sprite lucy.happy gings>>
+Lucinha: Clara, você é genial! O último ingrediente era [b]Cebola![/b]
 Infnetina: Sempre feliz em lhe ajudar, Luci! De nada!
+<<sprite lucy.sad gings lucysad>>
+Lucinha: Essa é a receita favorita do Joaquim… Poxa, a quanto tempo que eu não vejo aquele doce… Se você encontrar ele pela casa, me faz um favor e avise ele que eu fiz essa sopa? 
+Infnetina: Claro que vou, Luci! Só vou falar com o Amerício antes, ok?
+Lucinha: Amém! Eu bem que estava querendo fazer uma sopa pra ele...
+Infnetina: ...
 <<removesprite gings>>
 Narração: Objetivo atualizado.
-<<objective "Entregar a sopa para a Clara">>
-<<brighten>>
-===
-
-title: losecooking
----
-
-<<darken>>
-<<sprite lucy.sad gings>>
-Luci: Ah, que pena... a sopa queimou. 
-Infnetina: Desculpa, Lucinha, não consegui achar...
-<<removesprite gings>>
-<<sprite lucy.happy>>
-Luci: Tem problema não, Infnetinha! Fica pra próxima. O Amerício deve gostar mesmo assim.
-<<removesprite gings>>
-Narração: Objetivo atualizado.
-<<objective "Entregar a sopa para a Clara">>
+<<objective "Entregar a sopa para o Amerício">>
 <<brighten>>
 ===
 
