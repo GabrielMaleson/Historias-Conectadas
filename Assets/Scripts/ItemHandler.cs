@@ -56,7 +56,7 @@ public class InventoryButtonHandler : MonoBehaviour
     {
         Image image = fadein.GetComponent<Image>();
 
-        float duration = 5f;
+        float duration = 1f;
         float currentTime = 0f;
 
             Color color = image.color;
