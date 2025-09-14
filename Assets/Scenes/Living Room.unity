@@ -1991,6 +1991,8 @@ MonoBehaviour:
   conditions:
   - condition: clarification
     conditionMeansItDoesNotLoad: 0
+  - condition: Luci Intro
+    conditionMeansItDoesNotLoad: 1
   dialogueToLoad: luciintro
   dialogueRunner: {fileID: 1014171536}
 --- !u!1 &1370465077

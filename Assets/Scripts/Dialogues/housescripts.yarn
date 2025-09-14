@@ -31,6 +31,15 @@ Infnetina: (Que estranho... o que houve com ele?)
 
 ===
 
+title: lucinothere
+---
+<<introdarken>>
+Infnetina: (Hm... não tem ninguém aqui. Será que ela está na cozinha...?)
+<<brighten>>
+<<sceneload "Hallway">>
+
+===
+
 title: livingroomnah
 ---
 <<darken>>

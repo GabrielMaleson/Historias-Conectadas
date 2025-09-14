@@ -3,6 +3,7 @@
 <<declare $start_cooking = true as bool>>
 
 <<darken>>
+<<disappear>>
 <<sprite lucy.happy gings>>
 Lucinha: Ahh! Bom dia Clar-! 
 <<sprite lucy.forgot gings>>
@@ -38,22 +39,29 @@ Lucinha: O prazer é todo meu, querida. Meu nome é Lucinha, sou uma das residen
     Luci: Vou estar esperando aqui. Só vou precisar de algumas coisas se quiser me ajudar depois!
     <<removesprite gings>>
 <<endif>>
+<<reappear>>
 <<brighten>>
 ===
 
 title: lucibacon
 ---
+<<darken>>
+<<disappear>>
 <<sprite lucy.forgot gings lucyforgot>>
 Lucinha: Não, espera... não está certo, bacon não combina... será que precisa da [b]pimenta[/b]...?
 Lucinha: Infnetina, vai procurar lá por favor?
 Infnetina: Ok, Luci! Vou pegar.
 Narração: Objetivo atualizado.
 <<removesprite gings>>
+<<reappear>>
 <<objective "Encontrar a Pimenta">>
+<<brighten>>
 ===
 
 title: lucipepper
 ---
+<<darken>>
+<<disappear>>
 <<sprite lucy.forgot gings lucyforgot>>
 Lucinha: Espera, nem me dá isso! Pimenta vai queimar a língua do coitado! Mas qual que era o ingrediente que eu estava faltando...?
 Lucinha: Ah, lembrei! É a salsicha!
@@ -61,11 +69,15 @@ Lucinha: Infnetina, você pode ir lá pegar?
 Infnetina: Tudo bem, Luci!
 Narração: Objetivo atualizado.
 <<removesprite gings>>
+<<reappear>>
 <<objective "Encontrar a Salsicha">>
+<<brighten>>
 ===
 
 title: lucisausage
 ---
+<<darken>>
+<<disappear>>
 <<sprite lucy.forgot gings lucyforgot>>
 Lucinha: Não, não, não! Está tudo errado! Não é a salsicha... nem pimenta... credo, qual era esse último ingrediente...?
 Lucinha: Clara, eu preciso da sua ajuda. Por favor...
@@ -78,20 +90,26 @@ Infnetina: Não se preocupa, Luci! Vou achar!
 Infnetina: (Se ela tem receitas, será que ela deixou no quarto?)
 Narração: Objetivo atualizado...?
 <<removesprite gings>>
+<<reappear>>
 <<objective "Encontrar o último ingrediente">>
+<<brighten>>
 ===
 
 title: luciwrong
 ---
+<<darken>>
+<<disappear>>
 <<sprite lucy.forgot gings lucyforgot>>
 Lucinha: Não, esse ingrediente não é parte da sopa! Não quero!
 <<removesprite gings>>
+<<brighten>>
 ===
 
 title: wincooking
 ---
 
 <<darken>>
+<<disappear>>
 <<sprite lucy.happy gings>>
 Lucinha: Não, esse ingrediente não é parte da sopa! Não quero!
 Infnetina: Mas Luci, a receita do seu livro está dizendo que é...
@@ -107,6 +125,7 @@ Infnetina: Claro que vou, Luci! Só vou falar com o Amerício antes, ok?
 Lucinha: Amém! Eu bem que estava querendo fazer uma sopa pra ele...
 Infnetina: ...
 <<removesprite gings>>
+<<reappear>>
 Narração: Objetivo atualizado.
 <<objective "Entregar a sopa para o Amerício">>
 <<brighten>>

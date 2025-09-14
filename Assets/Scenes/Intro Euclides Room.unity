@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293532119529850695, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: LivingRoom
+      value: Living Room
       objectReference: {fileID: 0}
     - target: {fileID: 7293532119529850695, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

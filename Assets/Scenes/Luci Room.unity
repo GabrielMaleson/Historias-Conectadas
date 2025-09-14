@@ -827,8 +827,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3825127896109650416, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 645648561}
   m_SourcePrefab: {fileID: 100100000, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
+--- !u!1 &645648560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3825127896109650416, guid: b2b66c97f03db484b93d63a3ec462976, type: 3}
+  m_PrefabInstance: {fileID: 645648559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &645648561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645648560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691b9a5f6b604dc4bb782fed3ffbb8aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - condition: Did Cooking
+    conditionMeansItDoesNotLoad: 1
+  dialogueToLoad: lucinothere
+  dialogueRunner: {fileID: 1579218658}
 --- !u!1 &667736112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1744,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8137279940467459781, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
   m_PrefabInstance: {fileID: 1579218656}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1579218658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7455658921245003448, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
+  m_PrefabInstance: {fileID: 1579218656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579218657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1579218660
 MonoBehaviour:
   m_ObjectHideFlags: 0

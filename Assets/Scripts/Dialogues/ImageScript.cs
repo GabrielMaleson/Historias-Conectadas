@@ -275,14 +275,38 @@ public class StaticImageTagManager : MonoBehaviour
         instance.ObjectiveObj.text = objectivetext;
     }
 
+    // Add these at the top with other class variables
+    public event System.Action OnDialogueDarken;
+    public event System.Action OnDialogueSuperDarken;
+    public event System.Action OnDialogueBrighten;
+
+    // Modify the existing YarnCommand methods to trigger the events:
+
     [YarnCommand("darken")]
     public static void DialogueDarken()
     {
         instance.blackScreen.SetActive(true);
         instance.StartCoroutine(instance.FadeToBlack());
         instance.FixDialogueRunner();
+        instance.OnDialogueDarken?.Invoke(); // Add this line
     }
 
+    [YarnCommand("introdarken")]
+    public static void DialogueSuperDarken()
+    {
+        instance.blackScreen.SetActive(true);
+        instance.StartCoroutine(instance.FadeToUltraBlack());
+        instance.FixDialogueRunner();
+        instance.OnDialogueSuperDarken?.Invoke(); // Add this line
+    }
+
+    [YarnCommand("brighten")]
+    public static void DialogueBrighten()
+    {
+        instance.StartCoroutine(instance.FadeToWhite());
+        instance.DisableRaycaster();
+        instance.OnDialogueBrighten?.Invoke(); // Add this line
+    }
     private IEnumerator FadeToBlack()
     {
         Image blackScreenImage = blackScreen.GetComponent<Image>();
@@ -304,15 +328,6 @@ public class StaticImageTagManager : MonoBehaviour
         }
         instance.EnableRaycaster();
     }
-
-    [YarnCommand("introdarken")]
-    public static void DialogueSuperDarken()
-    {
-        instance.blackScreen.SetActive(true);
-        instance.StartCoroutine(instance.FadeToUltraBlack());
-        instance.FixDialogueRunner();
-    }
-
     private IEnumerator FadeToUltraBlack()
     {
         Image blackScreenImage = blackScreen.GetComponent<Image>();
@@ -333,13 +348,6 @@ public class StaticImageTagManager : MonoBehaviour
             yield return null;
         }
         instance.EnableRaycaster();
-    }
-
-    [YarnCommand("brighten")]
-    public static void DialogueBrighten()
-    {
-        instance.StartCoroutine(instance.FadeToWhite());
-        instance.DisableRaycaster();
     }
 
     private IEnumerator FadeToWhite()
