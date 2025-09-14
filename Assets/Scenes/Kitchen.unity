@@ -2970,8 +2970,9 @@ MonoBehaviour:
   - lucy.happy
   - lucy.forgot
   imagePrefabs:
-  - {fileID: 2240053685195993304, guid: fe8d15f7e3f854d4bb97c3998c1a4870, type: 3}
   - {fileID: 2879899060333769608, guid: d8ec2102ded91fc48afe7180dd5e58bc, type: 3}
+  - {fileID: 2240053685195993304, guid: fe8d15f7e3f854d4bb97c3998c1a4870, type: 3}
+  - {fileID: 109241831391635419, guid: 2c7ca962f97ee7844ad38fd3a1cceedd, type: 3}
   defaultImagePrefab: {fileID: 109241831391635419, guid: 2c7ca962f97ee7844ad38fd3a1cceedd, type: 3}
   positions:
   - positionName: gings
