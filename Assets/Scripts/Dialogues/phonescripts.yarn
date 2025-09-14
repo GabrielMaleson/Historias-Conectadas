@@ -51,3 +51,33 @@ Amerício: Essa porcaria quebrou já faz alguns anos - não tirei sequer uma fot
 <<brighten>>
 
 ===
+
+title: nopicture
+---
+
+<<darken>>
+Infnetina: (Acho que é melhor eu ver uma foto na galeria dele antes de escolher...)
+<<brighten>>
+
+===
+title: foundpic
+---
+
+<<darken>>
+Infnetina: (Essa foto vai ser perfeita pro ícone!)
+<<brighten>>
+
+===
+
+
+title: completedphone
+---
+
+<<darken>>
+Infnetina: (E... pronto! O Amerício vai ficar feliz em ver isso!)
+Narração: Objetivo atualizado.
+<<objective "Entregar o telefone de volta para o Amerício">>
+<<brighten>>
+<<sceneload "Americio Room">>
+
+===
