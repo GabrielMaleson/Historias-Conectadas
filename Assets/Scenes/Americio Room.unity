@@ -538,11 +538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4273535946358340213, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -241
+      value: -0.000015259
       objectReference: {fileID: 0}
     - target: {fileID: 4273535946358340213, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154.12
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 7908600587621870110, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
       propertyPath: m_Name
@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293532119529850695, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: LivingRoom
+      value: Living Room
       objectReference: {fileID: 0}
     - target: {fileID: 7293532119529850695, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -864,8 +864,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -39.714}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -590, y: -172}
-  m_SizeDelta: {x: 139.347, y: 144.7126}
+  m_AnchoredPosition: {x: -460, y: -109}
+  m_SizeDelta: {x: 110.7544, y: 129.2499}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667736114
 MonoBehaviour:
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 163986f85dcf8454e97e5db21e953cb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba7f18f0adfd23d459cb3fb823c38762, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2004,7 +2004,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.8312111, y: -0.47582436}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2015,7 +2015,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 72.48414, y: 99.971146}
   m_EdgeRadius: 0
 --- !u!114 &1630048558
 MonoBehaviour:

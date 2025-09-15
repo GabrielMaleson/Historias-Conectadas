@@ -216,11 +216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -311
+      value: -468
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -298
+      value: -306
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -386,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -260.11
+      value: -286
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 116641701}
   - component: {fileID: 116641700}
   - component: {fileID: 116641702}
+  - component: {fileID: 116641703}
   m_Layer: 5
   m_Name: Door
   m_TagString: Untagged
@@ -541,6 +542,51 @@ MonoBehaviour:
   dialogue: {fileID: 1014171539}
   goodsoup: {fileID: 11400000, guid: 8c8f55898bff2344fa6e5202baff34ce, type: 2}
   badsoup: {fileID: 11400000, guid: fc0a171fd052a5444a6aa516284c54b9, type: 2}
+--- !u!61 &116641703
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116641697}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000015258789, y: 1.0624695}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 209.24765, y: 564.1186}
+  m_EdgeRadius: 0
 --- !u!1 &332710088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,11 +1901,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -95
+      value: -100.41
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -135
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 6036789406084440784, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

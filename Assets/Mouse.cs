@@ -90,6 +90,7 @@ public class DialogueMouseController : MonoBehaviour, IPointerClickHandler
     {
         if (isDialogueModeActive)
         {
+            Cursor.visible = false;
             // Follow the mouse position
             FollowMouse();
 
@@ -138,6 +139,7 @@ public class DialogueMouseController : MonoBehaviour, IPointerClickHandler
     public void DeactivateDialogueMode()
     {
         isDialogueModeActive = false;
+        Cursor.visible = true;
         if (hideInNonDialogueMode)
         {
             SetMouseVisibility(false);

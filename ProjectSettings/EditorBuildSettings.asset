@@ -9,42 +9,42 @@ EditorBuildSettings:
     path: Assets/Scenes/Title Screen.unity
     guid: cb2ba5f031eaf1d4fbce23a0d03ba576
   - enabled: 1
-    path: Assets/Scenes/Intro Bus.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Kitchen.unity
-    guid: a931676c15a9b0b479277ec15ba01827
-  - enabled: 1
-    path: Assets/Scenes/Intro Reception.unity
-    guid: e390b718728ee9141b67cdbe301705a4
-  - enabled: 1
-    path: Assets/Scenes/Intro House.unity
-    guid: f43d16d1d815a3e4899b55bbb4cc6756
-  - enabled: 1
-    path: Assets/Scenes/Living Room.unity
-    guid: 15e6667fc020fa44b9d77bc545e38569
-  - enabled: 1
     path: Assets/Scenes/Americio Room.unity
     guid: 340ffb6130d9d0d48b92c659c4004642
-  - enabled: 1
-    path: Assets/Scenes/Hallway.unity
-    guid: 7e49a8b2459e3964bb60da43cfd71115
-  - enabled: 1
-    path: Assets/Scenes/Reception.unity
-    guid: f5d0bc7d1cdc27541b9c615eb5af7e26
   - enabled: 1
     path: Assets/Scenes/Euclides Room.unity
     guid: 182dc7224bead344da78be67157bae62
   - enabled: 1
+    path: Assets/Scenes/Hallway.unity
+    guid: 7e49a8b2459e3964bb60da43cfd71115
+  - enabled: 1
+    path: Assets/Scenes/Intro Bus.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
     path: Assets/Scenes/Intro Euclides Room.unity
     guid: cb002afe988c5e6428f85961a8e0e59d
   - enabled: 1
+    path: Assets/Scenes/Intro House.unity
+    guid: f43d16d1d815a3e4899b55bbb4cc6756
+  - enabled: 1
     path: Assets/Scenes/Intro Living Room.unity
     guid: 32320683f65f1fc47999e72d8b9c4a13
+  - enabled: 1
+    path: Assets/Scenes/Intro Reception.unity
+    guid: e390b718728ee9141b67cdbe301705a4
+  - enabled: 1
+    path: Assets/Scenes/Kitchen.unity
+    guid: a931676c15a9b0b479277ec15ba01827
+  - enabled: 1
+    path: Assets/Scenes/Living Room.unity
+    guid: 15e6667fc020fa44b9d77bc545e38569
   - enabled: 1
     path: Assets/Scenes/Luci Room.unity
     guid: 1f01709139f5a4840921c6d3f1fce8b8
   - enabled: 1
     path: Assets/Scenes/Phone Scene.unity
     guid: c875c1f59c2a61d42a884a771daaf924
+  - enabled: 1
+    path: Assets/Scenes/Reception.unity
+    guid: f5d0bc7d1cdc27541b9c615eb5af7e26
   m_configObjects: {}

@@ -15,6 +15,12 @@ TagManager:
   - continue button
   - TitleScreen
   - SlotParent
+  - OnionButton
+  - SausageButton
+  - BeansButton
+  - GarlicButton
+  - BaconButton
+  - PepperButton
   layers:
   - Default
   - TransparentFX

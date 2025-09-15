@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions:
-  - condition: Euclides Intro
+  - condition: euclidesintro
     conditionMeansItDoesNotLoad: 0
   - condition: clarification
     conditionMeansItDoesNotLoad: 1

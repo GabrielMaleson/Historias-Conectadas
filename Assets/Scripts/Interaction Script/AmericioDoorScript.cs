@@ -53,7 +53,7 @@ public class AmericioDoorScript : MonoBehaviour
 
         if (inventoryManager != null && inventoryManager.gameProgress.Contains("Gave soup"))
         {
-            SceneManager.LoadScene("AmericioRoom");
+            SceneManager.LoadScene("Americio Room");
         }
         else
         {

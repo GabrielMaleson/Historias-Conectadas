@@ -79,6 +79,7 @@ public class GamePause : MonoBehaviour
         }
         else
         {
+            Cursor.visible = true;
             PauseGame();
         }
     }

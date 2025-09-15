@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: beans
   m_EditorClassIdentifier: 
   itemName: Beans
-  icon: {fileID: 21300000, guid: a1f4e082ddfca1e4292d55d180ae42c3, type: 3}
+  icon: {fileID: 21300000, guid: 51a686c880f1467479b22e1928382737, type: 3}
   description: "Feij\xE3o b\xE3o. Algu\xE9m tava procurando...?"
   itemTags:
   - Beans

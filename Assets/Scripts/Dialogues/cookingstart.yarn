@@ -34,6 +34,7 @@ Lucinha: O prazer é todo meu, querida. Meu nome é Lucinha, sou uma das residen
     Infnetina: Pode deixar, Luci! Vou ir lá!
     <<removesprite gings>>
     <<startcooking Timer>>
+    <<progress Cooking>>
     <<objective "Achar Bacon na cozinha">>
 <<else>>
     Luci: Vou estar esperando aqui. Só vou precisar de algumas coisas se quiser me ajudar depois!
@@ -102,6 +103,7 @@ title: luciwrong
 <<sprite lucy.forgot gings lucyforgot>>
 Lucinha: Não, esse ingrediente não é parte da sopa! Não quero!
 <<removesprite gings>>
+<<reappear>>
 <<brighten>>
 ===
 

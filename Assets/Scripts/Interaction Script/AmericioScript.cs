@@ -26,7 +26,6 @@ public class AmericioScript : MonoBehaviour
     }
     private void DoGoodThing(InventoryItem item)
     {
-        dialogue.StartDialogue("americiosucess");
         InventoryManager.Instance.RemoveItem(item);
     }
 }

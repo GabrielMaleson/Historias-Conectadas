@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Yarn.Unity;
 
@@ -15,12 +13,14 @@ public class IngredientScript : MonoBehaviour
     public InventoryItem pepper;
     public InventoryItem onion;
     public InventoryItem bacon;
-    public InventoryItem beans; // New beans ingredient
+    public InventoryItem beans;
     public Button button;
 
-    public void Update()
+    private void Start()
     {
-        if (cook.isMinigameActive)
+        // Check if cooking minigame exists and restore button state
+        var cookingMinigame = FindObjectOfType<CookingMinigame>();
+        if (cookingMinigame != null && cookingMinigame.isMinigameActive)
         {
             button.enabled = false;
         }
@@ -29,28 +29,31 @@ public class IngredientScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         InventorySlot item = collision.GetComponent<InventorySlot>();
-        if (cook.isMinigameActive)
+        var cookingMinigame = FindObjectOfType<CookingMinigame>();
+
+        if (cookingMinigame != null && cookingMinigame.isMinigameActive)
         {
             if (item != null && item.slotTags.Contains("Bacon"))
             {
-                if (!cook.GotBacon)
+                if (!cookingMinigame.GotBacon)
                 {
-                    cook.SetBacon(true);
+                    cookingMinigame.SetBacon(true);
                     Debug.Log("Got the bacon!");
                     DoThing(bacon);
                     dialogueRunner.StartDialogue("lucibacon");
+                    // Bacon button will be deactivated automatically through the state system
                 }
             }
             else if (item != null && item.slotTags.Contains("Pepper"))
             {
-                if (cook.GotBacon && !cook.GotPeppers)
+                if (cookingMinigame.GotBacon && !cookingMinigame.GotPeppers)
                 {
-                    cook.SetPeppers(true);
+                    cookingMinigame.SetPeppers(true);
                     Debug.Log("Got the peppers!");
                     DoThing(pepper);
                     dialogueRunner.StartDialogue("lucipepper");
                 }
-                else if (!cook.GotBacon)
+                else if (!cookingMinigame.GotBacon)
                 {
                     Debug.Log("Need bacon first!");
                     dialogueRunner.StartDialogue("luciwrong");
@@ -58,14 +61,14 @@ public class IngredientScript : MonoBehaviour
             }
             else if (item != null && item.slotTags.Contains("Sausage"))
             {
-                if (cook.GotBacon && cook.GotPeppers && !cook.GotSausages)
+                if (cookingMinigame.GotBacon && cookingMinigame.GotPeppers && !cookingMinigame.GotSausages)
                 {
-                    cook.SetSausages(true);
+                    cookingMinigame.SetSausages(true);
                     Debug.Log("Got the sausages!");
                     DoThing(sausage);
                     dialogueRunner.StartDialogue("lucisausage");
                 }
-                else if (!cook.GotBacon || !cook.GotPeppers)
+                else if (!cookingMinigame.GotBacon || !cookingMinigame.GotPeppers)
                 {
                     Debug.Log("Need bacon and peppers first!");
                     dialogueRunner.StartDialogue("luciwrong");
@@ -73,31 +76,33 @@ public class IngredientScript : MonoBehaviour
             }
             else if (item != null && item.slotTags.Contains("Onion"))
             {
-                if (cook.GotBacon && cook.GotPeppers && cook.GotSausages && !cook.GotOnions)
+                if (cookingMinigame.GotBacon && cookingMinigame.GotPeppers && cookingMinigame.GotSausages && !cookingMinigame.GotOnions)
                 {
-                    cook.SetOnions(true);
+                    cookingMinigame.SetOnions(true);
                     Debug.Log("Got the onion!");
                     DoThing(onion);
                     dialogueRunner.StartDialogue("wincooking");
                 }
-                else if (!cook.GotBacon || !cook.GotPeppers || !cook.GotSausages)
+                else if (!cookingMinigame.GotBacon || !cookingMinigame.GotPeppers || !cookingMinigame.GotSausages)
                 {
                     Debug.Log("Need bacon, peppers, and sausages first!");
                     dialogueRunner.StartDialogue("luciwrong");
                 }
             }
-            else if (item != null && (item.slotTags.Contains("Garlic") || item.slotTags.Contains("Beans")))
+            else if (item != null && item.slotTags.Contains("Garlic"))
             {
-                // Wrong ingredients - garlic and beans
-                Debug.Log("Wrong ingredient!");
-                if (item.slotTags.Contains("Garlic"))
-                {
-                    DoThing(garlic);
-                }
-                else if (item.slotTags.Contains("Beans"))
-                {
-                    DoThing(beans);
-                }
+                // Wrong ingredient - garlic
+                cookingMinigame.SetGarlic(true);
+                Debug.Log("Wrong ingredient - garlic!");
+                DoThing(garlic);
+                dialogueRunner.StartDialogue("luciwrong");
+            }
+            else if (item != null && item.slotTags.Contains("Beans"))
+            {
+                // Wrong ingredient - beans
+                cookingMinigame.SetBeans(true);
+                Debug.Log("Wrong ingredient - beans!");
+                DoThing(beans);
                 dialogueRunner.StartDialogue("luciwrong");
             }
         }
