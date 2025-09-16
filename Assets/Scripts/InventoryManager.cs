@@ -96,6 +96,7 @@ public class InventoryManager : MonoBehaviour
         return new List<string>(gameProgress);
     }
 
+
     public void ClearProgress()
     {
         gameProgress.Clear();

@@ -11,6 +11,8 @@ using Yarn.Unity;
 public class AmericioScript : MonoBehaviour
 {
     public DialogueRunner dialogue;
+    public GameObject fakeButton;
+    public GameObject trueButton;
     public InventoryItem phone;
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +24,8 @@ public class AmericioScript : MonoBehaviour
         {
             DoGoodThing(phone);
             dialogue.StartDialogue("americiosuccess");
+            fakeButton.SetActive(false);
+            trueButton.SetActive(true);
         }
     }
     private void DoGoodThing(InventoryItem item)

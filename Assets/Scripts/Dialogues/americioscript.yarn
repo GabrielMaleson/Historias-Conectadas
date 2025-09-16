@@ -78,9 +78,9 @@ Narração: Objetivo atualizado.
 title: americiosuccess
 --- 
 <<darken>>
-<<disappear>>
 Infnetina: Ô Amerício! Olha só!
 Infnetina: Eu criei um atalho pro senhor - só precisa apertar esse botão aqui, e você vai conseguir ligar pro Felipe!
+<<disappear>>
 <<sprite americio.confused gings>>
 Amerício: Que facilidade! Muito obrigado minha filha!
 <<sprite americio.idle gings>>

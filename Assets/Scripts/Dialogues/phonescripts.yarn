@@ -74,11 +74,9 @@ Infnetina: (Essa foto vai ser perfeita pro ícone!)
 title: completedphone
 ---
 
-<<darken>>
 Infnetina: (E... pronto! O Amerício vai ficar feliz em ver isso!)
 Narração: Objetivo atualizado.
 <<objective "Entregar o telefone de volta para o Amerício">>
-<<brighten>>
 <<sceneload "Americio Win">>
 
 ===

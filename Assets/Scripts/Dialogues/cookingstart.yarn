@@ -112,15 +112,15 @@ title: wincooking
 
 <<darken>>
 <<disappear>>
-<<sprite lucy.happy gings>>
+<<sprite lucy.forgot gings lucyforgot>>
 Lucinha: Não, esse ingrediente não é parte da sopa! Não quero!
 Infnetina: Mas Luci, a receita do seu livro está dizendo que é...
-<<sprite lucy.forgot gings lucyforgot>>
+<<sprite lucy.sad gings lucysad>>
 Lucinha: Espera... deixa eu ver, por favor?
 Lucinha: Hum...
 <<sprite lucy.happy gings>>
 Lucinha: Clara, você é genial! O último ingrediente era [b]Cebola![/b]
-Infnetina: Sempre feliz em lhe ajudar, Luci! De nada!
+Infnetina: Sou a Infnetina, Luci. Mas estou sempre feliz em lhe ajudar! De nada!
 <<sprite lucy.sad gings lucysad>>
 Lucinha: Essa é a receita favorita do Joaquim… Poxa, a quanto tempo que eu não vejo aquele doce… Se você encontrar ele pela casa, me faz um favor e avise ele que eu fiz essa sopa? 
 Infnetina: Claro que vou, Luci! Só vou falar com o Amerício antes, ok?

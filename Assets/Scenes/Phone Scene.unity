@@ -11511,7 +11511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 163986f85dcf8454e97e5db21e953cb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba7f18f0adfd23d459cb3fb823c38762, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12434,7 +12434,8 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7760039857871663422, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7626983717412111057, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
     m_AddedGameObjects: []
@@ -12477,7 +12478,7 @@ MonoBehaviour:
   blackScreen: {fileID: 35577527}
   disappearCharacter: {fileID: 1630048554}
   continueButton: {fileID: 1579218658}
-  graphicRaycaster: {fileID: 1621438170}
+  graphicRaycaster: {fileID: 0}
   sprites:
   - {fileID: 21300000, guid: aefe6a631912ba540871cbe3b56c43b7, type: 3}
   - {fileID: 21300000, guid: 78f225a8bd2a6d04d9c06353d7033a63, type: 3}
@@ -13259,17 +13260,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618464350}
   m_CullTransparentMesh: 1
---- !u!114 &1621438170 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7760039857871663422, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
-  m_PrefabInstance: {fileID: 1579218656}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1630048553 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8098289736889363573, guid: 2824bd836963ff340991a59011d377c9, type: 3}

@@ -873,7 +873,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0189fd880d6f7724bad1025769449cb5, type: 3}
   - {fileID: 21300000, guid: d14adb247aebba144b44e52d21e67523, type: 3}
   slideImage: {fileID: 505734365}
-  transitionInterval: 2
+  transitionInterval: 3
   fadeDuration: 1
 --- !u!82 &801343777
 AudioSource:
