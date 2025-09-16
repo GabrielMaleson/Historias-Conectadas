@@ -6,9 +6,9 @@
 <<disappear>>
 <<sprite lucy.happy gings>>
 Lucinha: Ahh! Bom dia Clar-! 
-<<sprite lucy.forgot gings>>
+<<sprite lucy.forgot gings lucyforgot>>
 Lucinha: Quem é você?! O que você tá fazendo aqui de uniforme?! 
-<<sprite lucy.sad gings>>
+<<sprite lucy.sad gings lucysad>>
 Lucinha: Oh meu deus… Agora que eu me lembrei… A Clara me avisou hoje mais cedo que chegaria uma funcionária nova… Mil desculpas, meu anjo… 
 Infnetina: Sem problemas senhora! Meu nome é Infnetina, muito prazer!
 <<sprite lucy.happy gings>>
@@ -23,9 +23,9 @@ Lucinha: O prazer é todo meu, querida. Meu nome é Lucinha, sou uma das residen
 
 <<if $start_cooking>>
     Lucinha: Sim! Adoraria um pouco de ajuda a terminar minha sopa pro meu amigo ingrato, Amerício…
-    <<sprite lucy.forgot gings>>
+    <<sprite lucy.forgot gings lucyforgot>>
     Lucinha: Surpreendentemente, ele parece estar de pior humor do que o normal.
-    <<sprite lucy.sad gings>>
+    <<sprite lucy.sad gings lucysad>>
     Lucinha: Também se sobrar, acho que seria bom o Euclides comer alguma coisa… 
     Lucinha: Aquele doce era tão carinhoso… Não sei o que deu na cabeça dele nos últimos tempos pra ele ficar tão fechado assim…
     <<sprite lucy.happy gings>>
@@ -127,6 +127,7 @@ Infnetina: Claro que vou, Luci! Só vou falar com o Amerício antes, ok?
 Lucinha: Amém! Eu bem que estava querendo fazer uma sopa pra ele...
 Infnetina: ...
 <<removesprite gings>>
+<<progress "Did Cooking">>
 <<reappear>>
 Narração: Objetivo atualizado.
 <<objective "Entregar a sopa para o Amerício">>

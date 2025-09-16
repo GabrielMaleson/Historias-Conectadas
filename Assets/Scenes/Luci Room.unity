@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7293532119529850695, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: LivingRoom
+      value: Living Room
       objectReference: {fileID: 0}
     - target: {fileID: 7293532119529850695, guid: a2ca8a7591df19f40bdbc2022ea46fc7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions:
-  - condition: Did Cooking
+  - condition: Cooking
     conditionMeansItDoesNotLoad: 1
   dialogueToLoad: lucinothere
   dialogueRunner: {fileID: 1579218658}
@@ -889,8 +889,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.845}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75.1, y: 31.3}
-  m_SizeDelta: {x: 139.347, y: 144.7126}
+  m_AnchoredPosition: {x: -272.5724, y: -70.7155}
+  m_SizeDelta: {x: 178.2022, y: 193.2816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667736114
 MonoBehaviour:
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 163986f85dcf8454e97e5db21e953cb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5ada847e818bf342974142cbee30fbf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

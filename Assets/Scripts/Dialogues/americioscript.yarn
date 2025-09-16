@@ -70,6 +70,7 @@ Amerício: Vou deixar na mesa. Melhor você estar certa...
 <<removesprite gings>>
 Narração: Objetivo atualizado.
 <<progress "Joaquim Reveal">>
+<<reappear>>
 <<brighten>>
 
 ===	
@@ -77,6 +78,7 @@ Narração: Objetivo atualizado.
 title: americiosuccess
 --- 
 <<darken>>
+<<disappear>>
 Infnetina: Ô Amerício! Olha só!
 Infnetina: Eu criei um atalho pro senhor - só precisa apertar esse botão aqui, e você vai conseguir ligar pro Felipe!
 <<sprite americio.confused gings>>
@@ -91,5 +93,6 @@ Amerício: Uma pessoa nova na vida dele que realmente deseja ouvir, e ajudar ele
 Infnetina: Obrigado Amerício… Vou tentar o meu melhor!
 <<progress "Euclides Time">>
 <<removesprite gings>>
+<<reappear>>
 <<brighten>>
 ===

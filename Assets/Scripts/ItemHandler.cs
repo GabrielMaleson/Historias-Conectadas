@@ -51,6 +51,34 @@ public class InventoryButtonHandler : MonoBehaviour
         InventoryManager.Instance.RemoveProgress(thing);
     }
 
+    public void GrabOnions(bool thing) 
+    {
+        CookingMinigame.instance.GrabOnions(thing);
+    }
+
+    public void GrabPeppers(bool thing)
+    {
+        CookingMinigame.instance.GrabPeppers(thing);
+    }
+
+    public void GrabGarlic(bool thing)
+    {
+        CookingMinigame.instance.GrabGarlic(thing);
+    }
+
+    public void GrabBeans(bool thing)
+    {
+        CookingMinigame.instance.GrabBeans(thing);
+    }
+
+    public void GrabSausages(bool thing)
+    {
+        CookingMinigame.instance.GrabSausages(thing);
+    }
+    public void GrabBacon(bool thing)
+    {
+        CookingMinigame.instance.GrabBacon(thing);
+    }
 
     private IEnumerator FadeInCoroutine(GameObject fadein)
     {

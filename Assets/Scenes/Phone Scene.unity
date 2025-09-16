@@ -12451,6 +12451,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8137279940467459781, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
   m_PrefabInstance: {fileID: 1579218656}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1579218658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8094364509310331981, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
+  m_PrefabInstance: {fileID: 1579218656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1579218660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12465,7 +12476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackScreen: {fileID: 35577527}
   disappearCharacter: {fileID: 1630048554}
-  continueButton: {fileID: 0}
+  continueButton: {fileID: 1579218658}
   graphicRaycaster: {fileID: 1621438170}
   sprites:
   - {fileID: 21300000, guid: aefe6a631912ba540871cbe3b56c43b7, type: 3}

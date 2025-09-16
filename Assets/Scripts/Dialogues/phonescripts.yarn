@@ -33,6 +33,7 @@ Infnetina: (Não, espera... ainda estou faltando o número do Felipe.)
 <<brighten>>
 
 ===
+
 title: foundname
 ---
 
@@ -60,6 +61,7 @@ Infnetina: (Acho que é melhor eu ver uma foto na galeria dele antes de escolher
 <<brighten>>
 
 ===
+
 title: foundpic
 ---
 
@@ -69,7 +71,6 @@ Infnetina: (Essa foto vai ser perfeita pro ícone!)
 
 ===
 
-
 title: completedphone
 ---
 
@@ -78,6 +79,24 @@ Infnetina: (E... pronto! O Amerício vai ficar feliz em ver isso!)
 Narração: Objetivo atualizado.
 <<objective "Entregar o telefone de volta para o Amerício">>
 <<brighten>>
-<<sceneload "Americio Room">>
+<<sceneload "Americio Win">>
+
+===
+
+title: phonenotyet
+---
+
+<<darken>>
+Infnetina: (Espera, tenho que entregar o celular pro Amerício antes!
+<<brighten>>
+
+===
+
+title: americiodone
+---
+
+<<darken>>
+Amerício: Não volta aqui agora não, Infnetina. Você sabe com quem você deve falar, garota.
+<<brighten>>
 
 ===

@@ -16,6 +16,7 @@ public class SlideshowController : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = true;
         // Set initial slide
         if (slides.Length > 0)
         {

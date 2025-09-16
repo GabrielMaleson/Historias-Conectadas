@@ -2,24 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 using Yarn.Unity;
-using System;
-using System.Collections.Generic;
-
-[System.Serializable]
-public class CookingMinigameState
-{
-    public bool isMinigameActive = false;
-    public bool GotOnions = false;
-    public bool GotSausages = false;
-    public bool GotPeppers = false;
-    public bool GotBacon = false;
-    public bool GotGarlic = false;
-    public bool GotBeans = false;
-
-    // Track which ingredients have been obtained (for UI button states)
-    public List<string> obtainedIngredients = new List<string>();
-}
 
 public class CookingMinigame : MonoBehaviour
 {
@@ -27,68 +11,40 @@ public class CookingMinigame : MonoBehaviour
     public DialogueRunner dialogueRunner;
     public InventoryItem soupItem;
 
-    // Reference to ingredient buttons (assign in inspector or find dynamically)
+    // Minigame state
+    public bool isMinigameActive = false;
+
+    // Player objectives - now tracked for sequence
+    public bool GotOnions = false;
+    public bool GotSausages = false;
+    public bool GotPeppers = false;
+    public bool GotBacon = false;
+    public bool GotBeans = false;
+    public bool GotGarlic = false;
+    public bool GrabbedOnions = false;
+    public bool GrabbedSausages = false;
+    public bool GrabbedPeppers = false;
+    public bool GrabbedBacon = false;
+    public bool GrabbedBeans = false;
+    public bool GrabbedGarlic = false;
+
     public GameObject onionButton;
-    public GameObject baconButton;
-    public GameObject garlicButton;
-    public GameObject beansButton;
-    public GameObject pepperButton;
-    public GameObject sausageButton;
+    private GameObject baconButton;
+    private GameObject garlicButton;
+    private GameObject beansButton;
+    private GameObject pepperButton;
+    private GameObject sausageButton;
+    public GameObject kitchenButton;
 
     // Singleton pattern to persist across scenes
-    private static CookingMinigame instance;
-
-    // Persistent state
-    private CookingMinigameState state = new CookingMinigameState();
-
-    // Public properties to access state
-    public bool isMinigameActive
-    {
-        get => state.isMinigameActive;
-        set => state.isMinigameActive = value;
-    }
-
-    public bool GotOnions
-    {
-        get => state.GotOnions;
-        set { state.GotOnions = value; if (value) AddObtainedIngredient("Onion"); }
-    }
-
-    public bool GotSausages
-    {
-        get => state.GotSausages;
-        set { state.GotSausages = value; if (value) AddObtainedIngredient("Sausage"); }
-    }
-
-    public bool GotPeppers
-    {
-        get => state.GotPeppers;
-        set { state.GotPeppers = value; if (value) AddObtainedIngredient("Pepper"); }
-    }
-
-    public bool GotBacon
-    {
-        get => state.GotBacon;
-        set { state.GotBacon = value; if (value) AddObtainedIngredient("Bacon"); }
-    }
-
-    public bool GotGarlic
-    {
-        get => state.GotGarlic;
-        set { state.GotGarlic = value; if (value) AddObtainedIngredient("Garlic"); }
-    }
-
-    public bool GotBeans
-    {
-        get => state.GotBeans;
-        set { state.GotBeans = value; if (value) AddObtainedIngredient("Beans"); }
-    }
+    public static CookingMinigame instance;
 
     private void Awake()
     {
         // Ensure only one instance exists and persist across scenes
         if (instance == null)
         {
+            FindIngredientButtons();
             instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -99,94 +55,30 @@ public class CookingMinigame : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void FindIngredientButtons()
     {
-        if (instance == this)
-        {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
+        // Find all objects with tags, even if disabled
+        onionButton = FindObjectByTag("OnionButton");
+        baconButton = FindObjectByTag("BaconButton");
+        garlicButton = FindObjectByTag("GarlicButton");
+        beansButton = FindObjectByTag("BeansButton");
+        pepperButton = FindObjectByTag("PepperButton");
+        sausageButton = FindObjectByTag("SausageButton");
+        kitchenButton = FindObjectByTag("KitchenButton");
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private GameObject FindObjectByTag(string tag)
     {
-        // Find ingredient buttons in the scene
-        FindIngredientButtons();
-
-        // When returning to the cooking scene, restore all states
-        if (scene.name != initialScene)
+        // Find all objects with the tag, including inactive ones
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        foreach (GameObject obj in allObjects)
         {
-            RestoreButtonStates();
-            RestoreIngredientButtonStates();
-        }
-    }
-
-
-private void FindIngredientButtons()
-    {
-        // Assign these tags to your button GameObjects in the Inspector
-        onionButton = GameObject.FindWithTag("OnionButton");
-        baconButton = GameObject.FindWithTag("BaconButton");
-        garlicButton = GameObject.FindWithTag("GarlicButton");
-        beansButton = GameObject.FindWithTag("BeansButton");
-        pepperButton = GameObject.FindWithTag("PepperButton");
-        sausageButton = GameObject.FindWithTag("SausageButton");
-    }
-
-    private void AddObtainedIngredient(string ingredientName)
-    {
-        if (!state.obtainedIngredients.Contains(ingredientName))
-        {
-            state.obtainedIngredients.Add(ingredientName);
-        }
-    }
-
-    private void RestoreIngredientButtonStates()
-    {
-        // Set ingredient buttons inactive if they've already been obtained
-        foreach (var ingredient in state.obtainedIngredients)
-        {
-            SetIngredientButtonState(ingredient, false);
-        }
-    }
-
-    private void SetIngredientButtonState(string ingredientName, bool active)
-    {
-        GameObject button = null;
-
-        switch (ingredientName)
-        {
-            case "Onion": button = onionButton; break;
-            case "Bacon": button = baconButton; break;
-            case "Garlic": button = garlicButton; break;
-            case "Beans": button = beansButton; break;
-            case "Pepper": button = pepperButton; break;
-            case "Sausage": button = sausageButton; break;
-        }
-
-        if (button != null)
-        {
-            button.SetActive(active);
-
-            // Also disable the button component if the object is still active
-            var buttonComponent = button.GetComponent<Button>();
-            if (buttonComponent != null)
+            if (obj.CompareTag(tag) && obj.scene.isLoaded)
             {
-                buttonComponent.enabled = active;
+                return obj;
             }
         }
-    }
-
-    private void RestoreButtonStates()
-    {
-        // Find all ingredient scripts and disable their buttons if minigame is active
-        var ingredientScripts = FindObjectsOfType<IngredientScript>();
-        foreach (var script in ingredientScripts)
-        {
-            if (script != null && script.button != null)
-            {
-                script.button.enabled = !isMinigameActive;
-            }
-        }
+        return null;
     }
 
     [YarnCommand("startcooking")]
@@ -194,6 +86,7 @@ private void FindIngredientButtons()
     {
         InventoryManager.Instance.AddProgress("Did soup");
         isMinigameActive = true;
+        kitchenButton.SetActive(true);
 
         // Reset all objectives when starting a new minigame
         GotOnions = false;
@@ -202,35 +95,52 @@ private void FindIngredientButtons()
         GotBacon = false;
         GotGarlic = false;
         GotBeans = false;
-        state.obtainedIngredients.Clear();
-
-        // Disable interaction buttons immediately
-        DisableAllButtons();
-
-        // Make sure all ingredient buttons are active at start
-        ResetIngredientButtons();
     }
 
-    private void ResetIngredientButtons()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Reactivate all ingredient buttons at the start of minigame
-        SetIngredientButtonState("Onion", true);
-        SetIngredientButtonState("Bacon", true);
-        SetIngredientButtonState("Garlic", true);
-        SetIngredientButtonState("Beans", true);
-        SetIngredientButtonState("Pepper", true);
-        SetIngredientButtonState("Sausage", true);
+        // Use a coroutine to wait until the end of the frame when objects are fully loaded
+        StartCoroutine(FindObjectsAfterLoad());
     }
 
-    private void DisableAllButtons()
+    private IEnumerator FindObjectsAfterLoad()
     {
-        var ingredientScripts = FindObjectsOfType<IngredientScript>();
-        foreach (var script in ingredientScripts)
+        // Wait until the end of the frame to ensure all objects are loaded
+        yield return new WaitForEndOfFrame();
+
+        FindIngredientButtons();
+        UpdateButtonStates();
+    }
+
+    private void UpdateButtonStates()
+    {
+        if (GrabbedBacon) 
         {
-            if (script != null && script.button != null)
-            {
-                script.button.enabled = false;
-            }
+            baconButton.SetActive(false);
+        }
+        if (GrabbedBeans)
+        {
+            beansButton.SetActive(false);
+        }
+        if (GrabbedGarlic)
+        {
+            garlicButton.SetActive(false);
+        }
+        if (GrabbedSausages)
+        {
+            sausageButton.SetActive(false);
+        }
+        if (GrabbedPeppers)
+        {
+            pepperButton.SetActive(false);
+        }
+        if (GrabbedOnions)
+        {
+            onionButton.SetActive(false);
+        }
+        if (isMinigameActive)
+        {
+            kitchenButton.SetActive(true);
         }
     }
 
@@ -239,6 +149,7 @@ private void FindIngredientButtons()
         if (!isMinigameActive) return;
 
         // Check for win condition - only when onion is added as the final ingredient
+        // The dialogue is triggered in IngredientScript when onion is added
         if (GotOnions && GotSausages && GotPeppers && GotBacon)
         {
             CompleteMinigame();
@@ -250,37 +161,10 @@ private void FindIngredientButtons()
         // Add the soup item to inventory
         InventoryManager.Instance.AddItem(soupItem);
 
-        // Return to initial scene after a short delay to allow dialogue to finish
-        if (SceneManager.GetActiveScene().name != initialScene)
-        {
-            Invoke("LoadInitialScene", 2f); // Wait 2 seconds before loading
-        }
-
         // Reset minigame state
         isMinigameActive = false;
 
-        // Re-enable buttons when minigame is complete
-        EnableAllButtons();
-
-        // Optionally destroy the cooking minigame manager after returning to kitchen
-        Destroy(gameObject, 3f); // Destroy after 3 seconds
-    }
-
-    private void EnableAllButtons()
-    {
-        var ingredientScripts = FindObjectsOfType<IngredientScript>();
-        foreach (var script in ingredientScripts)
-        {
-            if (script != null && script.button != null)
-            {
-                script.button.enabled = true;
-            }
-        }
-    }
-
-    private void LoadInitialScene()
-    {
-        SceneManager.LoadScene(initialScene);
+        Destroy(gameObject, 3f); 
     }
 
     // Public methods to update the objectives
@@ -290,4 +174,10 @@ private void FindIngredientButtons()
     public void SetBacon(bool value) { GotBacon = value; }
     public void SetGarlic(bool value) { GotGarlic = value; }
     public void SetBeans(bool value) { GotBeans = value; }
+    public void GrabOnions(bool value) { GrabbedOnions = value; }
+    public void GrabSausages(bool value) { GrabbedSausages = value; }
+    public void GrabPeppers(bool value) { GrabbedPeppers = value; }
+    public void GrabBacon(bool value) { GrabbedBacon = value; }
+    public void GrabGarlic(bool value) { GrabbedGarlic = value; }
+    public void GrabBeans(bool value) { GrabbedBeans = value; }
 }

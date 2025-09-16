@@ -55,6 +55,10 @@ public class AmericioDoorScript : MonoBehaviour
         {
             SceneManager.LoadScene("Americio Room");
         }
+        else if (inventoryManager != null && inventoryManager.gameProgress.Contains("Euclides Time"))
+        {
+            dialogue.StartDialogue("americiodone");
+        }
         else
         {
             dialogue.StartDialogue("americiono");

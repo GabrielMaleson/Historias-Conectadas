@@ -21,6 +21,7 @@ TagManager:
   - GarlicButton
   - BaconButton
   - PepperButton
+  - KitchenButton
   layers:
   - Default
   - TransparentFX

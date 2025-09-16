@@ -16,6 +16,8 @@ title: euclidesintro
 ---
 <<introdarken>>
 Infnetina: Bom dia! Meu nome é Infnetina e sou a nova cuidadora da casa. Qual o seu nome, senhor...?
+<<disappear>>
+<<sprite euclides.idle gings>>
 ??????: ......
 Infnetina: H-Hm… Eu notei que o seu quarto é separado dos outros…  
 Infnetina: Você poderia me dizer o porquê?
@@ -23,9 +25,9 @@ Infnetina: Você poderia me dizer o porquê?
 <<sprite euclides.mad gings>>
 ??????: ......
 Infnetina: O-Ok… Desculpe o incomodo…
-Infnetina: (Que estranho... o que houve com ele?)
 <<removesprite gings>>
 <<reappear>>
+Infnetina: (Que estranho... o que houve com ele?)
 <<progress "euclidesintro">>
 <<sceneload "Intro Living Room">>
 
@@ -37,6 +39,14 @@ title: lucinothere
 Infnetina: (Hm... não tem ninguém aqui. Será que ela está na cozinha...?)
 <<brighten>>
 <<sceneload "Hallway">>
+
+===
+
+title: lucibothered
+---
+<<darken>>
+Infnetina: (Melhor não ir pra lá agora... a Luci parece que precisa de um tempo sozinha.)
+<<brighten>>
 
 ===
 
