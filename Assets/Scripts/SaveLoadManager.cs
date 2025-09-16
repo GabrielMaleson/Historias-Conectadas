@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.UI; // Added for Button component
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -54,9 +55,6 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         // Save game progress
-        // Note: You'll need to make gameProgress public or add a GetGameProgress() method to InventoryManager
-        // For now, I'll assume you add this method to InventoryManager:
-        // public List<string> GetGameProgress() { return new List<string>(gameProgress); }
         data.savedGameProgress = new List<string>(inventory.gameProgress);
 
         // Serialize and save to file
@@ -69,6 +67,7 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         Debug.Log($"Game saved in scene: {data.savedSceneName}");
+
     }
 
     public void LoadGame()
@@ -96,6 +95,18 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
+        if (data.savedSceneName == "Intro Bus")
+        {
+            Debug.Log("guy is still on intro bus lol");
+        }
+        // Load the saved scene
+        else
+        {
+            Debug.Log("did load");
+            SceneManager.LoadScene("InventoryStuff", LoadSceneMode.Additive);
+        }
+        SceneManager.LoadScene(data.savedSceneName);
+
         // Clear current inventory and progress
         InventoryManager inventory = InventoryManager.Instance;
         if (inventory == null)
@@ -105,14 +116,13 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         // Clear current items (you might need to add a ClearItems() method to InventoryManager)
-        // For now, we'll remove items one by one from a copy of the list
         List<InventoryItem> currentItems = new List<InventoryItem>(inventory.GetAllItems());
         foreach (InventoryItem item in currentItems)
         {
             inventory.RemoveItem(item);
         }
 
-        // Clear game progress (you might need to add a ClearProgress() method)
+        // Clear game progress
         inventory.gameProgress.Clear();
 
         // Load saved items (you'll need a way to get InventoryItem by name)
@@ -135,9 +145,6 @@ public class SaveLoadManager : MonoBehaviour
             inventory.AddProgress(progress);
         }
 
-        // Load the saved scene
-        SceneManager.LoadScene(data.savedSceneName);
-
         Debug.Log($"Game loaded from scene: {data.savedSceneName}");
     }
 
@@ -149,8 +156,6 @@ public class SaveLoadManager : MonoBehaviour
     // Helper method to find items by name (you might want to implement this differently)
     private InventoryItem GetItemByName(string itemName)
     {
-        // This is a simple implementation - you might want to create an ItemDatabase
-        // or use Resources.Load if you have items in a Resources folder
         InventoryItem[] allItems = Resources.FindObjectsOfTypeAll<InventoryItem>();
         foreach (InventoryItem item in allItems)
         {
@@ -174,6 +179,7 @@ public class SaveLoadManager : MonoBehaviour
         {
             File.Delete(path);
             Debug.Log("Save file deleted");
+
         }
     }
 }
