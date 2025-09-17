@@ -1012,6 +1012,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
+--- !u!224 &1323499639 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4273535946358340213, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
+  m_PrefabInstance: {fileID: 1323499638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1350797924 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7455658921245003448, guid: a041a2be0bf43d34cb6b9567b8751846, type: 3}
@@ -1632,7 +1637,7 @@ MonoBehaviour:
   defaultImagePrefab: {fileID: 4180401629800588954, guid: 2d1a9f0f8ee2e184ca97f3a5748ba75c, type: 3}
   positions:
   - positionName: gings
-    positionTransform: {fileID: 0}
+    positionTransform: {fileID: 1323499639}
   sounds: []
   audioSource: {fileID: 1579218661}
 --- !u!82 &1579218661

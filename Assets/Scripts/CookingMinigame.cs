@@ -55,6 +55,10 @@ public class CookingMinigame : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     private void FindIngredientButtons()
     {
         // Find all objects with tags, even if disabled

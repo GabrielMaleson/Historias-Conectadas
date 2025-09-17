@@ -1,15 +1,17 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEngine.UI; // Added for Button component
+using UnityEngine.UI;
 
 public class SaveLoadManager : MonoBehaviour
 {
     public static SaveLoadManager Instance { get; private set; }
 
     [SerializeField] private string saveFileName = "savegame.dat";
+    private bool isLoading = false;
 
     private void Awake()
     {
@@ -34,30 +36,23 @@ public class SaveLoadManager : MonoBehaviour
 
     public void SaveGame()
     {
-        // Get references to the inventory manager
         InventoryManager inventory = InventoryManager.Instance;
         if (inventory == null)
         {
-            Debug.LogError("InventoryManager not found!");
+            Debug.LogError("InventoryManager not found during save!");
             return;
         }
 
-        // Create save data
         SaveData data = new SaveData();
-
-        // Save current scene name
         data.savedSceneName = SceneManager.GetActiveScene().name;
 
-        // Save items (store by name for reference)
         foreach (InventoryItem item in inventory.GetAllItems())
         {
             data.savedItemNames.Add(item.itemName);
         }
 
-        // Save game progress
         data.savedGameProgress = new List<string>(inventory.gameProgress);
 
-        // Serialize and save to file
         BinaryFormatter formatter = new BinaryFormatter();
         string path = GetSavePath();
 
@@ -67,7 +62,6 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         Debug.Log($"Game saved in scene: {data.savedSceneName}");
-
     }
 
     public void LoadGame()
@@ -80,7 +74,6 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
-        // Deserialize save data
         BinaryFormatter formatter = new BinaryFormatter();
         SaveData data = null;
 
@@ -95,37 +88,42 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
-        if (data.savedSceneName == "Intro Bus")
-        {
-            Debug.Log("guy is still on intro bus lol");
-        }
-        // Load the saved scene
-        else
-        {
-            Debug.Log("did load");
-            SceneManager.LoadScene("InventoryStuff", LoadSceneMode.Additive);
-        }
+        isLoading = true;
+        StartCoroutine(LoadGameCoroutine(data));
+    }
+
+    private IEnumerator LoadGameCoroutine(SaveData data)
+    {
+        // Load the main scene first
         SceneManager.LoadScene(data.savedSceneName);
 
-        // Clear current inventory and progress
-        InventoryManager inventory = InventoryManager.Instance;
+        // Wait for the scene to load completely
+        yield return null;
+
+        // Load additive scenes
+        SceneManager.LoadScene("InventoryStuff", LoadSceneMode.Additive);
+        SceneManager.LoadScene("PauseStuff", LoadSceneMode.Additive);
+
+        // Wait for all scenes to finish loading
+        yield return new WaitForSeconds(0.1f);
+
+        // Find InventoryManager after scenes are loaded
+        InventoryManager inventory = FindObjectOfType<InventoryManager>();
         if (inventory == null)
         {
-            Debug.LogError("InventoryManager not found!");
-            return;
+            Debug.LogError("InventoryManager not found after scene load!");
+            isLoading = false;
+            yield break;
         }
 
-        // Clear current items (you might need to add a ClearItems() method to InventoryManager)
+        // Clear current items
         List<InventoryItem> currentItems = new List<InventoryItem>(inventory.GetAllItems());
         foreach (InventoryItem item in currentItems)
         {
             inventory.RemoveItem(item);
         }
 
-        // Clear game progress
-        inventory.gameProgress.Clear();
-
-        // Load saved items (you'll need a way to get InventoryItem by name)
+        // Load saved items
         foreach (string itemName in data.savedItemNames)
         {
             InventoryItem item = GetItemByName(itemName);
@@ -140,12 +138,14 @@ public class SaveLoadManager : MonoBehaviour
         }
 
         // Load saved progress
+        inventory.gameProgress.Clear();
         foreach (string progress in data.savedGameProgress)
         {
             inventory.AddProgress(progress);
         }
 
         Debug.Log($"Game loaded from scene: {data.savedSceneName}");
+        isLoading = false;
     }
 
     private string GetSavePath()
@@ -153,9 +153,9 @@ public class SaveLoadManager : MonoBehaviour
         return Path.Combine(Application.persistentDataPath, saveFileName);
     }
 
-    // Helper method to find items by name (you might want to implement this differently)
     private InventoryItem GetItemByName(string itemName)
     {
+        // Use Resources.Load to find items by name instead of searching all objects
         InventoryItem[] allItems = Resources.FindObjectsOfTypeAll<InventoryItem>();
         foreach (InventoryItem item in allItems)
         {
@@ -179,7 +179,6 @@ public class SaveLoadManager : MonoBehaviour
         {
             File.Delete(path);
             Debug.Log("Save file deleted");
-
         }
     }
 }

@@ -48,9 +48,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Americio Win.unity
     guid: c479c5b3ef526f5488f974c429154e75
   - enabled: 1
-    path: Assets/Scenes/InventoryStuff.unity
+    path: Assets/Scenes/inventory pause/InventoryStuff.unity
     guid: 7a5bfeb89ab987349a8f08aa34489415
   - enabled: 1
     path: Assets/Scenes/Reception Test.unity
     guid: 4cf384c78e6b2b34fb478ffb9702f529
+  - enabled: 1
+    path: Assets/Scenes/inventory pause/PauseStuff.unity
+    guid: 9db12e268a076e14e925a73f76b4695e
   m_configObjects: {}
