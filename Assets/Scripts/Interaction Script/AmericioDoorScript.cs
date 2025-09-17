@@ -51,11 +51,11 @@ public class AmericioDoorScript : MonoBehaviour
         // Get the InventoryManager instance
         InventoryManager inventoryManager = InventoryManager.Instance;
 
-        if (inventoryManager != null && inventoryManager.gameProgress.Contains("Gave soup"))
+        if (inventoryManager != null && inventoryManager.gameProgress.Contains("Gave soup") && !inventoryManager.gameProgress.Contains("Euclides Time"))
         {
             SceneManager.LoadScene("Americio Room");
         }
-        else if (inventoryManager != null && inventoryManager.gameProgress.Contains("Euclides Time"))
+        else if (inventoryManager.gameProgress.Contains("Gave soup") && inventoryManager.gameProgress.Contains("Euclides Time"))
         {
             dialogue.StartDialogue("americiodone");
         }

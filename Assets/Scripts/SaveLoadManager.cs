@@ -94,14 +94,14 @@ public class SaveLoadManager : MonoBehaviour
 
     private IEnumerator LoadGameCoroutine(SaveData data)
     {
+        // Load additive scenes
+        SceneManager.LoadScene("InventoryStuff", LoadSceneMode.Additive);
         // Load the main scene first
         SceneManager.LoadScene(data.savedSceneName);
 
         // Wait for the scene to load completely
         yield return null;
 
-        // Load additive scenes
-        SceneManager.LoadScene("InventoryStuff", LoadSceneMode.Additive);
         SceneManager.LoadScene("PauseStuff", LoadSceneMode.Additive);
 
         // Wait for all scenes to finish loading
