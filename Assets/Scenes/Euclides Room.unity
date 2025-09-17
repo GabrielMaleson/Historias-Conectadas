@@ -1629,10 +1629,14 @@ MonoBehaviour:
   graphicRaycaster: {fileID: 1621438170}
   sprites:
   - {fileID: 21300000, guid: 00f5661f437c80f489594106d961e7e1, type: 3}
+  - {fileID: 21300000, guid: fb2cb5bd6231c694d9eca5109a22a7a5, type: 3}
   - {fileID: 21300000, guid: 4ca86b0639d495444a743106d3782c9b, type: 3}
+  - {fileID: 21300000, guid: 10b9ab22e38902d4bb7f709b8c16f807, type: 3}
   spriteTags:
   - euclides.idle
   - euclides.mad
+  - euclides.sad
+  - euclides.glad
   imagePrefabs: []
   defaultImagePrefab: {fileID: 4180401629800588954, guid: 2d1a9f0f8ee2e184ca97f3a5748ba75c, type: 3}
   positions:
