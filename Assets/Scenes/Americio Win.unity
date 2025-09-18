@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4273535946358340213, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -9
+      value: -84
       objectReference: {fileID: 0}
     - target: {fileID: 7908600587621870110, guid: b398e6b64fa191a48b56a8666fa46c36, type: 3}
       propertyPath: m_Name
@@ -923,6 +923,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 2e48da2810300b048a8bd8def32bbe21, type: 2}
           m_ObjectArgumentAssemblyTypeName: InventoryItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 667736112}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2176,15 +2188,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8098289736889363573, guid: 2824bd836963ff340991a59011d377c9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.556482
+      value: 3.1214645
       objectReference: {fileID: 0}
     - target: {fileID: 8098289736889363573, guid: 2824bd836963ff340991a59011d377c9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.465897
+      value: 5.4528604
       objectReference: {fileID: 0}
     - target: {fileID: 8098289736889363573, guid: 2824bd836963ff340991a59011d377c9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.4640791
+      value: 3.0086405
       objectReference: {fileID: 0}
     - target: {fileID: 8098289736889363573, guid: 2824bd836963ff340991a59011d377c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2220,7 +2232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8098289736889363573, guid: 2824bd836963ff340991a59011d377c9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -111
+      value: -64
       objectReference: {fileID: 0}
     - target: {fileID: 8098289736889363573, guid: 2824bd836963ff340991a59011d377c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

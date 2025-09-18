@@ -1734,7 +1734,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.8798681, b: 0, a: 1}
@@ -1744,9 +1744,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: da903693da0b6c74f92704f817093a5f, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: da903693da0b6c74f92704f817093a5f, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: da903693da0b6c74f92704f817093a5f, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2382,8 +2382,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b56ec964aa7927d44b4c009cd5d600e0, type: 3}
   spriteTags:
   - clara.happy
-  - clara.clap
   - clara.think
+  - clara.clap
   imagePrefabs: []
   defaultImagePrefab: {fileID: 109241831391635419, guid: b0b4838da07a1f14eb3ebdf825e4d894, type: 3}
   positions:

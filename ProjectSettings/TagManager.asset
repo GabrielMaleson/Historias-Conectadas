@@ -22,6 +22,7 @@ TagManager:
   - BaconButton
   - PepperButton
   - KitchenButton
+  - LuciButton
   layers:
   - Default
   - TransparentFX

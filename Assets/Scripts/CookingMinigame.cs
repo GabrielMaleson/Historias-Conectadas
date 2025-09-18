@@ -35,6 +35,7 @@ public class CookingMinigame : MonoBehaviour
     private GameObject pepperButton;
     private GameObject sausageButton;
     public GameObject kitchenButton;
+    public GameObject luciButton;
 
     // Singleton pattern to persist across scenes
     public static CookingMinigame instance;
@@ -69,6 +70,7 @@ public class CookingMinigame : MonoBehaviour
         pepperButton = FindObjectByTag("PepperButton");
         sausageButton = FindObjectByTag("SausageButton");
         kitchenButton = FindObjectByTag("KitchenButton");
+        luciButton = FindObjectByTag("LuciButton");
     }
 
     private GameObject FindObjectByTag(string tag)
@@ -145,6 +147,10 @@ public class CookingMinigame : MonoBehaviour
         if (isMinigameActive)
         {
             kitchenButton.SetActive(true);
+        }
+        if (isMinigameActive)
+        {
+            luciButton.GetComponent<Button>().enabled = false;
         }
     }
 

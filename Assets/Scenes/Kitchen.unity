@@ -2013,7 +2013,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.2216981, g: 1, b: 0.9372312, a: 1}
@@ -2023,9 +2023,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 7553d501258c34d309bea1feb2edacc1, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 7a184148437294a7b8d96378a700727d, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 2b62f169ad6c04c2d9a3fa4e8c3aa694, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: defed90087b03b548a26dade66f8012c, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: defed90087b03b548a26dade66f8012c, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: defed90087b03b548a26dade66f8012c, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3372,7 +3372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_Transition
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_Interactable
@@ -3401,15 +3401,15 @@ PrefabInstance:
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7a184148437294a7b8d96378a700727d, type: 3}
+      objectReference: {fileID: 21300000, guid: 7069f07b4efc0344488c161a42aeccde, type: 3}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_SpriteState.m_SelectedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2b62f169ad6c04c2d9a3fa4e8c3aa694, type: 3}
+      objectReference: {fileID: 21300000, guid: 7069f07b4efc0344488c161a42aeccde, type: 3}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_SpriteState.m_HighlightedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7553d501258c34d309bea1feb2edacc1, type: 3}
+      objectReference: {fileID: 21300000, guid: 7069f07b4efc0344488c161a42aeccde, type: 3}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -3876,7 +3876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_Transition
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_Interactable
@@ -3905,15 +3905,15 @@ PrefabInstance:
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7a184148437294a7b8d96378a700727d, type: 3}
+      objectReference: {fileID: 21300000, guid: 91cda71122cb64946a2993835c2b763a, type: 3}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_SpriteState.m_SelectedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2b62f169ad6c04c2d9a3fa4e8c3aa694, type: 3}
+      objectReference: {fileID: 21300000, guid: 91cda71122cb64946a2993835c2b763a, type: 3}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_SpriteState.m_HighlightedSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7553d501258c34d309bea1feb2edacc1, type: 3}
+      objectReference: {fileID: 21300000, guid: 91cda71122cb64946a2993835c2b763a, type: 3}
     - target: {fileID: 5431385305120729281, guid: dcdf95438009c1946980fa301c7eec80, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3

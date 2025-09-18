@@ -116,8 +116,9 @@ title: wincooking
 Lucinha: Não, esse ingrediente não é parte da sopa! Não quero!
 Infnetina: Mas Luci, a receita do seu livro está dizendo que é...
 <<sprite lucy.sad gings lucysad>>
-Lucinha: Espera... deixa eu ver, por favor?
-Lucinha: Hum...
+Lucinha: Espera... o quê?!
+<<sprite lucy.forgot gings>>
+Lucinha: Hum... Agora que penso um pouquinho mais...
 <<sprite lucy.happy gings>>
 Lucinha: Clara, você é genial! O último ingrediente era [b]Cebola![/b]
 Infnetina: Sou a Infnetina, Luci. Mas estou sempre feliz em lhe ajudar! De nada!
@@ -138,7 +139,7 @@ title: luciintro
 ---
 
 <<darken>>
-?????: Cunhantã! Vem me ajudar aqui rapidinho!
+?????: Queriiida! Vem me ajudar aqui rapidinho!
 Infnetina: ...? (Não sei quem é, mas parece importante...)
 Narração: Objetivo atualizado.
 <<progress "Luci Intro">>
