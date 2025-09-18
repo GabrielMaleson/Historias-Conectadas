@@ -2647,6 +2647,7 @@ MonoBehaviour:
   GrabbedGarlic: 0
   onionButton: {fileID: 0}
   kitchenButton: {fileID: 0}
+  luciButton: {fileID: 0}
 --- !u!1001 &1579218656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3602,9 +3603,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 41bf04f9162cae349bedb7114c6178ce, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 41bf04f9162cae349bedb7114c6178ce, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 41bf04f9162cae349bedb7114c6178ce, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 1d975935302daa14aa51ceeffc8f2c80, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 1d975935302daa14aa51ceeffc8f2c80, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 1d975935302daa14aa51ceeffc8f2c80, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4044,7 +4045,7 @@ GameObject:
   - component: {fileID: 2107077284}
   m_Layer: 5
   m_Name: granny
-  m_TagString: Untagged
+  m_TagString: LuciButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

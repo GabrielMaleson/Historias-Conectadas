@@ -15,6 +15,9 @@ public class DialogueMouseController : MonoBehaviour, IPointerClickHandler
     public Sprite hurryUpSprite;
     public Sprite nextLineSprite;
 
+    [Header("Sound Settings")]
+    public AudioSource clickSound; // Assign this in the Inspector
+
     [Header("Settings")]
     public bool hideInNonDialogueMode = true;
 
@@ -176,11 +179,23 @@ public class DialogueMouseController : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    // Play the click sound
+    private void PlayClickSound()
+    {
+        if (clickSound != null && clickSound.clip != null)
+        {
+            clickSound.Play();
+        }
+    }
+
     // Handle mouse clicks anywhere on the screen
     private void HandleMouseClick()
     {
         if (!isDialogueModeActive || dialogueRunner == null)
             return;
+
+        // Play click sound on any mouse click
+        PlayClickSound();
 
         if (isHurryUpState)
         {

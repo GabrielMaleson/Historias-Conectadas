@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530183ee11db949459dfc163632cc649, type: 3}
   m_Name: sausages
   m_EditorClassIdentifier: 
-  itemName: "Lingui\xE7a"
+  itemName: Salsichas
   icon: {fileID: 21300000, guid: d505c77a94a364c40a1aa98b3ee32fed, type: 3}
-  description: "Lingui\xE7as pra prote\xEDna. Algu\xE9m tava procurando..."
+  description: "Salsichas pra prote\xEDna. Algu\xE9m tava procurando..."
   itemTags:
   - Sausage
