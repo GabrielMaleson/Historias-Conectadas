@@ -14,10 +14,10 @@ Amerício: MAS EU JÁ NÃO FALEI QUE-
 Amerício: *sniff sniff*
 Amerício: Hmmm... que cheiro bom...
 Amerício: Isso não seria um pote quentinho com a sopa maravilhosa da Lucinha, seria..?
-Infnetina: S-Sim… Prazer meu nome é-
+Valentina: S-Sim… Prazer meu nome é-
 Amerício: SIM SIM, prazer te conhecer, dá essa sopa aqui…
 Narração: A porta fecha na sua cara, mas não está trancada.
-Infnetina: (... ok???)
+Valentina: (... ok???)
 <<brighten>>
 
 ===	
@@ -25,18 +25,18 @@ Infnetina: (... ok???)
 title: americiotalk
 ---
 <<darken>>
-Infnetina: Você deve ser o Amerício…
+Valentina: Você deve ser o Amerício…
 <<disappear>>
 <<sprite americio.idle gings>>
 Amerício: Hmhm…
-Infnetina: [i]Charmoso como esperado…[/i]
+Valentina: [i]Charmoso como esperado…[/i]
 <<sprite americio.mad gings>>
 Amerício: O que você disse, jovem?!
-Infnetina: Nada nada! Eu quis dizer…
-Infnetina: ...O forro da sua cama é listrado!
+Valentina: Nada nada! Eu quis dizer…
+Valentina: ...O forro da sua cama é listrado!
 <<sprite americio.idle gings>>
 Amerício: .....
-Infnetina: Erm… Você por acaso viu o residente Joaquim por ai? A Lucinha pediu pra eu avisar ele que a sopa está pronta…
+Valentina: Erm… Você por acaso viu o residente Joaquim por ai? A Lucinha pediu pra eu avisar ele que a sopa está pronta…
 <<sprite americio.confused gings>>
 Amerício: HAHA! É claro que ela pediu… Essa velha esquecida…
 <<sprite americio.mad gings>>
@@ -49,15 +49,15 @@ Amerício: Ele faleceu a alguns meses. Eu, a Lucinha e Euclides éramos muito pr
 Amerício: Mas desde então… A memória da Lucy tem piorado, o Euclides não troca uma palavra com ninguém, eu prefiro mais é que me deixem em paz!
 <<sprite americio.sad gings>>
 Amerício: Nunca vou encontrar um amigo tão bom como aquele velho afobado…
-Infnetina: Nossa… Mil desculpas!
-Infnetina: Eu não fazia ideia…
+Valentina: Nossa… Mil desculpas!
+Valentina: Eu não fazia ideia…
 <<sprite americio.idle gings>>
 Amerício: Tudo bem… Muitos dos funcionários aqui não ligam pra esse tipo de coisa.
 <<sprite americio.mad gings>>
 Amerício: Eles cuidam da casa e nos mantem ‘saudáveis’, mas nunca conversam ou questionam como nos estamos… Igual muita das nossas famílias…
 <<sprite americio.idle gings>>
 Amerício: Falando em família… Você pode me ajudar com algo…
-Infnetina: Claro, Amerício. O que você precisar!
+Valentina: Claro, Amerício. O que você precisar!
 <<sprite americio.confused gings>>
 Amerício: Eu quero… Minto, eu PRECISO ligar para minha família… Meu filho.
 <<sprite americio.sad gings>>
@@ -65,7 +65,7 @@ Amerício: Não falo com ele a algumas semanas, e essa situação toda com o Joa
 Amerício: Enfim…
 <<sprite americio.mad gings>>
 Amerício: Eu quero ligar pra ele, mas eu não consigo usar o celular que ele me deu!
-Infnetina: Sem problemas, é muito simples! Me dá seu celular que eu te mostro.
+Valentina: Sem problemas, é muito simples! Me dá seu celular que eu te mostro.
 Amerício: Vou deixar na mesa. Melhor você estar certa...
 <<removesprite gings>>
 Narração: Objetivo atualizado.
@@ -78,19 +78,19 @@ Narração: Objetivo atualizado.
 title: americiosuccess
 --- 
 <<darken>>
-Infnetina: Ô Amerício! Olha só!
-Infnetina: Eu criei um atalho pro senhor - só precisa apertar esse botão aqui, e você vai conseguir ligar pro Felipe!
+Valentina: Ô Amerício! Olha só!
+Valentina: Eu criei um atalho pro senhor - só precisa apertar esse botão aqui, e você vai conseguir ligar pro Felipe!
 <<disappear>>
 <<sprite americio.confused gings>>
 Amerício: Que facilidade! Muito obrigado minha filha!
 <<sprite americio.idle gings>>
 Amerício: ...
 <<sprite americio.sad gings>>
-Amerício: Eu credito que você consiga falar com o Euclides…
+Amerício: Eu acredito que você consiga falar com o Euclides…
 <<sprite americio.confused gings>>
 Amerício: Você tem um coração doce e uma personalidade amigável… Talvez tudo que o Euclides precise para se abrir… 
 Amerício: Uma pessoa nova na vida dele que realmente deseja ouvir, e ajudar ele…
-Infnetina: Obrigado Amerício… Vou tentar o meu melhor!
+Valentina: Obrigado Amerício… Vou tentar o meu melhor!
 <<progress "Euclides Time">>
 <<removesprite gings>>
 <<reappear>>

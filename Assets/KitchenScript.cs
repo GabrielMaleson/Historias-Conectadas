@@ -11,6 +11,7 @@ using Yarn.Unity;
 public class KitchenScript : MonoBehaviour
 {
     public DialogueRunner dialogue;
+    public InventoryButtonHandler itemload; 
     public void EnterDoor()
     {
         // Get the InventoryManager instance
@@ -22,7 +23,8 @@ public class KitchenScript : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Kitchen");
+            itemload = FindObjectOfType<InventoryButtonHandler>();
+            itemload.LoadASceneItem("Kitchen");
         }
     }
 

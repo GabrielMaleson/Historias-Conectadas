@@ -1895,7 +1895,7 @@ MonoBehaviour:
   sounds:
   - soundName: run
     soundClip: {fileID: 8300000, guid: a398aed4603f0494cbccbab23d192e77, type: 3}
-    volume: 0.576
+    volume: 1
     loop: 0
   audioSource: {fileID: 1530739966}
 --- !u!82 &1530739966

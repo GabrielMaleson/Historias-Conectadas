@@ -2,24 +2,24 @@
 ---
 
 <<introdarken>>
-Narração: Seu nome é Infnetina. Você está nesse ônibus faz algumas horas... e acabou de acordar.
-Infnetina: (Que estranho… Parece uma área tão residencial… mas o endereço diz estar logo a frente.)
-Infnetina: Ah, mas quem se importa! Eu só estou feliz de finalmente sair daquele hospital!
-Infnetina: Ser enfermeira tem seus lados bons, mas o ESTRESSE... misericórdia. Ainda bem que essa oportunidade surgiu.
-Infnetina: Nunca imaginaria que trabalharia com idosos algum dia!
+Narração: Seu nome é Valentina. Você está nesse ônibus faz algumas horas... e acabou de acordar.
+Valentina: (Que estranho… Parece uma área tão residencial… mas o endereço diz estar logo a frente.)
+Valentina: Ah, mas quem se importa! Eu só estou feliz de finalmente sair daquele hospital!
+Valentina: Ser enfermeira tem seus lados bons, mas o ESTRESSE... misericórdia. Ainda bem que essa oportunidade surgiu.
+Valentina: Nunca imaginaria que trabalharia com idosos algum dia!
 <<sprite asshole seat>>
 ?????: ... Senhora, com quem você está falando?
-Infnetina: Hã? A-Ah! 
+Valentina: Hã? A-Ah! 
 -> Desculpa, eu estava falando comigo mesma. 
-    Infnetina: Desculpa, eu estava falando comigo mesma. É bom pra eu focar nas coisas, sabe? Hihi...
+    Valentina: Desculpa, eu estava falando comigo mesma. É bom pra eu focar nas coisas, sabe? Hihi...
 -> Estava falando com a minha amiga no telefone.
-    Infnetina: Ah, é que eu estava falando com minha amiga no telefone.
+    Valentina: Ah, é que eu estava falando com minha amiga no telefone.
     ?????: Mas você não tá segurando nada...?
-    Infnetina: ... Hehe, é que eu estava gravando mensageme e já guardei!
+    Valentina: ... Hehe, é que eu estava gravando mensageme e já guardei!
 ?????: ... Ok...?
 <<removesprite seat>>
 Narração: O homem do seu lado levantou e sentou no banco da frente.
-Infnetina: ... (Que belo jeito pra começar meu novo emprego.)
+Valentina: ... (Que belo jeito pra começar meu novo emprego.)
 <<sceneload "Intro House">>
 
 ===

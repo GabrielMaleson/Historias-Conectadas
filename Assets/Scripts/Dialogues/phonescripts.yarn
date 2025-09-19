@@ -2,7 +2,7 @@
 ---
 
 <<darken>>
-Infnetina: (Não, espera... eu não sei o número de ninguém que o Amerício conhece.)
+Valentina: (Não, espera... eu não sei o número de ninguém que o Amerício conhece.)
 <<brighten>>
 
 ===
@@ -11,7 +11,7 @@ title: canthelp
 ---
 
 <<darken>>
-Infnetina: (Não, espera... isso não vai me ajudar.)
+Valentina: (Não, espera... isso não vai me ajudar.)
 <<brighten>>
 
 ===
@@ -20,7 +20,7 @@ title: nocontact
 ---
 
 <<darken>>
-Infnetina: (Não, espera... não sei nem o nome do filho dele, imagina o número.)
+Valentina: (Não, espera... não sei nem o nome do filho dele, imagina o número.)
 <<brighten>>
 
 ===
@@ -29,7 +29,7 @@ title: nophone
 ---
 
 <<darken>>
-Infnetina: (Não, espera... ainda estou faltando o número do Felipe.)
+Valentina: (Não, espera... ainda estou faltando o número do Felipe.)
 <<brighten>>
 
 ===
@@ -38,7 +38,7 @@ title: foundname
 ---
 
 <<darken>>
-Infnetina: (Então esse é o nome do filho dele... vou lembrar disso pra depois.)
+Valentina: (Então esse é o nome do filho dele... vou lembrar disso pra depois.)
 <<brighten>>
 
 ===
@@ -47,7 +47,7 @@ title: nocamera
 ---
 
 <<darken>>
-Infnetina: ...? Amerício, sua câmera não está funcionando.
+Valentina: ...? Amerício, sua câmera não está funcionando.
 Amerício: Essa porcaria quebrou já faz alguns anos - não tirei sequer uma foto com ela.
 <<brighten>>
 
@@ -57,7 +57,7 @@ title: nopicture
 ---
 
 <<darken>>
-Infnetina: (Acho que é melhor eu ver uma foto na galeria dele antes de escolher...)
+Valentina: (Acho que é melhor eu ver uma foto na galeria dele antes de escolher...)
 <<brighten>>
 
 ===
@@ -66,7 +66,7 @@ title: foundpic
 ---
 
 <<darken>>
-Infnetina: (Essa foto vai ser perfeita pro ícone!)
+Valentina: (Essa foto vai ser perfeita pro ícone!)
 <<brighten>>
 
 ===
@@ -74,7 +74,7 @@ Infnetina: (Essa foto vai ser perfeita pro ícone!)
 title: completedphone
 ---
 
-Infnetina: (E... pronto! O Amerício vai ficar feliz em ver isso!)
+Valentina: (E... pronto! O Amerício vai ficar feliz em ver isso!)
 Narração: Objetivo atualizado.
 <<objective "Entregar o telefone de volta para o Amerício">>
 <<sceneload "Americio Win">>
@@ -85,7 +85,7 @@ title: phonenotyet
 ---
 
 <<darken>>
-Infnetina: (Espera, tenho que entregar o celular pro Amerício antes!
+Valentina: (Espera, tenho que entregar o celular pro Amerício antes!
 <<brighten>>
 
 ===
@@ -94,7 +94,7 @@ title: americiodone
 ---
 
 <<darken>>
-Amerício: Não volta aqui agora não, Infnetina. Você sabe com quem você deve falar, garota.
+Amerício: Não volta aqui agora não, Valentina. Você sabe com quem você deve falar, garota.
 <<brighten>>
 
 ===

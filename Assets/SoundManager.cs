@@ -8,19 +8,18 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Header("Audio Mixer References")]
-    public AudioMixerGroup masterGroup;
+    [Header("Audio Mixer Groups")]
     public AudioMixerGroup musicGroup;
-    public AudioMixerGroup sfxGroup;
 
-    [Header("Settings")]
-    public float defaultFadeDuration = 1.0f;
-    public float sceneTransitionFadeDuration = 1.5f;
+    [Header("Fade Settings")]
+    public float fadeDuration = 0.5f;
 
-    private List<AudioSource> musicSources = new List<AudioSource>();
-    private List<AudioSource> sfxSources = new List<AudioSource>();
-    private Dictionary<AudioSource, float> originalVolumes = new Dictionary<AudioSource, float>();
-    private bool isTransitioning = false;
+    [Header("Debug")]
+    public bool enableDebugLogs = true;
+
+    private AudioSource persistentAudioSource;
+    private List<AudioSource> currentSceneMusicSources = new List<AudioSource>();
+    private bool shouldContinuePreviousMusic = false;
 
     void Awake()
     {
@@ -28,170 +27,276 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // Create a persistent audio source for cross-scene fading
+            persistentAudioSource = gameObject.AddComponent<AudioSource>();
+            persistentAudioSource.outputAudioMixerGroup = musicGroup;
+            persistentAudioSource.loop = true;
+            persistentAudioSource.playOnAwake = false;
+
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            DebugLog("AudioManager initialized with persistent audio source");
         }
         else
         {
             Destroy(gameObject);
-            return;
+        }
+    }
+
+    void Start()
+    {
+        // Find music sources in the initial scene
+        FindCurrentSceneMusicSources();
+
+        // Play any music in the starting scene
+        if (currentSceneMusicSources.Count > 0)
+        {
+            DebugLog("Found " + currentSceneMusicSources.Count + " music sources in starting scene");
+            foreach (AudioSource source in currentSceneMusicSources)
+            {
+                if (source.playOnAwake && !source.isPlaying)
+                {
+                    source.Play();
+                    DebugLog("Playing music: " + source.clip.name);
+                }
+            }
         }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Find all audio sources in the new scene and categorize them
-        FindAndCategorizeAudioSources();
+        DebugLog("Scene loaded: " + scene.name);
+
+        // Capture current scene music sources
+        FindCurrentSceneMusicSources();
+
+        // If new scene has no music sources, continue previous music
+        if (currentSceneMusicSources.Count == 0 && persistentAudioSource.isPlaying)
+        {
+            DebugLog("No music sources in new scene - continuing previous music");
+            shouldContinuePreviousMusic = true;
+
+            // Just ensure persistent audio is playing at normal volume
+            persistentAudioSource.volume = 1f;
+            return;
+        }
+
+        // If we have a previous song playing and new scene has music, fade it out
+        if (persistentAudioSource.isPlaying && !shouldContinuePreviousMusic)
+        {
+            DebugLog("Fading out previous music: " + persistentAudioSource.clip.name);
+            StartCoroutine(FadeOutPreviousMusic());
+        }
+        else
+        {
+            DebugLog("No previous music to fade out");
+        }
+
+        // Play new scene music if any exists
+        if (currentSceneMusicSources.Count > 0)
+        {
+            DebugLog("Fading in " + currentSceneMusicSources.Count + " new music sources");
+            shouldContinuePreviousMusic = false;
+            StartCoroutine(FadeInNewMusic());
+        }
+        else if (shouldContinuePreviousMusic)
+        {
+            DebugLog("Continuing previous scene's music: " + persistentAudioSource.clip.name);
+        }
+        else
+        {
+            DebugLog("No music sources found in new scene and no previous music to continue");
+        }
     }
 
-    void FindAndCategorizeAudioSources()
+    void FindCurrentSceneMusicSources()
     {
-        // Clear previous lists
-        musicSources.Clear();
-        sfxSources.Clear();
-        originalVolumes.Clear();
-
-        // Find all active audio sources in the scene
+        currentSceneMusicSources.Clear();
         AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
 
         foreach (AudioSource source in allAudioSources)
         {
-            // Skip if no output group is assigned
-            if (source.outputAudioMixerGroup == null) continue;
+            // Skip our persistent audio source and null objects
+            if (source == null || source == persistentAudioSource) continue;
 
-            // Store original volume for fade operations
-            originalVolumes[source] = source.volume;
-
-            // Categorize based on mixer group
-            if (source.outputAudioMixerGroup == musicGroup)
+            // Check if this is a music source (either has music group or plays on awake)
+            if (source.outputAudioMixerGroup == musicGroup || source.playOnAwake)
             {
-                musicSources.Add(source);
-            }
-            else if (source.outputAudioMixerGroup == sfxGroup ||
-                     source.outputAudioMixerGroup == masterGroup)
-            {
-                sfxSources.Add(source);
+                currentSceneMusicSources.Add(source);
+                DebugLog("Found music source: " + source.name + " with clip: " + (source.clip != null ? source.clip.name : "None"));
             }
         }
     }
 
-    // New method: Load scene with audio fade transition
-    public void LoadSceneWithFade(string sceneName, float fadeDuration = -1)
+    // Call this before scene change to capture current music state
+    public void PrepareForSceneChange()
     {
-        if (isTransitioning) return;
+        DebugLog("Preparing for scene change...");
+        shouldContinuePreviousMusic = false;
 
-        float duration = fadeDuration > 0 ? fadeDuration : sceneTransitionFadeDuration;
-        StartCoroutine(SceneTransitionWithFade(sceneName, duration));
-    }
+        // Find any currently playing music in the scene
+        AudioSource currentlyPlaying = FindCurrentlyPlayingMusic();
 
-    private IEnumerator SceneTransitionWithFade(string sceneName, float fadeDuration)
-    {
-        isTransitioning = true;
-
-        // Fade out all music
-        yield return StartCoroutine(FadeAllMusic(fadeDuration, 0f));
-
-        // Stop all music completely after fade
-        foreach (AudioSource source in musicSources)
+        if (currentlyPlaying != null)
         {
-            if (source.isPlaying)
-            {
-                source.Stop();
-                source.volume = originalVolumes[source]; // Reset volume
-            }
+            DebugLog("Capturing music state: " + currentlyPlaying.clip.name + " at time: " + currentlyPlaying.time);
+
+            // Transfer to persistent audio source
+            persistentAudioSource.clip = currentlyPlaying.clip;
+            persistentAudioSource.time = currentlyPlaying.time;
+            persistentAudioSource.volume = currentlyPlaying.volume;
+            persistentAudioSource.loop = currentlyPlaying.loop;
+            persistentAudioSource.Play();
+
+            // Stop the original source
+            currentlyPlaying.Stop();
+
+            DebugLog("Persistent audio source now playing: " + persistentAudioSource.clip.name);
         }
-
-        // Load the new scene
-        SceneManager.LoadScene(sceneName);
-
-        // Wait one frame for the new scene to initialize
-        yield return null;
-
-        // Find new audio sources in the scene
-        FindAndCategorizeAudioSources();
-
-        // Fade in any music that should be playing in the new scene
-        yield return StartCoroutine(FadeAllMusic(fadeDuration, 1f));
-
-        isTransitioning = false;
-    }
-
-    // Enhanced fade coroutine that returns IEnumerator
-    private IEnumerator FadeAllMusic(float duration, float targetVolume)
-    {
-        List<Coroutine> fadeCoroutines = new List<Coroutine>();
-
-        // Start all fade operations
-        foreach (AudioSource source in musicSources)
+        else if (persistentAudioSource.isPlaying)
         {
-            if (source.isPlaying || targetVolume > 0) // Allow fading in even if not playing yet
-            {
-                if (targetVolume > 0 && !source.isPlaying)
-                {
-                    source.volume = 0; // Start from silent if fading in
-                    source.Play();
-                }
-
-                fadeCoroutines.Add(StartCoroutine(FadeAudioSource(source, duration, targetVolume)));
-            }
+            DebugLog("No scene music found, but persistent audio is already playing: " + persistentAudioSource.clip.name);
+            // Keep the persistent audio playing as-is
         }
-
-        // Wait for all fades to complete
-        foreach (Coroutine coroutine in fadeCoroutines)
+        else
         {
-            yield return coroutine;
+            DebugLog("No music currently playing to capture");
         }
     }
 
-    private IEnumerator FadeAudioSource(AudioSource source, float duration, float targetVolume)
+    private AudioSource FindCurrentlyPlayingMusic()
     {
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+
+        foreach (AudioSource source in allAudioSources)
+        {
+            if (source != persistentAudioSource && source.isPlaying &&
+                (source.outputAudioMixerGroup == musicGroup || source.playOnAwake))
+            {
+                return source;
+            }
+        }
+
+        return null;
+    }
+
+    private IEnumerator FadeOutPreviousMusic()
+    {
+        if (!persistentAudioSource.isPlaying) yield break;
+
         float currentTime = 0;
-        float startVolume = source.volume;
-        float actualTargetVolume = targetVolume * originalVolumes[source]; // Scale by original volume
+        float startVolume = persistentAudioSource.volume;
 
-        while (currentTime < duration)
+        DebugLog("Starting fade out from volume: " + startVolume);
+
+        while (currentTime < fadeDuration)
         {
             currentTime += Time.deltaTime;
-            source.volume = Mathf.Lerp(startVolume, actualTargetVolume, currentTime / duration);
+            persistentAudioSource.volume = Mathf.Lerp(startVolume, 0f, currentTime / fadeDuration);
             yield return null;
         }
 
-        source.volume = actualTargetVolume;
+        persistentAudioSource.Stop();
+        persistentAudioSource.volume = startVolume; // Reset volume for next time
+        DebugLog("Fade out completed");
+    }
 
-        // If volume is zero, stop the audio (unless we're in the middle of a transition)
-        if (targetVolume == 0 && !isTransitioning)
+    private IEnumerator FadeInNewMusic()
+    {
+        // Wait a frame to ensure scene is fully loaded
+        yield return null;
+
+        if (currentSceneMusicSources.Count == 0) yield break;
+
+        DebugLog("Starting fade in for " + currentSceneMusicSources.Count + " sources");
+
+        foreach (AudioSource source in currentSceneMusicSources)
         {
-            source.Stop();
-            source.volume = originalVolumes[source]; // Reset to original volume
-        }
-    }
-
-    public void StopAllMusicWithFade(float duration = 0.5f)
-    {
-        StartCoroutine(FadeAllMusic(duration, 0f));
-    }
-
-    public void PlayAllMusicWithFade(float duration = 0.5f)
-    {
-        StartCoroutine(FadeAllMusic(duration, 1f));
-    }
-
-    public void FadeAllSFX(float duration, float targetVolume)
-    {
-        foreach (AudioSource source in sfxSources)
-        {
-            if (source.isPlaying)
+            if (source != null && source.clip != null)
             {
-                StartCoroutine(FadeAudioSource(source, duration, targetVolume));
+                float targetVolume = source.volume; // Store original volume
+                source.volume = 0f; // Start muted
+
+                if (!source.isPlaying)
+                {
+                    source.Play();
+                    DebugLog("Started playing: " + source.clip.name);
+                }
+
+                StartCoroutine(FadeSingleSource(source, targetVolume));
             }
         }
     }
 
-    // Clean up when destroyed
+    private IEnumerator FadeSingleSource(AudioSource source, float targetVolume)
+    {
+        float currentTime = 0;
+        float startVolume = source.volume;
+
+        while (currentTime < fadeDuration)
+        {
+            currentTime += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, targetVolume, currentTime / fadeDuration);
+            yield return null;
+        }
+
+        source.volume = targetVolume; // Ensure exact target volume
+        DebugLog("Fade in completed for: " + source.clip.name);
+    }
+
+    // Public method to manually stop continuing music if needed
+    public void StopContinuingMusic()
+    {
+        if (shouldContinuePreviousMusic && persistentAudioSource.isPlaying)
+        {
+            StartCoroutine(FadeOutPreviousMusic());
+            shouldContinuePreviousMusic = false;
+        }
+    }
+
+    // Public method to manually start continuing music if needed
+    public void ContinueMusicInThisScene()
+    {
+        if (persistentAudioSource.isPlaying && !shouldContinuePreviousMusic)
+        {
+            shouldContinuePreviousMusic = true;
+            persistentAudioSource.volume = 1f;
+        }
+    }
+
+    private void DebugLog(string message)
+    {
+        if (enableDebugLogs)
+        {
+            Debug.Log("[AudioManager] " + message);
+        }
+    }
+
     void OnDestroy()
     {
         if (Instance == this)
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+
+    // Helper method to check what's happening
+    public void DebugStatus()
+    {
+        Debug.Log("=== AudioManager Status ===");
+        Debug.Log("Persistent source playing: " + persistentAudioSource.isPlaying);
+        Debug.Log("Persistent clip: " + (persistentAudioSource.clip != null ? persistentAudioSource.clip.name : "None"));
+        Debug.Log("Current scene sources: " + currentSceneMusicSources.Count);
+        Debug.Log("Continue previous music: " + shouldContinuePreviousMusic);
+
+        foreach (AudioSource source in currentSceneMusicSources)
+        {
+            if (source != null)
+            {
+                Debug.Log(" - " + source.name + ": " + (source.isPlaying ? "Playing" : "Not playing") +
+                         ", Clip: " + (source.clip != null ? source.clip.name : "None"));
+            }
         }
     }
 }
