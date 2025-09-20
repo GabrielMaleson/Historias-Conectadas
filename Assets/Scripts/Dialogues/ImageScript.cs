@@ -496,4 +496,47 @@ public class StaticImageTagManager : MonoBehaviour
     {
         graphicRaycaster.enabled = false;
     }
+
+
+    [YarnCommand("finalereappear")]
+    public static IEnumerator FinalReappearCharacter(string targetName = "")
+    {
+        // Wait for 5 seconds
+        yield return new WaitForSeconds(5f);
+
+        GameObject targetObject;
+
+        if (string.IsNullOrEmpty(targetName))
+        {
+            if (instance.disappearCharacter == null)
+            {
+                Debug.LogError("No target specified and no default disappearCharacter set!");
+                yield break;
+            }
+            targetObject = instance.disappearCharacter.gameObject;
+        }
+        else
+        {
+            // Try to find the target by name
+            targetObject = GameObject.Find(targetName);
+            if (targetObject == null)
+            {
+                Debug.LogError($"No GameObject found with name: {targetName}");
+                yield break;
+            }
+        }
+
+        Image image = targetObject.GetComponent<Image>();
+        if (image != null)
+        {
+            Color color = image.color;
+            color.a = 1f; // Use 1f instead of 255f (alpha is 0-1, not 0-255)
+            image.color = color;
+        }
+        else
+        {
+            Debug.LogError($"No Image component found on target: {targetObject.name}");
+        }
+    }
+
 }

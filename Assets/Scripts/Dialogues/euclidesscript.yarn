@@ -76,6 +76,8 @@ Clara: Valentina- O que houve? Tá tudo bem?
 Valentina: N-Nada, nada… Está tudo bem…
 Valentina: O Euclides… Ele se abriu pra mim…
 <<sprite clara.clap clara halfbody>>
+Clara: SÉRIO?! QUE INCRÍVEL! Como que foi?
+<<sprite clara.think clara halfbody>>
 Valentina: A dor que ele está passando, a angustia…
 Valentina: Clara, nós precisamos estar mais presentes na vida dele, de todos esses idosos.
 <<sprite clara.think clara halfbody>>
@@ -88,6 +90,8 @@ Clara: Agora... espera aí! Vou chamar os outros pra ver o Euclides!
 Narração: Você não tem mais objetivos. Vai ver seus amigos.
 <<objective "Ver seus amigos no Quarto do Euclides">>
 <<brighten>>
+<<removesprite clara>>
+
 ===
 
 title: truefinalscene
@@ -96,7 +100,7 @@ title: truefinalscene
 <<introdarken>>
 <<sprite lucy.happy lucy>>
 <<sprite euclides.glad euclides euclides>>
-<<sprite clara.happy clara clara>>
+<<sprite clara.happy clara halfbody>>
 <<sprite americio.happy americio americio>>
 Valentina: Oi, gente! Como estão?
 Clara: Tudo certo aqui, Valentina! Você estava certa - estou emocionada!
@@ -114,14 +118,19 @@ Lucinha: Ah, mas isso eu não esqueço nunca!
 Euclides: Muito obrigado, meus amigos… Eu estava com saudade de encontrar com vocês e rir assim…
 Valentina: Viu só? Às vezes tudo de que eles precisam é um empurrãozinho e uma companhia!
 Euclides: Obrigado por tudo, Valentina. Do fundo do meu coração.
-Valentina: Obrigado por me dar essa chance, Euclides! E para vocês todos, que me ajudaram com ele!
+Valentina: Obrigado por me dar essa chance, Euclides. E para vocês todos, que ajudaram não só a mim, como ele também.
 <<sprite americio.happy americio americio>>
-<<sprite clara.clap clara clara>>
+<<sprite clara.clap clara halfbody>>
 Valentina: Agora, sorriem pra câmera!
 <<playsound "cameraclick">>
-<<fadein polaroid 3.0>>
-Narração: [b]Obrigado por jogar Histórias Conectadas![/b]
+<<sprite polaroid polaroid polaroid>>
+<<fadein polaroid 3>>
+<<sprite darkness darkness darkness>>
+<<removesprite lucy>>
+<<removesprite clara>>
+<<removesprite americio>>
+<<removesprite euclides>>
 <<brighten>>
-<<reappear>>
+<<finalereappear>>
 
 ===

@@ -51,9 +51,15 @@ EditorBuildSettings:
     path: Assets/Scenes/inventory pause/InventoryStuff.unity
     guid: 7a5bfeb89ab987349a8f08aa34489415
   - enabled: 1
-    path: Assets/Scenes/Reception Test.unity
-    guid: 4cf384c78e6b2b34fb478ffb9702f529
-  - enabled: 1
     path: Assets/Scenes/inventory pause/PauseStuff.unity
     guid: 9db12e268a076e14e925a73f76b4695e
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 5c4b40e1441ae7b438113091ff0a493a
+  - enabled: 1
+    path: Assets/Scenes/Final Scene.unity
+    guid: a1e9ffa69e9e4f24a9ee678d19203f64
+  - enabled: 1
+    path: Assets/Scenes/True Final Scene.unity
+    guid: 176fdb52dc5434845ad7912f397f0ac3
   m_configObjects: {}
