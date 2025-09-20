@@ -1885,8 +1885,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b56ec964aa7927d44b4c009cd5d600e0, type: 3}
   spriteTags:
   - clara.happy
-  - clara.clap
   - clara.think
+  - clara.clap
   imagePrefabs: []
   defaultImagePrefab: {fileID: 109241831391635419, guid: b0b4838da07a1f14eb3ebdf825e4d894, type: 3}
   positions:
